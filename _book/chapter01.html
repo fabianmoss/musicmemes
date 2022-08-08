@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alberto Acerbi / Fabian C. Moss">
 
-<title>Cultural Evolution Models - 3&nbsp; Unbiased transmission</title>
+<title>Cultural Evolution and Music - 3&nbsp; Unbiased transmission</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,6 +78,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -90,7 +108,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./chapter02.html" rel="next">
-<link href="./summary.html" rel="prev">
+<link href="./chapter00.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -146,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Cultural Evolution Models</a> 
+      <a href="./">Cultural Evolution and Music</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -158,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -168,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./chapter00.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A Python primer</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -207,7 +225,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Advanced topics</span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Advanced topics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Advanced topics</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -233,12 +263,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alberto Acerbi / Fabian C. Moss </p>
-          </div>
-  </div>
     
     
   </div>
@@ -246,6 +270,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This chapter is based on “Chapter 1: Unbiased transmission” in <span class="citation" data-cites="Acerbi2022">(<a href="references.html#ref-Acerbi2022" role="doc-biblioref">Acerbi, Mesoudi, and Smolla 2022</a>)</span>.</p>
+</div>
+</div>
 <p>Import some modules.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -260,7 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>population.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="135">
 
 <div>
 
@@ -274,15 +311,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <tbody>
     <tr>
       <th>0</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>3</th>
@@ -305,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="136">
 
 <div>
 
@@ -395,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="139">
 
 <div>
 
@@ -411,27 +448,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.44</td>
+      <td>0.49</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.42</td>
+      <td>0.58</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.40</td>
+      <td>0.62</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.39</td>
+      <td>0.62</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.47</td>
+      <td>0.70</td>
     </tr>
     <tr>
       <th>...</th>
@@ -441,27 +478,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <tr>
       <th>95</th>
       <td>95</td>
-      <td>0.79</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>96</th>
       <td>96</td>
-      <td>0.77</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>97</th>
       <td>97</td>
-      <td>0.73</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>98</th>
       <td>98</td>
-      <td>0.73</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>99</th>
       <td>99</td>
-      <td>0.69</td>
+      <td>1.00</td>
     </tr>
   </tbody>
 </table>
@@ -499,7 +536,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-12-output-1.png" width="571" height="409" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
@@ -513,7 +550,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-14-output-1.png" width="571" height="409" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
@@ -549,7 +586,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="147">
 
 <div>
 
@@ -566,31 +603,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.47</td>
+      <td>0.57</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.49</td>
+      <td>0.58</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.41</td>
+      <td>0.54</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.38</td>
+      <td>0.54</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.37</td>
+      <td>0.43</td>
       <td>0</td>
     </tr>
     <tr>
@@ -602,31 +639,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <tr>
       <th>295</th>
       <td>95</td>
-      <td>0.66</td>
+      <td>0.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>296</th>
       <td>96</td>
-      <td>0.65</td>
+      <td>0.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>297</th>
       <td>97</td>
-      <td>0.74</td>
+      <td>0.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>298</th>
       <td>98</td>
-      <td>0.74</td>
+      <td>0.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>299</th>
       <td>99</td>
-      <td>0.73</td>
+      <td>0.00</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -652,7 +689,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-19-output-1.png" width="571" height="427" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
@@ -666,7 +703,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-21-output-1.png" width="571" height="427" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
@@ -704,11 +741,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_3(<span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">.2</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter01_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<p><img src="chapter01_files/figure-html/cell-23-output-1.png" width="571" height="427"></p>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-Acerbi2022" class="csl-entry" role="doc-biblioentry">
+Acerbi, Alberto, Alex Mesoudi, and Marco Smolla. 2022. <em>Individual-Based Models of Cultural Evolution: A Step-by-Step Guide Using <span>R</span></em>. London: Routledge. <a href="https://acerbialberto.com/IBM-cultevo/">https://acerbialberto.com/IBM-cultevo/</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -810,8 +852,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span>
+      <a href="./chapter00.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A Python primer</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

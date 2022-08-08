@@ -3,10 +3,6 @@ title: "Introduction"
 author: Fabian C. Moss
 ---
 
-This is a book created from markdown and executable code.
-
-It is heavily based on [@Acerbi2022] but translated to Python and adapted for computational musicology.
-
 ## The Cultural Evolution of Music
 
 The field of cultural evolution emerged in the 1980's, 

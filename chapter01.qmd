@@ -1,7 +1,10 @@
 ---
 title: Unbiased transmission
-author: Alberto Acerbi / Fabian C. Moss
 ---
+
+:::{.callout-note}
+This chapter is based on "Chapter 1: Unbiased transmission" in [@Acerbi2022].
+:::
 
 Import some modules.
 

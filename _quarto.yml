@@ -2,13 +2,14 @@ project:
   type: book
 
 book:
-  title: "Cultural Evolution Models"
-  author: "Alberto Acerbi / Fabian C. Moss"
+  title: "Cultural Evolution and Music"
+  author: "Fabian C. Moss"
   date: "8/8/2022"
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
+    - chapter00.qmd # Python Primer
+    # - summary.qmd
     - part: Basics
       chapters:
         - chapter01.qmd
@@ -21,7 +22,7 @@ book:
       chapters:
         - advanced.qmd
     - references.qmd
-  cover-image: cover.png
+#  cover-image: cover.png
 
 bibliography: references.bib
 
