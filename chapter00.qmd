@@ -3,6 +3,16 @@ title: "A Python primer"
 author: Fabian C. Moss
 ---
 
+:::{.callout-note}
+From now on, we will assume that you have a working Python installation running on your computer. You can check this by typing the following into a terminal/console/command line:
+
+```{terminal}
+python --version
+```
+
+If the version number starts with a 3, you're all set. If not, please consider one of the many tutorials online on how to install Python.
+:::
+
 ## Variables and types
 
 Variable assignment in Python is straight-forward. You choose a name for the variable, and assign a value to it using the `=` operator, for example:
@@ -40,6 +50,23 @@ mylist = [1, 2, 3, "A", "B", "C"]
 Lists are enclosed by square brackets. As you can see, Python allows you 
 to store any kind of data in lists (here: integer numbers and character strings). However, it is good practice to include only---you'll understand later why.
 
+Another structured data type in python are dictionaries. Dictionaries are
+collections of key-value pairs. For example, a dictionary `addresses` could store the email addresses of certain people:
+
+```{python}
+addresses = {
+    "Andrew" : "andrew@example.com",
+    "Zoe" : "zoe@example.com"
+}
+```
+
+Now, if we wanted to look up Zoe's email address, we could to so with:
+
+```{python}
+addresses["Zoe"]
+```
+
+
 ## On repeat
 
 Coding something is only useful if you can't do the job as fast or as efficient by yourself. Especially when it comes to repeating the same little thing many, many times, knowing how to code comes in handy.
@@ -62,7 +89,7 @@ for i in range(1,11):
 
 Voilà!
 
-## Functions and abstactions
+## Functions
 
 With more and more experience in programming, 
 it is likely that your code will become more and more complex.
@@ -167,4 +194,4 @@ import pandas as pd # for tabular data
 import matplotlib.pyplot as plt # for data visualization
 ```
 
-We will use all three of them in the following chapters.
+We will use all three of them in the following chapters and you'll learn to love them.

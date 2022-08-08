@@ -3,6 +3,7 @@ project:
 
 book:
   title: "Cultural Evolution and Music"
+  subtitle: "Models and Applications in Python"
   author: "Fabian C. Moss"
   date: "8/8/2022"
   chapters:

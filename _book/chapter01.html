@@ -256,7 +256,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></h1>
+<h1 class="title"><span id="ch1_unbiased_transmission" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></span></h1>
 </div>
 
 
@@ -283,21 +283,43 @@ Note
 <p>This chapter is based on “Chapter 1: Unbiased transmission” in <span class="citation" data-cites="Acerbi2022">(<a href="references.html#ref-Acerbi2022" role="doc-biblioref">Acerbi, Mesoudi, and Smolla 2022</a>)</span>.</p>
 </div>
 </div>
-<p>Import some modules.</p>
+<p>First we import some modules.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Because we will model evolutionary processes that are not strictly deterministic, we need to simulate variations due to random change. For this, we can use the <em>default random number generator</em> from the NumPy library and store it in the variable <code>rng</code>.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Next, we define some basic variables that we take into account for our first model. We consider a population of <span class="math inline">\(N=100\)</span> individuals as well as a time-frame of <span class="math inline">\(t_{max}=100\)</span> generations.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>population.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In general, we use the variable <code>t</code> to designate generation counts.</p>
+</div>
+</div>
+<p>Now we create a variable <code>population</code> that will store the data about our simulated population. This population has either of two traits <code>"A"</code> and <code>"B"</code>, with a certain probability. We store all of this in a so-called ‘data frame’, which is a somewhat fancy, Pandas-specific term for a table.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)}</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take this code apart to understand it better. From the Pandas library, which we imported as the alias <code>pd</code>, we create a <code>DataFrame</code> object. The data contained in this the data frame <code>population</code> is specified via a dictionary that has <code>"trait"</code> as its key and a fairly complex expression starting with the random number generator <code>rng</code> as its value. What this value says is, from the list <code>["A", "B"]</code> choose randomly <code>N</code> instances with replacement (if <code>replace</code> were set to <code>False</code>, we could at most sample 2 values from the list). So, the data frame <code>population</code> should contain 100 randomly sampled values of A’s and B’s. Let’s confirm this:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1070">
 
 <div>
 
@@ -329,110 +351,56 @@ Note
       <th>4</th>
       <td>B</td>
     </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span>: np.arange(t_max, dtype<span class="op">=</span><span class="bu">int</span>), </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span>: [np.nan] <span class="op">*</span> t_max </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="136">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>generation</th>
-      <th>p</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>NaN</td>
-    </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
       <td>...</td>
     </tr>
     <tr>
       <th>95</th>
-      <td>95</td>
-      <td>NaN</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>96</td>
-      <td>NaN</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>97</td>
-      <td>NaN</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>98</td>
-      <td>NaN</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>99</td>
-      <td>NaN</td>
+      <td>A</td>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 2 columns</p>
+<p>100 rows × 1 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>output.loc[<span class="dv">0</span>, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>As you can see, <code>population</code> stores a table with 100 rows (many of them omitted here for display reasons) and a single column called ‘trait’. Each row in the ‘trait’ column contains either the value A or B.</p>
+<p>We can count the number of A’s and B’s as follows:</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Copy the population tibble to previous_population tibble</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    previous_population <span class="op">=</span> population.copy()</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Randomly copy from previous generation's individuals</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get p and put it into the output slot for this generation t</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    output.loc[t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1071">
+<pre><code>A    52
+B    48
+Name: trait, dtype: int64</code></pre>
 </div>
+</div>
+<p>You can read the above code as “From the population table, select the ‘trait’ colum and count its values.”. Since there were only two values to sample from and they were randomly (uniformly) sampled, the number of A’s and the number of B’s should be approximately equal.</p>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span>: np.arange(t_max, dtype<span class="op">=</span><span class="bu">int</span>), </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span>: [np.nan] <span class="op">*</span> t_max </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1072">
 
 <div>
 
@@ -448,27 +416,27 @@ Note
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.49</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.58</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.62</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.62</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.70</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>...</th>
@@ -478,27 +446,27 @@ Note
     <tr>
       <th>95</th>
       <td>95</td>
-      <td>1.00</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>96</th>
       <td>96</td>
-      <td>1.00</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>97</th>
       <td>97</td>
-      <td>1.00</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>98</th>
       <td>98</td>
-      <td>1.00</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>99</th>
       <td>99</td>
-      <td>1.00</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -507,86 +475,176 @@ Note
 </div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_1(N, t_max):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({<span class="st">"generation"</span>: np.arange(t_max, dtype<span class="op">=</span><span class="bu">int</span>), <span class="st">"p"</span>: [np.nan] <span class="op">*</span> t_max })</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    output.loc[<span class="dv">0</span>, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Copy the population tibble to previous_population tibble</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        previous_population <span class="op">=</span> population.copy()</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Randomly copy from previous generation's individuals</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get p and put it into the output slot for this generation t</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        output.loc[t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>output.loc[<span class="dv">0</span>, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_1(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Copy the population tibble to previous_population tibble</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    previous_population <span class="op">=</span> population.copy()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Randomly copy from previous generation's individuals</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get p and put it into the output slot for this generation t</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    output.loc[t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_single_run(data_model):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    data_model[<span class="st">"p"</span>].plot(ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1075">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>generation</th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.46</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>95</td>
+      <td>0.84</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>96</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>97</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>98</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>99</td>
+      <td>0.94</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 2 columns</p>
+</div>
+</div>
 </div>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot_single_run(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_1(N, t_max):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({<span class="st">"generation"</span>: np.arange(t_max, dtype<span class="op">=</span><span class="bu">int</span>), <span class="st">"p"</span>: [np.nan] <span class="op">*</span> t_max })</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    output.loc[<span class="dv">0</span>, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Copy the population tibble to previous_population tibble</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        previous_population <span class="op">=</span> population.copy()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Randomly copy from previous generation's individuals</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get p and put it into the output slot for this generation t</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        output.loc[t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_1(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_single_run(data_model):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    data_model[<span class="st">"p"</span>].plot(ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_single_run(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-12-output-1.png" width="571" height="409" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-15-output-1.png" width="571" height="409" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_1(N<span class="op">=</span><span class="dv">10_000</span>, t_max<span class="op">=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_1(N<span class="op">=</span><span class="dv">10_000</span>, t_max<span class="op">=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_single_run(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_single_run(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-14-output-1.png" width="571" height="409" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-17-output-1.png" width="571" height="409" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_2(N, t_max, r_max):</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population.copy()</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_2(N, t_max, r_max):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population.copy()</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="147">
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1083">
 
 <div>
 
@@ -609,25 +667,25 @@ Note
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.58</td>
+      <td>0.52</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.54</td>
+      <td>0.56</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.54</td>
+      <td>0.68</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.43</td>
+      <td>0.71</td>
       <td>0</td>
     </tr>
     <tr>
@@ -639,31 +697,31 @@ Note
     <tr>
       <th>295</th>
       <td>95</td>
-      <td>0.00</td>
+      <td>0.12</td>
       <td>2</td>
     </tr>
     <tr>
       <th>296</th>
       <td>96</td>
-      <td>0.00</td>
+      <td>0.18</td>
       <td>2</td>
     </tr>
     <tr>
       <th>297</th>
       <td>97</td>
-      <td>0.00</td>
+      <td>0.14</td>
       <td>2</td>
     </tr>
     <tr>
       <th>298</th>
       <td>98</td>
-      <td>0.00</td>
+      <td>0.16</td>
       <td>2</td>
     </tr>
     <tr>
       <th>299</th>
       <td>99</td>
-      <td>0.00</td>
+      <td>0.16</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -672,76 +730,76 @@ Note
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_multiple_runs(data_model):</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    groups <span class="op">=</span> data_model.groupby(<span class="st">"run"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, g <span class="kw">in</span> groups:</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        g.index <span class="op">=</span> g[<span class="st">"generation"</span>]</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        g[<span class="st">"p"</span>].plot(lw<span class="op">=</span><span class="fl">.5</span>, ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    data_model.groupby(<span class="st">"generation"</span>)[<span class="st">"p"</span>].mean().plot(c<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_multiple_runs(data_model):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    groups <span class="op">=</span> data_model.groupby(<span class="st">"run"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, g <span class="kw">in</span> groups:</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        g.index <span class="op">=</span> g[<span class="st">"generation"</span>]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        g[<span class="st">"p"</span>].plot(lw<span class="op">=</span><span class="fl">.5</span>, ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    data_model.groupby(<span class="st">"generation"</span>)[<span class="st">"p"</span>].mean().plot(c<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-19-output-1.png" width="571" height="427" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-22-output-1.png" width="571" height="427" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">10_000</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">10_000</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-21-output-1.png" width="571" height="427" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-24-output-1.png" width="571" height="427" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_3(N, p_0, t_max, r_max):</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>, p<span class="op">=</span>[p_0, <span class="dv">1</span> <span class="op">-</span> p_0])})</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_3(N, p_0, t_max, r_max):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>, p<span class="op">=</span>[p_0, <span class="dv">1</span> <span class="op">-</span> p_0])})</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_3(<span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">.2</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_3(<span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">.2</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter01_files/figure-html/cell-23-output-1.png" width="571" height="427"></p>
+<p><img src="chapter01_files/figure-html/cell-26-output-1.png" width="571" height="427"></p>
 </div>
 </div>
 

@@ -1,29 +1,58 @@
----
-title: Unbiased transmission
----
+# Unbiased transmission {#ch1_unbiased_transmission}
 
 :::{.callout-note}
 This chapter is based on "Chapter 1: Unbiased transmission" in [@Acerbi2022].
 :::
 
-Import some modules.
+First we import some modules.
 
 ```{python}
 import numpy as np
-rng = np.random.default_rng()
-
 import pandas as pd
 ```
+
+Because we will model evolutionary processes that are not strictly deterministic, we need to simulate variations due to random change.
+For this, we can use the _default random number generator_ from the NumPy library and store it in the variable `rng`. 
+
+```{python}
+rng = np.random.default_rng()
+```
+
+Next, we define some basic variables that we take into account for our first model. We consider a population of $N=100$ individuals as well as a time-frame of $t_{max}=100$ generations. 
 
 ```{python}
 N = 100
 t_max = 100
 ```
 
+:::{.callout-note}
+In general, we use the variable `t` to designate generation counts. 
+:::
+
+Now we create a variable `population` that will store the data about our simulated population. This population has either of two traits `"A"` and `"B"`, with a certain probability. We store all of this in a so-called 'data frame', which is a somewhat fancy, Pandas-specific term for a table. 
+
 ```{python}
-population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True)})
-population.head()
+population = pd.DataFrame(
+    {"trait": rng.choice(["A", "B"], size=N, replace=True)}
+)
 ```
+
+Let's take this code apart to understand it better.
+From the Pandas library, which we imported as the alias `pd`, we create a `DataFrame` object. The data contained in this the data frame `population` is specified via a dictionary that has `"trait"` as its key and a fairly complex expression starting with the random number generator `rng` as its value. What this value says is, from the list `["A", "B"]` choose randomly `N` instances with replacement (if `replace` were set to `False`, we could at most sample 2 values from the list). So, the data frame `population` should contain 100 randomly sampled values of A's and B's. Let's confirm this:
+
+```{python}
+population
+```
+
+As you can see, `population` stores a table with 100 rows (many of them omitted here for display reasons) and a single column called 'trait'. Each row in the 'trait' column contains either the value A or B. 
+
+We can count the number of A's and B's as follows:
+
+```{python}
+population["trait"].value_counts()
+```
+
+You can read the above code as "From the population table, select the 'trait' colum and count its values.". Since there were only two values to sample from and they were randomly (uniformly) sampled, the number of A's and the number of B's should be approximately equal.
 
 ```{python}
 output = pd.DataFrame(

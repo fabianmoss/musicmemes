@@ -3,10 +3,15 @@
 On these pages you will learn about cultural evolution and music.
 The overall aim is to attain a basic understanding of formal models in cultural evolution and learn about several recent approaches that apply them to the domain of music.
 
-We first summarize some general ideas about music and cultural evolution.
-Subsequently, we follow an excellent learning path for computational models in cultural evolution by working through the book [_Individual-based models of cultural evolution_](https://acerbialberto.com/IBM-cultevo/) [@Acerbi2022]. Chapters X--Y comprise a translation of this resource to the Python language that we will use throughout. Finally, we will review and discuss a number of recent publications on music and cultural evolution in the advanced topics section.
+We start with a minimal introduction to the Python programming language that covers the necessary basic skills in order to follow the remainder of the book. Then, we summarize some general ideas about music and cultural evolution. 
+
+Subsequently, we follow an excellent learning path for computational models in cultural evolution by working through the book [_Individual-based models of cultural evolution_](https://acerbialberto.com/IBM-cultevo/) [@Acerbi2022]. Chapters X to Y comprise a translation of this resource to the [Python](https://www.python.org/) programming language that we will use throughout these materials. Finally, we will review and discuss a number of recent publications on music and cultural evolution in the advanced topics section at the end.
 
 :::{.callout-note}
 Note that the materials here are still under development. 
 Please inform me if you notice any errors or other issues.
+:::
+
+:::{.callout}
+If you want to refer to this resource, please cite it as appropriately, e.g.: Moss, F. C. (2022). "Cultural Evolution and Music: Models and Applications in Python". https://fabianmoss.github.io/cultevopy
 :::
