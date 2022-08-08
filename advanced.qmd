@@ -1,0 +1,13 @@
+---
+title: Advanced topics
+---
+
+<!-- Advanced topics - separate into chapters later -->
+
+## Savage (2019)
+
+- "Cultural Evolution of Music" [@Savage2019]
+- "The role of population size in folk tune complexity" [@Street2022]
+- "Statistical Evolutionary Laws in Music Styles" [@Nakamura2019]
+- "The line of fifths and the co-evolution of tonal pitch-classes" [@Moss2022]
+- "" [@Youngblood2021]

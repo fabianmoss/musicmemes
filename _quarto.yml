@@ -1,0 +1,35 @@
+project:
+  type: book
+
+book:
+  title: "Cultural Evolution Models"
+  author: "Alberto Acerbi / Fabian C. Moss"
+  date: "8/8/2022"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - part: Basics
+      chapters:
+        - chapter01.qmd
+        - chapter02.qmd
+        - chapter03.qmd
+        - chapter04.qmd
+        - chapter05.qmd
+      # - chapter06.qmd
+    - part: "Advanced topics"
+      chapters:
+        - advanced.qmd
+    - references.qmd
+  cover-image: cover.png
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
