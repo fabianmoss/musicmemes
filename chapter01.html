@@ -343,11 +343,11 @@ Note
   <tbody>
     <tr>
       <th>0</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>2</th>
@@ -355,11 +355,11 @@ Note
     </tr>
     <tr>
       <th>3</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>...</th>
@@ -367,11 +367,11 @@ Note
     </tr>
     <tr>
       <th>95</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>97</th>
@@ -383,7 +383,7 @@ Note
     </tr>
     <tr>
       <th>99</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
   </tbody>
 </table>
@@ -410,8 +410,8 @@ Note
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>A    50
-B    50
+<pre><code>B    57
+A    43
 Name: trait, dtype: int64</code></pre>
 </div>
 </div>
@@ -419,8 +419,8 @@ Name: trait, dtype: int64</code></pre>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>A    0.5
-B    0.5
+<pre><code>B    0.57
+A    0.43
 Name: trait, dtype: float64</code></pre>
 </div>
 </div>
@@ -519,7 +519,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>0.5</code></pre>
+<pre><code>0.43</code></pre>
 </div>
 </div>
 <p>You already know this code from above, we just added the <code>["A"]</code> part at the end to select only the relative frequencies of trait A. We want to set this as the value of <code>p</code> of the first generation. This can be achieved with the <code>.loc</code> (location) method:</p>
@@ -561,27 +561,27 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.50</td>
+      <td>0.43</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.52</td>
+      <td>0.46</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.52</td>
+      <td>0.40</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.55</td>
+      <td>0.39</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.55</td>
+      <td>0.40</td>
     </tr>
     <tr>
       <th>...</th>
@@ -591,27 +591,27 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>95</th>
       <td>95</td>
-      <td>0.46</td>
+      <td>0.91</td>
     </tr>
     <tr>
       <th>96</th>
       <td>96</td>
-      <td>0.43</td>
+      <td>0.88</td>
     </tr>
     <tr>
       <th>97</th>
       <td>97</td>
-      <td>0.49</td>
+      <td>0.86</td>
     </tr>
     <tr>
       <th>98</th>
       <td>98</td>
-      <td>0.45</td>
+      <td>0.90</td>
     </tr>
     <tr>
       <th>99</th>
       <td>99</td>
-      <td>0.54</td>
+      <td>0.94</td>
     </tr>
   </tbody>
 </table>
@@ -719,31 +719,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.63</td>
+      <td>0.55</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.64</td>
+      <td>0.56</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.68</td>
+      <td>0.56</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.66</td>
+      <td>0.57</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.66</td>
+      <td>0.55</td>
       <td>0</td>
     </tr>
     <tr>
@@ -755,31 +755,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>295</th>
       <td>95</td>
-      <td>0.17</td>
+      <td>0.98</td>
       <td>2</td>
     </tr>
     <tr>
       <th>296</th>
       <td>96</td>
-      <td>0.12</td>
+      <td>0.99</td>
       <td>2</td>
     </tr>
     <tr>
       <th>297</th>
       <td>97</td>
-      <td>0.15</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>298</th>
       <td>98</td>
-      <td>0.17</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>299</th>
       <td>99</td>
-      <td>0.19</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
   </tbody>
