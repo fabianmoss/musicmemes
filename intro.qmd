@@ -11,7 +11,7 @@ apply formal models from cultural evolution to the domain of music [@Youngblood2
 
 In the present context, we first introduce some central ideas of cultural evolution and review a few major publications for the domain of music.
 
-### Central ideas
+## Central ideas
 
 We start with six different mechanisms for cultural inheritance: unbiased transmission (Chapter X), unbiased and biased mutation (Chapter X), directly biased transmission (Chapter X), frequency-dependent indirectly biased transmission (Chapter X), and demonstrator-based indirectly biased transmission (Chapter X). Schematically, this is shown in the following diagram:
 
@@ -29,4 +29,11 @@ flowchart TD
   I --> DB(Demonstrator-Based)
 ```
 
-### Cultural evolution in music research
+## Music evolution
+
+- [@Wallin2001_OriginsMusic]
+- [@Morley2013_PrehistoryMusicHuman]
+- [@Tomlinson2018_MillionYearsMusic]
+- [@Honing2018_BiologicalBasisMusicality]
+
+## Music history and cultural evolution
