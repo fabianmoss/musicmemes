@@ -3,6 +3,10 @@ title: Unbiased and biased mutation
 jupyter: python3
 ---
 
+:::{.callout-note}
+This chapter is based on "Chapter 2: Unbiased and biased mutation" in [@Acerbi2022].
+:::
+
 ```{python}
 import numpy as np
 rng = np.random.default_rng()

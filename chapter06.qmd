@@ -3,6 +3,10 @@ title: "Vertical and horizontal transmission"
 jupyter: python3
 ---
 
+:::{.callout-note}
+This chapter is based on "Chapter 6: Vertical and horizontal transmission" in [@Acerbi2022].
+:::
+
 ```{python}
 import numpy as np 
 rng = np.random.default_rng()

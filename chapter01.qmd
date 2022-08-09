@@ -1,3 +1,7 @@
+---
+jupyter: python3
+---
+
 # Unbiased transmission {#ch1_unbiased_transmission}
 
 :::{.callout-note}

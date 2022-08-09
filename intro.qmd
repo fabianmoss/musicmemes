@@ -1,6 +1,5 @@
 ---
 title: "Introduction"
-author: Fabian C. Moss
 ---
 
 ## The Cultural Evolution of Music

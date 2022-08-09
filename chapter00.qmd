@@ -1,6 +1,5 @@
 --- 
 title: "A Python primer"
-author: Fabian C. Moss
 ---
 
 :::{.callout-note}

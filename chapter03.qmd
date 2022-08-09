@@ -3,6 +3,10 @@ title: "Biased transmission: direct bias"
 jupyter: python3
 ---
 
+:::{.callout-note}
+This chapter is based on "Chapter 3: Biased transmission: direct bias" in [@Acerbi2022].
+:::
+
 ```{python}
 import numpy as np
 rng = np.random.default_rng()

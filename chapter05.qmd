@@ -3,6 +3,10 @@ title: "Biased transmission: demonstrator-based indirect bias"
 jupyter: python3
 ---
 
+:::{.callout-note}
+This chapter is based on "Chapter 5: Biased transmission: demonstrator-based indirect bias" in [@Acerbi2022].
+:::
+
 ```{python}
 import numpy as np 
 rng = np.random.default_rng()

@@ -250,6 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Biased transmission: demonstrator-based indirect bias</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
@@ -278,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="18">
 
 <div>
 
@@ -308,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </tr>
     <tr>
       <th>3</th>
-      <td>B</td>
+      <td>A</td>
       <td>low</td>
     </tr>
     <tr>
@@ -328,17 +329,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </tr>
     <tr>
       <th>96</th>
-      <td>B</td>
-      <td>high</td>
+      <td>A</td>
+      <td>low</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>B</td>
+      <td>A</td>
       <td>low</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>A</td>
+      <td>B</td>
       <td>low</td>
     </tr>
     <tr>
@@ -407,14 +408,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter05_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<p><img src="chapter05_files/figure-html/cell-11-output-1.png" width="571" height="427"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> biased_transmission_demonstrator(N<span class="op">=</span><span class="dv">10_000</span>, p_s<span class="op">=</span><span class="fl">0.005</span>, p_low<span class="op">=</span><span class="fl">0.0001</span>, p_0<span class="op">=</span><span class="fl">0.5</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter05_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<p><img src="chapter05_files/figure-html/cell-12-output-1.png" width="571" height="427"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="12">
