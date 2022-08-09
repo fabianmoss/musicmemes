@@ -27,7 +27,18 @@ book:
       chapters:
         - advanced.qmd
     - references.qmd
-  cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@jazminantoinette?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jazmin Quaynor</a> on <a href="https://unsplash.com/s/photos/texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@ascales?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alan Scales</a> on <a href="https://unsplash.com/s/photos/a4-texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  page-footer: 
+    left: "Copyright 2022, Fabian C. Moss" 
+    right: 
+      - icon: github
+        href: https://github.com/fabianmoss
+      - icon: twitter 
+        href: https://twitter.com/fabianmoss
+    border: true
+    background: dark
+  
+  
 
 citation:
   url: https://fabianmoss.github.io/cultevopy
@@ -43,10 +54,13 @@ format:
     theme: journal # cosmo
   pdf:
     template: eisvogel.tex
+    titlepage: true
+    titlepage-background: texture.jpg
+    titlepage-text-color: ffffff
     ### see here for template customization possibilities: https://github.com/Wandmalfarbe/pandoc-latex-template
     # documentclass: scrreprt
     papersize: a4paper
     highlight-style: github
-    titlepage: true
+    include-before-body: empty.tex
 
 license: "CC BY-NC"
