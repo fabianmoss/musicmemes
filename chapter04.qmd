@@ -1,5 +1,6 @@
 ---
 title: "Biased transmission: frequency-dependent indirect bias"
+subtitle: ""
 jupyter: python3
 ---
 

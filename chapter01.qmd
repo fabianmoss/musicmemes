@@ -1,5 +1,6 @@
 ---
 jupyter: python3
+subtitle: What happens if people just randomly copy?
 ---
 
 # Unbiased transmission {#ch1_unbiased_transmission}

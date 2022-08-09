@@ -1,5 +1,6 @@
 ---
 title: "Biased transmission: demonstrator-based indirect bias"
+subtitle: ""
 jupyter: python3
 ---
 

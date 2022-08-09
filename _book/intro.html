@@ -74,6 +74,9 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -219,6 +222,30 @@ div.csl-indent {
 <p>In the present context, we first introduce some central ideas of cultural evolution and review a few major publications for the domain of music.</p>
 <section id="central-ideas" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="central-ideas"><span class="header-section-number">1.1.1</span> Central ideas</h3>
+<p>We start with six different mechanisms for cultural inheritance: unbiased transmission (Chapter X), unbiased and biased mutation (Chapter X), directly biased transmission (Chapter X), frequency-dependent indirectly biased transmission (Chapter X), and demonstrator-based indirectly biased transmission (Chapter X). Schematically, this is shown in the following diagram:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart TD
+  C[Cultural inheritance] --&gt; T(Transmission)
+  C --&gt; M(Mutation)
+  T --&gt; BT(Biased)
+  T --&gt; UT(Unbiased)
+  M --&gt; BM(Biased)
+  M --&gt; UM(Unbiased)
+  BT --&gt; D(Direct)
+  BT --&gt; I(Indirect)
+  I --&gt; FD(Frequency-Dependent)
+  I --&gt; DB(Demonstrator-Based)
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="cultural-evolution-in-music-research" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="cultural-evolution-in-music-research"><span class="header-section-number">1.1.2</span> Cultural evolution in music research</h3>

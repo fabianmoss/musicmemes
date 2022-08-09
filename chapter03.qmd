@@ -1,5 +1,6 @@
 ---
 title: "Biased transmission: direct bias"
+subtitle: ""
 jupyter: python3
 ---
 

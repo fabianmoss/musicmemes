@@ -28,6 +28,10 @@ book:
 bibliography: references.bib
 csl: apa.csl
 
+website:
+  cookie-consent: true
+  style: simple
+
 format:
   html:
     theme: cosmo

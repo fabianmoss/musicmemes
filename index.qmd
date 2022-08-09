@@ -13,5 +13,5 @@ Please inform me if you notice any errors or other issues.
 :::
 
 :::{.callout}
-If you want to refer to this resource, please cite it as appropriately, e.g.: Moss, F. C. (2022). "Cultural Evolution and Music: Models and Applications in Python". https://fabianmoss.github.io/cultevopy
+If you want to refer to this resource, please cite it as appropriately, e.g.: Moss, F. C. (2022). "Cultural Evolution and Music: Models and Applications in Python". <https://fabianmoss.github.io/cultevopy>
 :::

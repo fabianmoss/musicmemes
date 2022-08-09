@@ -13,4 +13,20 @@ In the present context, we first introduce some central ideas of cultural evolut
 
 ### Central ideas
 
+We start with six different mechanisms for cultural inheritance: unbiased transmission (Chapter X), unbiased and biased mutation (Chapter X), directly biased transmission (Chapter X), frequency-dependent indirectly biased transmission (Chapter X), and demonstrator-based indirectly biased transmission (Chapter X). Schematically, this is shown in the following diagram:
+
+```{mermaid}
+flowchart TD
+  C[Cultural inheritance] --> T(Transmission)
+  C --> M(Mutation)
+  T --> BT(Biased)
+  T --> UT(Unbiased)
+  M --> BM(Biased)
+  M --> UM(Unbiased)
+  BT --> D(Direct)
+  BT --> I(Indirect)
+  I --> FD(Frequency-Dependent)
+  I --> DB(Demonstrator-Based)
+```
+
 ### Cultural evolution in music research
