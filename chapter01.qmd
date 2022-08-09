@@ -130,18 +130,20 @@ The code below is exactly the same as above.
 ```{python}
 def unbiased_transmission_1(N, t_max):
     population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True)})
+
     output = pd.DataFrame({"generation": np.arange(t_max, dtype=int), "p": [np.nan] * t_max })
-    output.loc[0, "p"] = population["trait"].value_counts(normalize=True)["A"]
+
+    output.loc[0, "p"] = population[ population["trait"] == "A"].shape[0] / N
 
     for t in range(1, t_max):
         # Copy the population tibble to previous_population tibble
         previous_population = population.copy()
     
         # Randomly copy from previous generation's individuals
-        population = previous_population["trait"].sample(N, replace=True).to_frame()
+        new_population = previous_population["trait"].sample(N, replace=True).to_frame()
         
         # Get p and put it into the output slot for this generation t
-        output.loc[t, "p"] = population[ population["trait"] == "A"].shape[0] / N
+        output.loc[t, "p"] = new_population[ new_population["trait"] == "A"].shape[0] / N
     
     return output
 ```

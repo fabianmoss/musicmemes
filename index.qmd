@@ -7,7 +7,7 @@ We start with a minimal introduction to the Python programming language that cov
 
 Subsequently, we follow an excellent learning path for computational models in cultural evolution by working through the book [_Individual-based models of cultural evolution_](https://acerbialberto.com/IBM-cultevo/) [@Acerbi2022]. Chapters X to Y comprise a translation of this resource to the [Python](https://www.python.org/) programming language that we will use throughout these materials. Finally, we will review and discuss a number of recent publications on music and cultural evolution in the advanced topics section at the end.
 
-:::{.callout-note}
+:::{.callout-important}
 Note that the materials here are still under development. 
 Please inform me if you notice any errors or other issues.
 :::

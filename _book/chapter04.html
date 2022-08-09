@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Evolution Models - 6&nbsp; Biased transmission: frequency-dependent indirect bias</title>
+<title>Cultural Evolution and Music - 6&nbsp; Biased transmission: frequency-dependent indirect bias</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Cultural Evolution Models</a> 
+      <a href="./">Cultural Evolution and Music</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -156,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -166,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./chapter00.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A Python primer</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -205,7 +205,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Advanced topics</span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Advanced topics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Advanced topics</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -290,32 +302,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <tbody>
     <tr>
       <th>0</th>
-      <td>A</td>
+      <td>B</td>
       <td>A</td>
       <td>B</td>
     </tr>
     <tr>
       <th>1</th>
       <td>A</td>
-      <td>B</td>
+      <td>A</td>
       <td>B</td>
     </tr>
     <tr>
       <th>2</th>
       <td>A</td>
       <td>A</td>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>3</th>
       <td>A</td>
-      <td>B</td>
+      <td>A</td>
       <td>A</td>
     </tr>
     <tr>
       <th>4</th>
       <td>B</td>
-      <td>A</td>
+      <td>B</td>
       <td>B</td>
     </tr>
     <tr>
@@ -326,33 +338,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </tr>
     <tr>
       <th>95</th>
-      <td>A</td>
       <td>B</td>
+      <td>A</td>
       <td>B</td>
     </tr>
     <tr>
       <th>96</th>
       <td>B</td>
       <td>B</td>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>97</th>
       <td>B</td>
-      <td>A</td>
+      <td>B</td>
       <td>B</td>
     </tr>
     <tr>
       <th>98</th>
       <td>A</td>
-      <td>B</td>
+      <td>A</td>
       <td>A</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>B</td>
-      <td>B</td>
       <td>A</td>
+      <td>A</td>
+      <td>B</td>
     </tr>
   </tbody>
 </table>
@@ -365,17 +377,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>num_As <span class="op">=</span> (demonstrators <span class="op">==</span> <span class="st">"A"</span>).<span class="bu">apply</span>(<span class="bu">sum</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>num_As</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>0     2
-1     1
-2     3
-3     2
-4     1
+<pre><code>0     1
+1     2
+2     2
+3     3
+4     0
      ..
 95    1
-96    0
-97    1
-98    2
-99    1
+96    1
+97    0
+98    3
+99    2
 Length: 100, dtype: int64</code></pre>
 </div>
 </div>
@@ -426,38 +438,38 @@ Length: 100, dtype: int64</code></pre>
   <tbody>
     <tr>
       <th>0</th>
-      <td>A</td>
-      <td>A</td>
       <td>B</td>
       <td>A</td>
+      <td>B</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>1</th>
       <td>A</td>
+      <td>A</td>
       <td>B</td>
-      <td>B</td>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>2</th>
       <td>A</td>
       <td>A</td>
-      <td>A</td>
+      <td>B</td>
       <td>A</td>
     </tr>
     <tr>
       <th>3</th>
       <td>A</td>
-      <td>B</td>
+      <td>A</td>
       <td>A</td>
       <td>A</td>
     </tr>
     <tr>
       <th>4</th>
       <td>B</td>
-      <td>A</td>
       <td>B</td>
-      <td>A</td>
+      <td>B</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>...</th>
@@ -468,8 +480,8 @@ Length: 100, dtype: int64</code></pre>
     </tr>
     <tr>
       <th>95</th>
-      <td>A</td>
       <td>B</td>
+      <td>A</td>
       <td>B</td>
       <td>B</td>
     </tr>
@@ -477,29 +489,29 @@ Length: 100, dtype: int64</code></pre>
       <th>96</th>
       <td>B</td>
       <td>B</td>
-      <td>B</td>
-      <td>B</td>
+      <td>A</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>97</th>
       <td>B</td>
-      <td>A</td>
       <td>B</td>
-      <td>A</td>
+      <td>B</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>98</th>
       <td>A</td>
-      <td>B</td>
+      <td>A</td>
       <td>A</td>
       <td>A</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>B</td>
-      <td>B</td>
+      <td>A</td>
       <td>A</td>
       <td>B</td>
+      <td>A</td>
     </tr>
   </tbody>
 </table>

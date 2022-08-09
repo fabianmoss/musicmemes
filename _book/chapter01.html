@@ -329,7 +329,7 @@ Note
 <p>Let’s take this code apart to understand it better. From the Pandas library, which we imported as the alias <code>pd</code>, we create a <code>DataFrame</code> object. The data contained in this the data frame <code>population</code> is specified via a dictionary that has <code>"trait"</code> as its key and a fairly complex expression starting with the random number generator <code>rng</code> as its value. What this value says is, from the list <code>["A", "B"]</code> choose randomly <code>N</code> instances with replacement (if <code>replace</code> were set to <code>False</code>, we could at most sample 2 values from the list). So, the data frame <code>population</code> should contain 100 randomly sampled values of A’s and B’s. Let’s confirm this:</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3055">
+<div class="cell-output cell-output-display" data-execution_count="5">
 
 <div>
 
@@ -343,7 +343,7 @@ Note
   <tbody>
     <tr>
       <th>0</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>1</th>
@@ -351,7 +351,7 @@ Note
     </tr>
     <tr>
       <th>2</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>3</th>
@@ -359,7 +359,7 @@ Note
     </tr>
     <tr>
       <th>4</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>...</th>
@@ -367,7 +367,7 @@ Note
     </tr>
     <tr>
       <th>95</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>96</th>
@@ -375,15 +375,15 @@ Note
     </tr>
     <tr>
       <th>97</th>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>98</th>
       <td>B</td>
     </tr>
     <tr>
-      <th>99</th>
+      <th>98</th>
       <td>A</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>B</td>
     </tr>
   </tbody>
 </table>
@@ -409,18 +409,18 @@ Note
 <p>We can count the number of A’s and B’s as follows:</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3056">
-<pre><code>B    59
-A    41
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>B    54
+A    46
 Name: trait, dtype: int64</code></pre>
 </div>
 </div>
 <p>You can read the above code as “From the population table, select the ‘trait’ colum and count its values.”. Since there were only two values to sample from and they were randomly (uniformly) sampled, the number of A’s and the number of B’s should be approximately equal. We can obtain their relative frequencies by adding setting the <code>normalize</code> keyword to <code>True</code>:</p>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3057">
-<pre><code>B    0.59
-A    0.41
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>B    0.54
+A    0.46
 Name: trait, dtype: float64</code></pre>
 </div>
 </div>
@@ -439,7 +439,7 @@ Name: trait, dtype: float64</code></pre>
 <p>The <code>generation</code> column contains all numbers from <code>0</code> to <code>t_max - 1</code>. Because we count the numbers of generations (rather than assuming a time-continuous process), we specified that numbers in this column have to be intergers (<code>dtype=int</code>). The values for the <code>p</code> column must look cryptic. It literally says: put the <code>np.nan</code> value <code>t_max</code> times into the <code>p</code> colum. <code>np.nan</code> stands for “not a number” (from the NumPy library), since we haven’t assigned any values to this probability yet. 0</p>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3059">
+<div class="cell-output cell-output-display" data-execution_count="9">
 
 <div>
 
@@ -518,8 +518,8 @@ Name: trait, dtype: float64</code></pre>
 <p>So, we approximate the probability of an individual having trait A with the relative frequency of trait A in the population:</p>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3060">
-<pre><code>0.41</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>0.46</code></pre>
 </div>
 </div>
 <p>You already know this code from above, we just added the <code>["A"]</code> part at the end to select only the relative frequencies of trait A. We want to set this as the value of <code>p</code> of the first generation. This can be achieved with the <code>.loc</code> (location) method:</p>
@@ -545,7 +545,7 @@ Name: trait, dtype: float64</code></pre>
 <p>This procedure assignes a probability of having trait “A” for each generation (each row of the <code>p</code> colum is filled now):</p>
 <div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3063">
+<div class="cell-output cell-output-display" data-execution_count="13">
 
 <div>
 
@@ -561,27 +561,27 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.41</td>
+      <td>0.46</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.42</td>
+      <td>0.54</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.37</td>
+      <td>0.52</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.40</td>
+      <td>0.56</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.40</td>
+      <td>0.63</td>
     </tr>
     <tr>
       <th>...</th>
@@ -591,27 +591,27 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>95</th>
       <td>95</td>
-      <td>0.22</td>
+      <td>0.45</td>
     </tr>
     <tr>
       <th>96</th>
       <td>96</td>
-      <td>0.22</td>
+      <td>0.40</td>
     </tr>
     <tr>
       <th>97</th>
       <td>97</td>
-      <td>0.30</td>
+      <td>0.48</td>
     </tr>
     <tr>
       <th>98</th>
       <td>98</td>
-      <td>0.38</td>
+      <td>0.51</td>
     </tr>
     <tr>
       <th>99</th>
       <td>99</td>
-      <td>0.35</td>
+      <td>0.44</td>
     </tr>
   </tbody>
 </table>
@@ -623,20 +623,22 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_1(N, t_max):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({<span class="st">"generation"</span>: np.arange(t_max, dtype<span class="op">=</span><span class="bu">int</span>), <span class="st">"p"</span>: [np.nan] <span class="op">*</span> t_max })</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    output.loc[<span class="dv">0</span>, <span class="st">"p"</span>] <span class="op">=</span> population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({<span class="st">"generation"</span>: np.arange(t_max, dtype<span class="op">=</span><span class="bu">int</span>), <span class="st">"p"</span>: [np.nan] <span class="op">*</span> t_max })</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Copy the population tibble to previous_population tibble</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        previous_population <span class="op">=</span> population.copy()</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Randomly copy from previous generation's individuals</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> previous_population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get p and put it into the output slot for this generation t</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        output.loc[t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    output.loc[<span class="dv">0</span>, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Copy the population tibble to previous_population tibble</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        previous_population <span class="op">=</span> population.copy()</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Randomly copy from previous generation's individuals</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        new_population <span class="op">=</span> previous_population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get p and put it into the output slot for this generation t</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        output.loc[t, <span class="st">"p"</span>] <span class="op">=</span> new_population[ new_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span>].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_1(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -650,7 +652,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-18-output-1.png" width="571" height="409" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
@@ -664,7 +666,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-20-output-1.png" width="571" height="409" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
@@ -700,7 +702,7 @@ Name: trait, dtype: float64</code></pre>
 </div>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3071">
+<div class="cell-output cell-output-display" data-execution_count="21">
 
 <div>
 
@@ -717,31 +719,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.52</td>
+      <td>0.49</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.51</td>
+      <td>0.48</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.48</td>
+      <td>0.52</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.48</td>
+      <td>0.46</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.42</td>
+      <td>0.46</td>
       <td>0</td>
     </tr>
     <tr>
@@ -753,31 +755,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>295</th>
       <td>95</td>
-      <td>0.29</td>
+      <td>0.15</td>
       <td>2</td>
     </tr>
     <tr>
       <th>296</th>
       <td>96</td>
-      <td>0.17</td>
+      <td>0.21</td>
       <td>2</td>
     </tr>
     <tr>
       <th>297</th>
       <td>97</td>
-      <td>0.19</td>
+      <td>0.20</td>
       <td>2</td>
     </tr>
     <tr>
       <th>298</th>
       <td>98</td>
-      <td>0.20</td>
+      <td>0.24</td>
       <td>2</td>
     </tr>
     <tr>
       <th>299</th>
       <td>99</td>
-      <td>0.18</td>
+      <td>0.19</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -803,7 +805,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-25-output-1.png" width="571" height="427" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
@@ -817,7 +819,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter01_files/figure-html/cell-27-output-1.png" width="571" height="427" class="figure-img"></p>
+<p><img src="chapter01_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
@@ -855,7 +857,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_3(<span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">.2</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter01_files/figure-html/cell-29-output-1.png" width="571" height="427"></p>
+<p><img src="chapter01_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
