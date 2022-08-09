@@ -4,6 +4,8 @@
 This chapter is based on "Chapter 1: Unbiased transmission" in [@Acerbi2022].
 :::
 
+In this chapter, we introduce the most basic model for cultural inheritance: unbiased transmission. This process quite literally corresponds to randomly copying traits from previous generations, without any further distinctions and constraints. While this is obviously a too reductive model for how cultural transmission works, it is ideally suited to get us started with the enterprise of modeling evolutionary processes involving random variation.
+
 First we import some modules.
 
 ```{python}
