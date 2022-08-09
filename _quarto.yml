@@ -36,9 +36,9 @@ format:
   html:
     theme: journal # cosmo
   pdf:
-    documentclass: article #scrreprt
+    documentclass: scrreprt
     papersize: a4paper
-    highlight-style: github
+    # highlight-style: github
 
 
 

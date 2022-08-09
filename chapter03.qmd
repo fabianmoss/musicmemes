@@ -50,10 +50,10 @@ Let's take this code apart to understand it better.
 From the Pandas library, which we imported as the alias `pd`, we create a `DataFrame` object. The data contained in this the data frame `population` is specified via a dictionary that has `"trait"` as its key and a fairly complex expression starting with the random number generator `rng` as its value. What this value says is, from the list `["A", "B"]` choose randomly `N` instances with replacement (if `replace` were set to `False`, we could at most sample 2 values from the list). So, the data frame `population` should contain 100 randomly sampled values of A's and B's. Let's confirm this:
 
 ```{python}
-population
+population.head()
 ```
 
-As you can see, `population` stores a table with 100 rows (many of them omitted here for display reasons) and a single column called 'trait'. Each row in the 'trait' column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame's _index_.
+As you can see, `population` stores a table with 100 rows (many of them omitted here for display reasons) and a single column called 'trait'. The `.head()` method appended to the `population` data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the 'trait' column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame's _index_. 
 
 :::{.callout-note}
 A and B are just placeholder names for any of two mutually exclusive cultural traits. These could be, for example, preference for red over white whine (ignoring people who like rosé as well as people who have no preference). You see already here that this is a massive oversimplification of actual taste preferences. The point here is not to construct a plausible model but rather to gradually build up a simple one in order to understand well its inner workings.

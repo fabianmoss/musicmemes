@@ -199,17 +199,17 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Biased transmission: direct bias</span></a>
+  <a href="./chapter03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Biased transmission: frequency-dependent indirect bias</span></a>
+  <a href="./chapter04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biased transmission: demonstrator-based indirect bias</span></a>
+  <a href="./chapter05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Biased transmission: direct bias</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -330,7 +330,7 @@ Note
 </div>
 <p>Let’s take this code apart to understand it better. From the Pandas library, which we imported as the alias <code>pd</code>, we create a <code>DataFrame</code> object. The data contained in this the data frame <code>population</code> is specified via a dictionary that has <code>"trait"</code> as its key and a fairly complex expression starting with the random number generator <code>rng</code> as its value. What this value says is, from the list <code>["A", "B"]</code> choose randomly <code>N</code> instances with replacement (if <code>replace</code> were set to <code>False</code>, we could at most sample 2 values from the list). So, the data frame <code>population</code> should contain 100 randomly sampled values of A’s and B’s. Let’s confirm this:</p>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 
 <div>
@@ -345,7 +345,7 @@ Note
   <tbody>
     <tr>
       <th>0</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>1</th>
@@ -363,37 +363,12 @@ Note
       <th>4</th>
       <td>A</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>B</td>
-    </tr>
   </tbody>
 </table>
-<p>100 rows × 1 columns</p>
 </div>
 </div>
 </div>
-<p>As you can see, <code>population</code> stores a table with 100 rows (many of them omitted here for display reasons) and a single column called ‘trait’. Each row in the ‘trait’ column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame’s <em>index</em>.</p>
+<p>As you can see, <code>population</code> stores a table with 100 rows (many of them omitted here for display reasons) and a single column called ‘trait’. The <code>.head()</code> method appended to the <code>population</code> data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the ‘trait’ column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame’s <em>index</em>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -412,8 +387,8 @@ Note
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>A    52
-B    48
+<pre><code>A    51
+B    49
 Name: trait, dtype: int64</code></pre>
 </div>
 </div>
@@ -421,8 +396,8 @@ Name: trait, dtype: int64</code></pre>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>A    0.52
-B    0.48
+<pre><code>A    0.51
+B    0.49
 Name: trait, dtype: float64</code></pre>
 </div>
 </div>
@@ -521,7 +496,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>0.52</code></pre>
+<pre><code>0.51</code></pre>
 </div>
 </div>
 <p>You already know this code from above, we just added the <code>["A"]</code> part at the end to select only the relative frequencies of trait A. We want to set this as the value of <code>p</code> of the first generation. This can be achieved with the <code>.loc</code> (location) method:</p>
@@ -563,27 +538,27 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.52</td>
+      <td>0.51</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.54</td>
+      <td>0.52</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.55</td>
+      <td>0.57</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.47</td>
+      <td>0.49</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.45</td>
+      <td>0.53</td>
     </tr>
     <tr>
       <th>...</th>
@@ -593,22 +568,22 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>95</th>
       <td>95</td>
-      <td>0.60</td>
+      <td>0.44</td>
     </tr>
     <tr>
       <th>96</th>
       <td>96</td>
-      <td>0.43</td>
+      <td>0.39</td>
     </tr>
     <tr>
       <th>97</th>
       <td>97</td>
-      <td>0.53</td>
+      <td>0.48</td>
     </tr>
     <tr>
       <th>98</th>
       <td>98</td>
-      <td>0.53</td>
+      <td>0.48</td>
     </tr>
     <tr>
       <th>99</th>
@@ -721,31 +696,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.44</td>
+      <td>0.45</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.35</td>
+      <td>0.48</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.42</td>
+      <td>0.51</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.46</td>
+      <td>0.52</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.50</td>
+      <td>0.51</td>
       <td>0</td>
     </tr>
     <tr>
@@ -757,31 +732,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>295</th>
       <td>95</td>
-      <td>0.43</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>296</th>
       <td>96</td>
-      <td>0.36</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>297</th>
       <td>97</td>
-      <td>0.35</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>298</th>
       <td>98</td>
-      <td>0.38</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>299</th>
       <td>99</td>
-      <td>0.39</td>
+      <td>1.00</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -977,7 +952,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./chapter04.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Biased transmission: frequency-dependent indirect bias</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
