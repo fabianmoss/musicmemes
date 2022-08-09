@@ -40,7 +40,7 @@ population = pd.DataFrame({
 ```
 
 ```{python}
-population
+population.head()
 ```
 
 ```{python}

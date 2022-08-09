@@ -4,7 +4,11 @@ project:
 book:
   title: "Cultural Evolution and Music"
   subtitle: "Models and Applications in Python"
-  author: "Fabian C. Moss"
+  author: 
+    - name: "Fabian C. Moss"
+      url: https://www.fabian-moss.de
+      affiliation: University of Amsterdam
+      affiliation-url: https://www.uva.nl/profiel/m/o/f.c.moss/f.c.moss.html
   date: "9 August 2022"
   chapters:
     - index.qmd
@@ -25,6 +29,8 @@ book:
     - references.qmd
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@jazminantoinette?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jazmin Quaynor</a> on <a href="https://unsplash.com/s/photos/texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
+citation:
+  url: https://fabianmoss.github.io/cultevopy
 bibliography: references.bib
 csl: apa.csl
 
@@ -36,9 +42,11 @@ format:
   html:
     theme: journal # cosmo
   pdf:
-    documentclass: scrreprt
+    template: eisvogel.tex
+    ### see here for template customization possibilities: https://github.com/Wandmalfarbe/pandoc-latex-template
+    # documentclass: scrreprt
     papersize: a4paper
-    # highlight-style: github
+    highlight-style: github
+    titlepage: true
 
-
-
+license: "CC BY-NC"

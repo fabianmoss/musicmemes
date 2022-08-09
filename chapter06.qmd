@@ -49,13 +49,13 @@ demonstrators = pd.DataFrame({
 
 ```{python}
 # Visualize the DataFrame
-demonstrators
+demonstrators.head()
 ```
 
 ```{python}
 # Get the number of A's in each 3-demonstrator combination
 num_As = (demonstrators == "A").apply(sum, axis=1)
-num_As
+num_As.head()
 ```
 
 ```{python}
@@ -90,7 +90,7 @@ if condition.sum() > 0:
 
 ```{python}
 demonstrators["new_trait"] = population["trait"]
-demonstrators
+demonstrators.head()
 ```
 
 ```{python}

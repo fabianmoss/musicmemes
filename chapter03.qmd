@@ -53,7 +53,7 @@ From the Pandas library, which we imported as the alias `pd`, we create a `DataF
 population.head()
 ```
 
-As you can see, `population` stores a table with 100 rows (many of them omitted here for display reasons) and a single column called 'trait'. The `.head()` method appended to the `population` data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the 'trait' column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame's _index_. 
+As you can see, `population` stores a table (many of the 100 rows are omitted here for display reasons) and a single column called 'trait'. The `.head()` method appended to the `population` data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the 'trait' column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame's _index_. 
 
 :::{.callout-note}
 A and B are just placeholder names for any of two mutually exclusive cultural traits. These could be, for example, preference for red over white whine (ignoring people who like rosé as well as people who have no preference). You see already here that this is a massive oversimplification of actual taste preferences. The point here is not to construct a plausible model but rather to gradually build up a simple one in order to understand well its inner workings.
@@ -87,9 +87,9 @@ output = pd.DataFrame(
 ```
 
 The `generation` column contains all numbers from `0` to `t_max - 1`. Because we count the numbers of generations (rather than assuming a time-continuous process), we specified that numbers in this column have to be intergers (`dtype=int`). The values for the `p` column must look cryptic. It literally says: put the `np.nan` value `t_max` times into the `p` colum. `np.nan` stands for "not a number" (from the NumPy library), since we haven't assigned any values to this probability yet. 
-0
+
 ```{python}
-output
+output.head()
 ```
 
 Don't worry that both the index and the 'generation' column contain all numbers from 0 to 99. We need this later when things become more involved.
@@ -129,7 +129,7 @@ for t in range(1, t_max):
 This procedure assignes a probability of having trait "A" for each generation (each row of the `p` colum is filled now):
 
 ```{python}
-output
+output.head()
 ```
 
 To make things easier, we wrap the above code in a function that we'll call `unbiased_transmission` that can take different values for the population size `N` and number of generations `t_max` as parameters.
@@ -208,8 +208,12 @@ def unbiased_transmission_2(N, t_max, r_max):
 ```
 
 ```{python}
-unbiased_transmission_2(100, 100, 3)
+unbiased_transmission_2(100, 100, 3).head()
 ```
+
+::: {.callout-tip}
+Why could we append `.head()` to the `unbiased_transmission_2` function?
+:::
 
 ```{python}
 data_model = unbiased_transmission_2(N=100, t_max=200, r_max=5)
