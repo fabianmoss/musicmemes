@@ -115,10 +115,10 @@ for t in range(1, t_max):
     previous_population = population.copy()
   
     # Randomly copy from previous generation's individuals
-    population = previous_population["trait"].sample(N, replace=True).to_frame()
+    new_population = previous_population["trait"].sample(N, replace=True).to_frame()
     
     # Get p and put it into the output slot for this generation t
-    output.loc[t, "p"] = population["trait"].value_counts(normalize=True)["A"]
+    output.loc[t, "p"] = new_population[ new_population["trait"] == "A"].shape[0] / N
 ```
 
 This procedure assignes a probability of having trait "A" for each generation (each row of the `p` colum is filled now):
