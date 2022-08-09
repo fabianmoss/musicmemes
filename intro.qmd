@@ -11,9 +11,24 @@ apply formal models from cultural evolution to the domain of music [@Youngblood2
 
 In the present context, we first introduce some central ideas of cultural evolution and review a few major publications for the domain of music.
 
-## Central ideas
+## Music evolution
 
-We start with six different mechanisms for cultural inheritance: unbiased transmission (Chapter X), unbiased and biased mutation (Chapter X), directly biased transmission (Chapter X), frequency-dependent indirectly biased transmission (Chapter X), and demonstrator-based indirectly biased transmission (Chapter X). Schematically, this is shown in the following diagram:
+- [@Wallin2001_OriginsMusic]
+- [@Morley2013_PrehistoryMusicHuman]
+- [@Tomlinson2018_MillionYearsMusic]
+- [@Honing2018_BiologicalBasisMusicality]
+
+## Music history and cultural evolution
+
+...
+
+## Central ideas and overview
+
+Following this introduction, we introduce some minimal requirements to use Python for this course (@sec-python_primer). Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (@sec-unbiased_transmission), unbiased and biased mutation (@sec-unbiased_biased_mutation), directly biased transmission (@sec-direct-biased-transmission), frequency-dependent indirectly biased transmission (@sec-frequency-biased-transmission), and demonstrator-based indirectly biased transmission (@sec-demonstrator-biased-transmission). 
+
+We follow up with a chapter on vertical and horizontal transmission, and finally introduce the multiple traits model.
+
+Schematically, this is shown in the following diagram:
 
 ```{mermaid}
 flowchart TD
@@ -28,12 +43,3 @@ flowchart TD
   I --> FD(Frequency-Dependent)
   I --> DB(Demonstrator-Based)
 ```
-
-## Music evolution
-
-- [@Wallin2001_OriginsMusic]
-- [@Morley2013_PrehistoryMusicHuman]
-- [@Tomlinson2018_MillionYearsMusic]
-- [@Honing2018_BiologicalBasisMusicality]
-
-## Music history and cultural evolution

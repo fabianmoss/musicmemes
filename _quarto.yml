@@ -5,19 +5,19 @@ book:
   title: "Cultural Evolution and Music"
   subtitle: "Models and Applications in Python"
   author: "Fabian C. Moss"
-  date: "8/8/2022"
+  date: "9 August 2022"
   chapters:
     - index.qmd
     - intro.qmd
-    - chapter00.qmd # Python Primer
+    - python_primer.qmd
     # - summary.qmd
-    - part: Basics
+    - part: Basic models
       chapters:
-        - chapter01.qmd
-        - chapter02.qmd
         - chapter03.qmd
         - chapter04.qmd
         - chapter05.qmd
+        - chapter06.qmd
+        - chapter07.qmd
       # - chapter06.qmd
     - part: "Advanced topics"
       chapters:
@@ -34,9 +34,11 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: journal # cosmo
   pdf:
-    documentclass: scrreprt
+    documentclass: article #scrreprt
+    papersize: a4paper
+    highlight-style: github
 
 
 

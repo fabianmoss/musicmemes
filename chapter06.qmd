@@ -1,10 +1,12 @@
 ---
-title: "Vertical and horizontal transmission"
+subtitle: ""
 jupyter: python3
 ---
 
+# Biased transmission: frequency-dependent indirect bias {#sec-frequency-biased-transmission}
+
 :::{.callout-note}
-This chapter is based on "Chapter 6: Vertical and horizontal transmission" in [@Acerbi2022].
+This chapter is based on "Chapter 4: Biased transmission: frequency-dependent indirect bias" in @Acerbi2022.
 :::
 
 ```{python}
@@ -12,11 +14,6 @@ import numpy as np
 rng = np.random.default_rng()
 
 import pandas as pd
-from tqdm import tqdm
-```
-
-```{python}
-%load_ext rpy2.ipython
 ```
 
 ```{python}
@@ -30,125 +27,74 @@ def plot_multiple_runs(data_model):
 ```
 
 ```{python}
-def vertical_transmission(N, p_0, b, t_max, r_max):
-    # Create the output DataFrame
-    output = pd.DataFrame({
-        "generation" : np.tile(np.arange(t_max), r_max),
-        "p" : [ np.nan ] * t_max * r_max,
-        "run" : np.repeat(np.arange(r_max), t_max)
-    })
-
-    for r in range(r_max): # r_max
-        # Create first generation
-        population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True, p=[p_0, 1 - p_0])})
-
-        # Add first generation's p for run r
-        output.loc[ r * t_max, "p"] = population[ population["trait"] == "A" ].shape[0] / N
-
-        # For each generation 
-        for t in range(t_max): # t_max
-            # Copy individuals to previous_population DataFrame
-            previous_population = population.copy()
-
-            # randomly pick mothers and fathers
-            mother = previous_population["trait"].sample(N, replace=True).reset_index(drop=True)
-            father = previous_population["trait"].sample(N, replace=True).reset_index(drop=True)
-
-            # prepare next generation
-            population = pd.DataFrame({"trait": [np.nan] * N })
-
-            # Both parents are A, thus child adopts A
-            both_A = (mother == "A") & (father == "A")
-            # if sum(both_A) > 0:
-            population.loc[both_A,"trait"] = "A"
-
-            # Both parents are A, thus child adopts A
-            both_B = (mother == "B") & (father == "B")
-            # if sum(both_B) > 0:
-            population.loc[both_B,"trait"] = "B"
-
-            # If any empty NA slots are present (i.e. one A and one B parent)
-            # if population.isna().any():
-                # They adopt A with probability b
-            remaining = rng.choice(["A", "B"], size=population["trait"].isna().sum(), replace=True, p=[b, 1 - b])
-            population.loc[population["trait"].isna(),"trait"] = remaining
-            
-            # Get p and put it into output slot for this generation t and run r
-            output.loc[r * t_max + t, "p"] = population[ population["trait"] == "A" ].shape[0] / N
-
-    return output 
+N = 100
+p_0 = .5
+D = 1.
 ```
 
 ```{python}
-data_model = vertical_transmission(N=10_000, p_0=0.01, b=0.6,t_max=50, r_max=5)
-plot_multiple_runs(data_model)
+# Create first generation
+population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True, p=[p_0, 1-p_0])})
 ```
 
 ```{python}
-data_model = vertical_transmission(N=10_000, p_0=0.1, b=0.5,t_max=50, r_max=5)
-plot_multiple_runs(data_model)
+# Create a DataFrame with a set of 3 randomly-picked demonstrators for each agent
+
+demonstrators = pd.DataFrame({
+    "dem1" : population["trait"].sample(N, replace=True).values,
+    "dem2" : population["trait"].sample(N, replace=True).values,
+    "dem3" : population["trait"].sample(N, replace=True).values
+})
 ```
 
 ```{python}
-%%R 
-install.packages("tidyverse")
-library(tidyverse)
-
-vertical_transmission <- function(N, p_0, b, t_max, r_max) {
-  output <- tibble(generation = rep(1:t_max, r_max), 
-                   p = as.numeric(rep(NA, t_max * r_max)), 
-                   run = as.factor(rep(1:r_max, each = t_max)))
-  
-  for (r in 1:r_max) {
-    # Create first generation
-    population <- tibble(trait = sample(c("A", "B"), N, 
-                                        replace = TRUE, prob = c(p_0, 1 - p_0)))
-    
-    # Add first generation's p for run r
-    output[output$generation == 1 & output$run == r, ]$p <- 
-      sum(population$trait == "A") / N 
-    
-    for (t in 2:t_max) {
-       # Copy individuals to previous_population tibble
-      previous_population <- population
-      
-      # Randomly pick mothers and fathers
-      mother <- tibble(trait = sample(previous_population$trait, N, replace = TRUE))  
-      father <- tibble(trait = sample(previous_population$trait, N, replace = TRUE)) 
-      
-      # Prepare next generation
-      population <- tibble(trait = as.character(rep(NA, N))) 
-      
-      # Both parents are A, thus child adopts A
-      both_A <- mother$trait == "A" & father$trait == "A"
-      if (sum(both_A) > 0) {
-        population[both_A, ]$trait <- "A"  
-      }
-      
-      # Both parents are B, thus child adopts B
-      both_B <- mother$trait == "B" & father$trait == "B"
-      if (sum(both_B) > 0) {
-        population[both_B, ]$trait <- "B" 
-      }
-      # If any empty NA slots (i.e. one A and one B parent) are present
-      if (anyNA(population)) {  
-        # They adopt A with probability b
-        population[is.na(population)[,1],]$trait <- 
-          sample(c("A", "B"), sum(is.na(population)), prob = c(b, 1 - b), replace = TRUE)
-      }
-      
-      # Get p and put it into output slot for this generation t and run r
-      output[output$generation == t & output$run == r, ]$p <- 
-        sum(population$trait == "A") / N 
-    }
-  }
-  # Export data from function
-  output 
-}
+# Visualize the DataFrame
+demonstrators
 ```
 
 ```{python}
-def vertical_horizontal_transmission(N, p_0, b, n, g, t_max, r_max):
+# Get the number of A's in each 3-demonstrator combination
+num_As = (demonstrators == "A").apply(sum, axis=1)
+num_As
+```
+
+```{python}
+# For 3-demonstrator combinations with all A's, set to A
+population[ num_As == 3 ] = "A"
+# For 3-demonstrator combinations with all B's, set to B
+population[ num_As == 0 ] = "B"
+```
+
+```{python}
+prob_majority = rng.choice([True, False], p=[(2/3 + D/3), 1-(2/3 + D/3)], size=N, replace=True)
+prob_minority = rng.choice([True, False], p=[(1/3 + D/3), 1-(1/3 + D/3)], size=N, replace=True)
+```
+
+```{python}
+# 3-demonstrator combinations with two As and one B
+condition = prob_majority & (num_As == 2)
+if condition.sum() > 0:
+    population.loc[condition, "trait"] = "A"
+condition = ~prob_majority & (num_As == 2)
+if condition.sum() > 0:
+    population.loc[condition, "trait"] = "B"
+
+# 3-demonstrator combinations with two B's and one A
+condition = ~prob_minority & (num_As == 1)
+if condition.sum() > 0:
+    population.loc[condition, "trait"] = "A"
+condition = prob_minority & (num_As == 1)
+if condition.sum() > 0:
+    population.loc[condition, "trait"] = "B"
+```
+
+```{python}
+demonstrators["new_trait"] = population["trait"]
+demonstrators
+```
+
+```{python}
+def conformist_transmission(N, p_0, D, t_max, r_max):
     # Create the output DataFrame
     output = pd.DataFrame({
         "generation" : np.tile(np.arange(t_max), r_max),
@@ -164,55 +110,41 @@ def vertical_horizontal_transmission(N, p_0, b, n, g, t_max, r_max):
         output.loc[ r * t_max, "p"] = population[ population["trait"] == "A" ].shape[0] / N
 
         # For each generation 
-        for t in tqdm(range(t_max)):
-            ### Vertical transmission =========================================================
+        for t in range(1,t_max):
+            demonstrators = pd.DataFrame({
+                "dem1" : population["trait"].sample(N, replace=True).values,
+                "dem2" : population["trait"].sample(N, replace=True).values,
+                "dem3" : population["trait"].sample(N, replace=True).values
+            })
 
-            # Copy individuals to previous_population DataFrame
-            previous_population = population.copy()
+            # Get the number of A's in each 3-demonstrator combination
+            num_As = (demonstrators == "A").apply(sum, axis=1)
 
-            # randomly pick mothers and fathers # NOTE: With this implementation, an individual could be both mother and father
-            mother = previous_population["trait"].sample(N, replace=True).reset_index(drop=True)
-            father = previous_population["trait"].sample(N, replace=True).reset_index(drop=True)
+            # For 3-demonstrator combinations with all A's, set to A
+            population[ num_As == 3 ] = "A"
+            # For 3-demonstrator combinations with all A's, set to A
+            population[ num_As == 3 ] = "A"
+            # For 3-demonstrator combinations with all B's, set to B
+            population[ num_As == 0 ] = "B"
 
-            # prepare next generation
-            population = pd.DataFrame({"trait": [np.nan] * N }) # should N rather be t_max * r_max?
+            prob_majority = rng.choice([True, False], p=[(2/3 + D/3), 1-(2/3 + D/3)], size=N, replace=True)
+            prob_minority = rng.choice([True, False], p=[(1/3 + D/3), 1-(1/3 + D/3)], size=N, replace=True)
 
-            # Both parents are A, thus child adopts A
-            both_A = (mother == "A") & (father == "A")
-            # if sum(both_A) > 0:
-            population.loc[both_A,"trait"] = "A"
+            # 3-demonstrator combinations with two As and one B
+            condition = prob_majority & (num_As == 2)
+            if condition.sum() > 0:
+                population.loc[condition, "trait"] = "A"
+            condition = ~prob_majority & (num_As == 2)
+            if condition.sum() > 0:
+                population.loc[condition, "trait"] = "B"
 
-            # Both parents are A, thus child adopts A
-            both_B = (mother == "B") & (father == "B")
-            # if sum(both_B) > 0:
-            population.loc[both_B,"trait"] = "B"
-
-            # If any empty NA slots are present (i.e. one A and one B parent)
-            # if population.isna().any():
-                # They adopt A with probability b
-            remaining = rng.choice(["A", "B"], size=population["trait"].isna().sum(), replace=True, p=[b, 1 - b])
-            population.loc[population["trait"].isna(),"trait"] = remaining
-
-            ### Horizontal transmission =========================================================
-
-            # previous_population = population.copy()
-            # # N_B = number of Bs
-            N_B = previous_population[previous_population["trait"] == "B"]["trait"].shape[0]
-
-            # if there are B individuals to switch, and n is not zero:
-            if (N_B > 0) & (n > 0):
-                # for each B individual:
-                for i in range(N_B):
-                    # Pick n demonstrators
-                    demonstrator = previous_population["trait"].sample(n, replace=True).to_frame()
-                    # Get probagbility g
-                    copy = rng.choice([True, False], size=n, p=[g, 1-g], replace=True)                   
-                    # if any demonstrators with A are to be copied
-                    if demonstrator[(demonstrator["trait"] == "A") & (copy == True)].shape[0] > 0:
-                        # The B individual switches to A
-                        idx = previous_population[ previous_population["trait"] == "B"].index[i]
-                        population.loc[idx, "trait"] = "A"
-                    #     population[previous_population["trait"] == "B"].iloc[i, "trait"] = "A"
+            # 3-demonstrator combinations with two B's and one A
+            condition = prob_minority & (num_As == 1)
+            if condition.sum() > 0:
+                population.loc[condition, "trait"] = "A"
+            condition = ~prob_minority & (num_As == 1)
+            if condition.sum() > 0:
+                population.loc[condition, "trait"] = "B"
             
             # Get p and put it into output slot for this generation t and run r
             output.loc[r * t_max + t, "p"] = population[ population["trait"] == "A" ].shape[0] / N
@@ -221,11 +153,7 @@ def vertical_horizontal_transmission(N, p_0, b, n, g, t_max, r_max):
 ```
 
 ```{python}
-vertical_horizontal_transmission(N=5000, p_0=0.01, b=0.5, n=5, g=0.1, t_max=50, r_max=2)
-```
-
-```{python}
-data_model = vertical_horizontal_transmission(N=5000, p_0=0.01, b=0.5, n=5, g=0.1, t_max=50, r_max=2)
+data_model = conformist_transmission(N=1_000, p_0 = 0.5, D = 1, t_max = 50, r_max = 10)
 plot_multiple_runs(data_model)
 ```
 

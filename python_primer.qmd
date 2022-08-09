@@ -1,6 +1,4 @@
---- 
-title: "A Python primer"
----
+# A Python primer {#sec-python_primer}
 
 :::{.callout-note}
 From now on, we will assume that you have a working Python installation running on your computer. You can check this by typing the following into a terminal/console/command line:
