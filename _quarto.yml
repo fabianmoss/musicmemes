@@ -26,6 +26,7 @@ book:
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@jazminantoinette?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jazmin Quaynor</a> on <a href="https://unsplash.com/s/photos/texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 bibliography: references.bib
+csl: apa.csl
 
 format:
   html:
