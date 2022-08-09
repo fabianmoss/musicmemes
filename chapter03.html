@@ -345,7 +345,7 @@ Note
   <tbody>
     <tr>
       <th>0</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>1</th>
@@ -353,7 +353,7 @@ Note
     </tr>
     <tr>
       <th>2</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>3</th>
@@ -368,7 +368,7 @@ Note
 </div>
 </div>
 </div>
-<p>As you can see, <code>population</code> stores a table with 100 rows (many of them omitted here for display reasons) and a single column called ‘trait’. The <code>.head()</code> method appended to the <code>population</code> data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the ‘trait’ column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame’s <em>index</em>.</p>
+<p>As you can see, <code>population</code> stores a table (many of the 100 rows are omitted here for display reasons) and a single column called ‘trait’. The <code>.head()</code> method appended to the <code>population</code> data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the ‘trait’ column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame’s <em>index</em>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -387,8 +387,8 @@ Note
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>B    52
-A    48
+<pre><code>A    54
+B    46
 Name: trait, dtype: int64</code></pre>
 </div>
 </div>
@@ -396,8 +396,8 @@ Name: trait, dtype: int64</code></pre>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>B    0.52
-A    0.48
+<pre><code>A    0.54
+B    0.46
 Name: trait, dtype: float64</code></pre>
 </div>
 </div>
@@ -413,9 +413,9 @@ Name: trait, dtype: float64</code></pre>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>generation</code> column contains all numbers from <code>0</code> to <code>t_max - 1</code>. Because we count the numbers of generations (rather than assuming a time-continuous process), we specified that numbers in this column have to be intergers (<code>dtype=int</code>). The values for the <code>p</code> column must look cryptic. It literally says: put the <code>np.nan</code> value <code>t_max</code> times into the <code>p</code> colum. <code>np.nan</code> stands for “not a number” (from the NumPy library), since we haven’t assigned any values to this probability yet. 0</p>
+<p>The <code>generation</code> column contains all numbers from <code>0</code> to <code>t_max - 1</code>. Because we count the numbers of generations (rather than assuming a time-continuous process), we specified that numbers in this column have to be intergers (<code>dtype=int</code>). The values for the <code>p</code> column must look cryptic. It literally says: put the <code>np.nan</code> value <code>t_max</code> times into the <code>p</code> colum. <code>np.nan</code> stands for “not a number” (from the NumPy library), since we haven’t assigned any values to this probability yet.</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>output.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 
 <div>
@@ -454,39 +454,8 @@ Name: trait, dtype: float64</code></pre>
       <td>4</td>
       <td>NaN</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>95</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>96</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>97</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>98</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>99</td>
-      <td>NaN</td>
-    </tr>
   </tbody>
 </table>
-<p>100 rows × 2 columns</p>
 </div>
 </div>
 </div>
@@ -496,7 +465,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>0.48</code></pre>
+<pre><code>0.54</code></pre>
 </div>
 </div>
 <p>You already know this code from above, we just added the <code>["A"]</code> part at the end to select only the relative frequencies of trait A. We want to set this as the value of <code>p</code> of the first generation. This can be achieved with the <code>.loc</code> (location) method:</p>
@@ -521,7 +490,7 @@ Name: trait, dtype: float64</code></pre>
 </div>
 <p>This procedure assignes a probability of having trait “A” for each generation (each row of the <code>p</code> colum is filled now):</p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 
 <div>
@@ -538,61 +507,30 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.48</td>
+      <td>0.54</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.47</td>
+      <td>0.53</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.54</td>
+      <td>0.64</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.43</td>
+      <td>0.55</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.53</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>95</td>
-      <td>0.46</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>96</td>
-      <td>0.55</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>97</td>
-      <td>0.58</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>98</td>
-      <td>0.55</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>99</td>
-      <td>0.47</td>
+      <td>0.59</td>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 2 columns</p>
 </div>
 </div>
 </div>
@@ -678,7 +616,7 @@ Name: trait, dtype: float64</code></pre>
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 
 <div>
@@ -696,73 +634,49 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.43</td>
+      <td>0.58</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.48</td>
+      <td>0.60</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.42</td>
+      <td>0.54</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.53</td>
+      <td>0.56</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.48</td>
+      <td>0.54</td>
       <td>0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>295</th>
-      <td>95</td>
-      <td>0.00</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>296</th>
-      <td>96</td>
-      <td>0.00</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>297</th>
-      <td>97</td>
-      <td>0.00</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>298</th>
-      <td>98</td>
-      <td>0.00</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>299</th>
-      <td>99</td>
-      <td>0.00</td>
-      <td>2</td>
     </tr>
   </tbody>
 </table>
-<p>300 rows × 3 columns</p>
 </div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why could we append <code>.head()</code> to the <code>unbiased_transmission_2</code> function?</p>
 </div>
 </div>
 <div class="cell" data-execution_count="22">

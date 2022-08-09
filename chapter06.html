@@ -317,7 +317,7 @@ Note
 </div>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the DataFrame</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>demonstrators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>demonstrators.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 
 <div>
@@ -340,87 +340,44 @@ Note
     </tr>
     <tr>
       <th>1</th>
-      <td>B</td>
-      <td>B</td>
       <td>A</td>
+      <td>B</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>2</th>
       <td>B</td>
-      <td>B</td>
+      <td>A</td>
       <td>B</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>A</td>
+      <td>B</td>
       <td>A</td>
       <td>B</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>A</td>
-      <td>B</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>A</td>
-      <td>A</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>B</td>
-      <td>B</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>B</td>
-      <td>B</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>B</td>
-      <td>B</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>99</th>
       <td>B</td>
       <td>A</td>
       <td>A</td>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 3 columns</p>
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of A's in each 3-demonstrator combination</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>num_As <span class="op">=</span> (demonstrators <span class="op">==</span> <span class="st">"A"</span>).<span class="bu">apply</span>(<span class="bu">sum</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>num_As</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>num_As.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>0     1
-1     1
-2     0
-3     2
-4     1
-     ..
-95    2
-96    0
-97    1
-98    1
-99    2
-Length: 100, dtype: int64</code></pre>
+<pre><code>0    1
+1    1
+2    1
+3    1
+4    2
+dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="8">
@@ -452,7 +409,7 @@ Length: 100, dtype: int64</code></pre>
 </div>
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>demonstrators[<span class="st">"new_trait"</span>] <span class="op">=</span> population[<span class="st">"trait"</span>]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>demonstrators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>demonstrators.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 
 <div>
@@ -477,69 +434,27 @@ Length: 100, dtype: int64</code></pre>
     </tr>
     <tr>
       <th>1</th>
-      <td>B</td>
-      <td>B</td>
       <td>A</td>
+      <td>B</td>
+      <td>B</td>
       <td>B</td>
     </tr>
     <tr>
       <th>2</th>
       <td>B</td>
-      <td>B</td>
+      <td>A</td>
       <td>B</td>
       <td>B</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>A</td>
+      <td>B</td>
       <td>A</td>
       <td>B</td>
       <td>A</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>A</td>
-      <td>B</td>
-      <td>B</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>A</td>
-      <td>A</td>
-      <td>B</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>B</td>
-      <td>B</td>
-      <td>B</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>B</td>
-      <td>B</td>
-      <td>A</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>B</td>
-      <td>B</td>
-      <td>A</td>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>99</th>
       <td>B</td>
       <td>A</td>
       <td>A</td>
@@ -547,7 +462,6 @@ Length: 100, dtype: int64</code></pre>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 4 columns</p>
 </div>
 </div>
 </div>
