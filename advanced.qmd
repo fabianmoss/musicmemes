@@ -6,6 +6,7 @@ title: Advanced topics
 
 ## General introductions
 
+- "Cultural Transmission and Evolution: A Quantitative Approach" [@Cavalli-Sforza1981_CulturalTransmissionEvolution]
 - "Culture and the Evolutionary Process" [@Boyd1985]
 - "The Memetics of Music" [@Jan2016]
 - "Cultural Evolution and Music" [@Youngblood2021]
