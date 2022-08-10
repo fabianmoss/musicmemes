@@ -22,7 +22,8 @@ book:
         - chapter05.qmd
         - chapter06.qmd
         - chapter07.qmd
-      # - chapter06.qmd
+        - chapter08.qmd
+        - chapter09.qmd
     - part: "Advanced topics"
       chapters:
         - advanced.qmd

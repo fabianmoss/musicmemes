@@ -1,0 +1,70 @@
+# The multiple traits model
+
+```{python}
+import pandas as pd
+import numpy as np
+rng = np.random.default_rng()
+
+import matplotlib.pyplot as plt
+
+N = 100
+population = pd.DataFrame(
+    {"trait" : rng.integers(N, size=N)}
+)
+```
+
+```{python}
+population.head()
+```
+
+```{python}
+
+def multiple_traits(N, t_max):
+    output = pd.DataFrame({
+        "trait" : np.repeat(np.arange(N), t_max),
+        "generation" : np.tile(np.arange(t_max), N),
+        "p" : [ np.nan ] * t_max * N,
+    })
+
+    # Create first generation 
+    population = pd.DataFrame({"trait" : rng.integers(N, size=N)})
+
+    # Add first generation's p for all traits
+    output.loc[output["generation"] == 0, "p"] = population["trait"].value_counts(normalize=True).reindex(range(N)).fillna(0.).values
+
+    for t in range(t_max):
+        # Copy individuals to previous_population DataFrame
+        previous_population = population.copy()
+
+        # Randomly copy from previous generation
+        population = pd.DataFrame({"trait" : previous_population["trait"].sample(N, replace=True)})
+
+        # Get p for all traits and put it into output slot for this generation t
+        output.loc[output["generation"] == t, "p"] = population["trait"].value_counts(normalize=True).reindex(range(N)).fillna(0.).values
+
+    return output
+```
+
+```{python}
+def plot_multiple_traits(data_model):
+    ps = []
+    for _, g in data_model.groupby("trait"):
+        x = g["generation"]
+        ps.append(g["p"])
+
+    plt.stackplot(x, *ps, cmap="tab20")
+    plt.margins(0.)
+    plt.show()
+```
+
+```{python}
+data_model = multiple_traits(N=100, t_max=200)
+plot_multiple_traits(data_model)
+```
+
+```{python}
+data_model = multiple_traits(N=100, t_max=1000)
+plot_multiple_traits(data_model)
+```
+
+## Introducing innovation
