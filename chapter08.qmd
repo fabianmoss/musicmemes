@@ -4,8 +4,10 @@ jupyter: python3
 ---
 
 :::{.callout-note}
-This chapter is based on "Chapter 6: Vertical and horizontal transmission" in [@Acerbi2022].
+This chapter is based on "Chapter 6: Vertical and horizontal transmission" in @Acerbi2022.
 :::
+
+## Vertical cultural transmission
 
 ```{python}
 import numpy as np 
@@ -38,15 +40,15 @@ def vertical_transmission(N, p_0, b, t_max, r_max):
         "run" : np.repeat(np.arange(r_max), t_max)
     })
 
-    for r in range(r_max): # r_max
+    for r in range(r_max): 
         # Create first generation
         population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True, p=[p_0, 1 - p_0])})
 
         # Add first generation's p for run r
         output.loc[ r * t_max, "p"] = population[ population["trait"] == "A" ].shape[0] / N
 
-        # For each generation 
-        for t in range(t_max): # t_max
+        # # For each generation 
+        for t in range(1, t_max): 
             # Copy individuals to previous_population DataFrame
             previous_population = population.copy()
 
@@ -67,9 +69,7 @@ def vertical_transmission(N, p_0, b, t_max, r_max):
             # if sum(both_B) > 0:
             population.loc[both_B,"trait"] = "B"
 
-            # If any empty NA slots are present (i.e. one A and one B parent)
-            # if population.isna().any():
-                # They adopt A with probability b
+            # If any empty NA slots are present (i.e. one A and one B parent) they adopt A with probability b
             remaining = rng.choice(["A", "B"], size=population["trait"].isna().sum(), replace=True, p=[b, 1 - b])
             population.loc[population["trait"].isna(),"trait"] = remaining
             
@@ -81,6 +81,7 @@ def vertical_transmission(N, p_0, b, t_max, r_max):
 
 ```{python}
 data_model = vertical_transmission(N=10_000, p_0=0.01, b=0.6,t_max=50, r_max=5)
+
 plot_multiple_runs(data_model)
 ```
 
@@ -88,6 +89,7 @@ plot_multiple_runs(data_model)
 data_model = vertical_transmission(N=10_000, p_0=0.1, b=0.5,t_max=50, r_max=5)
 plot_multiple_runs(data_model)
 ```
+## Horizontal cultural transmission
 
 ```{python}
 %%R 
