@@ -4,14 +4,18 @@ title: "Introduction"
 
 ## The Cultural Evolution of Music
 
-The field of cultural evolution emerged in the 1980's, 
+The field of cultural evolution emerged in the 1980's [e.g., @Boyd1985; @Cavalli-Sforza1981_CulturalTransmissionEvolution], 
 and has, in parallel with the advancement of computational facilities,
-gained momentum. In recent years, several approaches have attempted to 
+gained momentum. Theories on cultural evolution share many facets with approaches on memetics [@Aunger2001_DarwinizingCultureStatus],
+a field that has also been applied to the case of music [@Jan2016].
+
+In recent years, several approaches have attempted to 
 apply formal models from cultural evolution to the domain of music. 
 
 In the present context, we first introduce some central ideas of cultural evolution and review a few major publications for the domain of music.
 
 A few selected important contributions are: 
+
 - "Cultural Transmission and Evolution: A Quantitative Approach" [@Cavalli-Sforza1981_CulturalTransmissionEvolution]
 - "Culture and the Evolutionary Process" [@Boyd1985]
 - "The Memetics of Music" [@Jan2016]
