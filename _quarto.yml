@@ -15,7 +15,7 @@ book:
     - intro.qmd
     - python_primer.qmd
     # - summary.qmd
-    - part: I. Cultural inheritence mechanisms
+    - part: Cultural inheritence mechanisms
       chapters:
         - chapter03.qmd
         - chapter04.qmd
@@ -24,7 +24,7 @@ book:
         - chapter07.qmd
         - chapter08.qmd
         - chapter09.qmd
-    - part: II. Advanced topics
+    - part: Advanced topics
       chapters:
         - advanced.qmd
     - conclusion.qmd
