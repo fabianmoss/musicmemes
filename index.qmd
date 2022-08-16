@@ -7,6 +7,10 @@ We start with a minimal introduction to the [Python](https://www.python.org/) pr
 
 Subsequently, we follow the excellent learning path for computational models in cultural evolution provided by the book [_Individual-based models of cultural evolution: A step-by-step guide using R_](https://acerbialberto.com/IBM-cultevo/) [@Acerbi2022]. These pages comprise a translation of this resource to Python. Finally, we will review and discuss a number of recent publications on music and cultural evolution in the advanced topics section at the end.
 
+:::{.callout}
+If you want to refer to this resource, please cite it as appropriately, e.g.: Moss, F. C. (2022). "Cultural Evolution and Music: Models and Applications in Python". <https://fabianmoss.github.io/cultevopy>
+:::
+
 :::{.callout-important}
 The material on this page has been adapted and designed for a research seminar in musicology at [Würzburg University](https://uni-wuerzburg.de/), Germany.
 
@@ -14,6 +18,6 @@ Note that the materials here are still under development.
 Please inform me if you notice any errors or other issues.
 :::
 
-:::{.callout}
-If you want to refer to this resource, please cite it as appropriately, e.g.: Moss, F. C. (2022). "Cultural Evolution and Music: Models and Applications in Python". <https://fabianmoss.github.io/cultevopy>
-:::
+##### Acknowledgements {.appendix}
+
+I am grateful for encouragement from [Alberto Acerbi](https://twitter.com/acerbialberto) to continue working on my Python translation of his book and many helpful comments.

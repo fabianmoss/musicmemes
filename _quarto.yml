@@ -15,7 +15,7 @@ book:
     - intro.qmd
     - python_primer.qmd
     # - summary.qmd
-    - part: Basic models
+    - part: I. Cultural inheritence mechanisms
       chapters:
         - chapter03.qmd
         - chapter04.qmd
@@ -24,9 +24,10 @@ book:
         - chapter07.qmd
         - chapter08.qmd
         - chapter09.qmd
-    - part: "Advanced topics"
+    - part: II. Advanced topics
       chapters:
         - advanced.qmd
+    - conclusion.qmd
     - references.qmd
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@ascales?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alan Scales</a> on <a href="https://unsplash.com/s/photos/a4-texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   page-footer: 
@@ -45,6 +46,8 @@ citation:
   url: https://fabianmoss.github.io/cultevopy
 bibliography: references.bib
 csl: apa.csl
+
+appendix-style: default
 
 website:
   cookie-consent: true

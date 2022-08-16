@@ -1,4 +1,4 @@
-# The multiple traits model
+# The multiple traits model {#sec-multiple-traits}
 
 ```{python}
 import pandas as pd

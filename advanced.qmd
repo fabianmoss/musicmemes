@@ -1,6 +1,4 @@
----
-title: Advanced topics
----
+# Advanced topics {#sec-advanced}
 
 <!-- Advanced topics - separate into chapters later -->
 

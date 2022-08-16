@@ -1,12 +1,11 @@
----
-title: "Introduction"
----
+# Introduction
 
 ## The Cultural Evolution of Music
 
 The field of cultural evolution emerged in the 1980's [e.g., @Boyd1985; @Cavalli-Sforza1981_CulturalTransmissionEvolution], 
 and has, in parallel with the advancement of computational facilities,
-gained momentum. Theories on cultural evolution share many facets with approaches on memetics [@Aunger2001_DarwinizingCultureStatus],
+gained momentum. Theories on cultural evolution share many facets with approaches on memetics
+[@Aunger2001_DarwinizingCultureStatus;@Dawkins1976_SelfishGenea;@Blackmore2000_MemeMachine],
 a field that has also been applied to the case of music [@Jan2016].
 
 In recent years, several approaches have attempted to 
@@ -22,28 +21,52 @@ A few selected important contributions are:
 - "Cultural Evolution and Music" [@Youngblood2021]
 - "Cultural Evolution of Music" [@Savage2019]
 
-## Music evolution
+## Music in human evolution
 
-- [@Wallin2001_OriginsMusic]
-- [@Morley2013_PrehistoryMusicHuman]
-- [@Tomlinson2018_MillionYearsMusic]
-- [@Honing2018_BiologicalBasisMusicality]
+This book is about the cultural evolution of music. 
+It has to be mentioned, however, that there is a large body of research
+on the biological evolution of music. This research asks questions about
+with which evolutionary advantages music endowed early humans, 
+whether it is something that we share with other animals or whether it makes us unique.
+Some hold the view that music has no particularly relevant evolutionary function at all [@Pinker1997_HowMindWorks],
+while others see in it a key to our success as a species [@Cross2016_NatureMusicIts].
+
+Whatever the true role of music in the evolutionary history of humanity may have been,
+it is most certainly a fascinating topic to reflect upon. After all, 
+human musical activity with dedicated instruments can be traced back at least 20,000 years, 
+although it seems more than likely that human 'musicking' dates back much further,
+since our own bodies and voices already provided us with excellent musical instruments
+long before the first instruments have been devised.
+
+If you are interested in learning more about biological-evolutionary aspects 
+of music, I highly recommend to read, e.g. @Wallin2001_OriginsMusic, @Morley2013_PrehistoryMusicHuman,
+@Tomlinson2018_MillionYearsMusic, and @Honing2018_BiologicalBasisMusicality.
 
 ## Music history and cultural evolution
 
-...
+Documenting, describing, and interpreting changes in human culture 
+is what historians do. Accordingly, changes in music belong to the field 
+of music history, or historical musicology. 
+However, most historians would probably be hesitant to employ 
+models, or worse: formal models, in order to describe historical processes.
+The dictum "history doesn't repeat itself" seems to raise a fundamental argument
+against such endeavors that aim at explaining cultural or historical changes
+by means of underlying latent 'forces'. Modeling, in that view, seems to
+erroneously assume that history is teleological -- directed towards a predetermined goal.
+
+On the other hand, it is undeniable that there are many aspects of culture exhibit regularities and 'progresses' that are hard to explain if there are no guiding processes. Defining "culture"
+is, of course, yet another difficult enterprise. Here, I follow more or less the definition of @Boyd1985 [p. 33]: "Culture is information capable of affecting individuals' phenotypes which they acquire from other conspecifics _by teaching or imitation_ [emphasis mine]".^[I encourage you to read Chapter 3 of their seminal book in order to fully capture the meaning of this quote.] The part important to us here is "by teaching or imitation", which is meant to imply: _not_ by genetic inheritance. If humans can transmit information by other means than genetic inheritance, and if these transmission processes continue over many generations, then they are worth studying. Rest assured, the assumption of a hidden goal towards which all cultural processes are directed is not needed at all! I hope that you will share this conviction after working through this material.
 
 ## Central ideas and overview
 
-Following this introduction, we introduce some minimal requirements to use Python for this course (@sec-python_primer). Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (@sec-unbiased_transmission), unbiased and biased mutation (@sec-unbiased_biased_mutation), directly biased transmission (@sec-direct-biased-transmission), frequency-dependent indirectly biased transmission (@sec-frequency-biased-transmission), and demonstrator-based indirectly biased transmission (@sec-demonstrator-biased-transmission). 
+Following this introduction, we introduce some minimal requirements to use Python for this course (@sec-python_primer). 
 
-We follow up with a chapter on vertical and horizontal transmission, and finally introduce the multiple traits model.
-
-Schematically, this is shown in the following diagram:
+Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (@sec-unbiased_transmission), unbiased and biased mutation (@sec-unbiased_biased_mutation), directly biased transmission (@sec-direct-biased-transmission), frequency-dependent indirectly biased transmission (@sec-frequency-biased-transmission), and demonstrator-based indirectly biased transmission (@sec-demonstrator-biased-transmission). 
+We follow up with a chapter on vertical and horizontal transmission (@sec-vertical-transmission), and finally introduce the multiple traits model (@sec-multiple-traits). The following diagram gives an overview of these processes:
 
 ```{mermaid}
 flowchart TD
-  C[Cultural inheritance] --> T(Transmission)
+  C[Cultural inheritance \n mechanisms] --> T(Transmission)
   C --> M(Mutation)
   T --> BT(Biased)
   T --> UT(Unbiased)
@@ -54,3 +77,7 @@ flowchart TD
   I --> FD(Frequency-Dependent)
   I --> DB(Demonstrator-Based)
 ```
+
+After having a firm grasp on how these processes can be modeled in Python
+and how modeling results can be interpreted, we move to more advanced topics
+(@sec-advanced), and more specifically into a number of recent exciting results about cultural evolution and music. We conclude our journey (@sec-conclusion) with a more general discussion of the implications of cultural evolution for how we think about music, on the relevance of modeling in music research and the humanities more generally, as well as on the great potential of this approach for future research.
