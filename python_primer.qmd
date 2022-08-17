@@ -73,11 +73,11 @@ In Python, you would do it as follows:
 
 ```{python}
 for i in range(10):
-    print(i)
+    print(i, end=" ")
 ```
 
 You see that this is not exactly what we wanted. We're seeing numbers from 0 to 9, but we wanted everything from 1 to 10. Before we fix the code to produce the desired result, let's explain the bits and pieces of the code above. What we just did was to use a so-called _for-loop_, probably the most common way to repeat things in Python. 
-First we create an _iterator variable_ `i` (we could have named any other variable name as well), which takes its value from the list of numbers specified by `range(10)`. If only one number `n` is provided to `range(n)`, it will enumerate all numbers from 0 to `n-1`. If two arguments are provided, the first one determines the starting number, and the second one stands for the terminating number minus one---confusing, right? So, in order to enumerate all numbers from 1 to 10, we have to write `range(1,11)`. Finally, the `print` function outputs the value of `i` for each iteration.
+First we create an _iterator variable_ `i` (we could have named any other variable name as well), which takes its value from the list of numbers specified by `range(10)`. If only one number `n` is provided to `range(n)`, it will enumerate all numbers from 0 to `n-1`. If two arguments are provided, the first one determines the starting number, and the second one stands for the terminating number minus one---confusing, right? So, in order to enumerate all numbers from 1 to 10, we have to write `range(1,11)`. Finally, the `print` function outputs the value of `i` for each iteration. The `end` keyword in the `print` function makes the numbers being printed in one single line, separated by a single white space.^[The default value is `end="\n"`, so that each iteration gets printed onto a new line.]
 
 ```{python}
 for i in range(1,11):
