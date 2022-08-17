@@ -1,6 +1,8 @@
 ---
 title: "Vertical and horizontal transmission"
 jupyter: python3
+execute:
+  freeze: auto  # re-render only when source changes
 ---
 
 :::{.callout-note}

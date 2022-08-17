@@ -40,7 +40,8 @@ book:
     border: true
     background: dark
   
-  
+execute:
+  freeze: auto  # re-render only when source changes
 
 citation:
   url: https://fabianmoss.github.io/cultevopy
