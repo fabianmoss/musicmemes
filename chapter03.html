@@ -364,7 +364,7 @@ Note
     </tr>
     <tr>
       <th>1</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>2</th>
@@ -372,7 +372,7 @@ Note
     </tr>
     <tr>
       <th>3</th>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>4</th>
@@ -402,8 +402,8 @@ Note
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>A    55
-B    45
+<pre><code>B    52
+A    48
 Name: trait, dtype: int64</code></pre>
 </div>
 </div>
@@ -411,8 +411,8 @@ Name: trait, dtype: int64</code></pre>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>A    0.55
-B    0.45
+<pre><code>B    0.52
+A    0.48
 Name: trait, dtype: float64</code></pre>
 </div>
 </div>
@@ -480,7 +480,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>0.55</code></pre>
+<pre><code>0.48</code></pre>
 </div>
 </div>
 <p>You already know this code from above, we just added the <code>["A"]</code> part at the end to select only the relative frequencies of trait A. We want to set this as the value of <code>p</code> of the first generation. This can be achieved with the <code>.loc</code> (location) method:</p>
@@ -522,27 +522,27 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.55</td>
+      <td>0.48</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.48</td>
+      <td>0.49</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.53</td>
+      <td>0.43</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.54</td>
+      <td>0.48</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.53</td>
+      <td>0.45</td>
     </tr>
   </tbody>
 </table>
@@ -649,31 +649,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.52</td>
+      <td>0.54</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.58</td>
+      <td>0.57</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.55</td>
+      <td>0.50</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.59</td>
+      <td>0.47</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.55</td>
+      <td>0.46</td>
       <td>0</td>
     </tr>
   </tbody>
