@@ -50,6 +50,8 @@ csl: apa.csl
 
 appendix-style: default
 
+warning: false # turn off warnings (important for PDF output)
+
 website:
   cookie-consent: true
   style: simple
