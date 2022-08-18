@@ -352,18 +352,9 @@ Tip
 <p>You see that this is not exactly what we wanted. We’re seeing numbers from 0 to 9, but we wanted everything from 1 to 10. Before we fix the code to produce the desired result, let’s explain the bits and pieces of the code above. What we just did was to use a so-called <em>for-loop</em>, probably the most common way to repeat things in Python. First we create an <em>iterator variable</em> <code>i</code> (we could have named any other variable name as well), which takes its value from the list of numbers specified by <code>range(10)</code>. If only one number <code>n</code> is provided to <code>range(n)</code>, it will enumerate all numbers from 0 to <code>n-1</code>. If two arguments are provided, the first one determines the starting number, and the second one stands for the terminating number minus one—confusing, right? So, in order to enumerate all numbers from 1 to 10, we have to write <code>range(1,11)</code>. Finally, the <code>print</code> function outputs the value of <code>i</code> for each iteration. The <code>end</code> keyword in the <code>print</code> function makes the numbers being printed in one single line, separated by a single white space.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1
-2
-3
-4
-5
-6
-7
-8
-9
-10</code></pre>
+<pre><code>1 2 3 4 5 6 7 8 9 10 </code></pre>
 </div>
 </div>
 <p>Voilà!</p>
