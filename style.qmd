@@ -1,0 +1,31 @@
+# Style
+
+- What is meant by 'style'?
+- The role of learning: learning describes the acquisition of knowledge/information.
+  Learning mechanisms have different names depending on the temporal scale:
+  evolution, ontogenesis, development, learning
+
+## A model of style in music
+
+A comprehensive model for theoretical treatment of style 
+was proposed by @Meyer1989_StyleMusicTheory.
+In a nutshell, he proposes a model where certain constraints
+favor differnt kinds of patternings. He organises these 
+constraints hierarchically so that this model is 
+suitable to describe a variety of stylistic phenomena 
+on different levels. This clear separation is more conceptual
+and practical only for theoretical discussions. In a real scenario,
+boundaries are often unclear or ambigous.
+
+### Constraints
+
+1. Laws
+2. Rules
+3. Strategies
+
+### Patterns
+
+1. Dialect
+2. Idiom
+3. Intraopus Style (here, we need a concept of "work", but the extended "meme" concept or "memecomplex might also be useful")
+

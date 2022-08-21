@@ -1,6 +1,23 @@
 # Introduction
 
-## The Cultural Evolution of Music
+## Musical Memes
+
+The term 'meme' has been adopted by everyday language and is usually
+associated with a certain image, superimposed with text, that is 
+shared on the internet and has a particular contextual meaning.
+Originally, however, the definition of 'meme' was much broader.
+Towards the end of _The Selfish Gene_, Richard Dawkins
+introduced the concept as follows:
+
+> We need [...] a noun that conveys
+> the idea of a unit of cultural transmission, or a unit of _imitation_.
+> 'Mimeme' comes from a suitable Greek root,^[<https://en.wikipedia.org/wiki/Mimesis>] but I want a monosyllable word
+> that sounds a bit like 'gene'. I hope my classicist friends will forgive me
+> if I abbreviate mimeme to _meme_. @Dawkins1976_SelfishGenea [p. 192]
+
+Here, we adopt this original, more extensive concept of memes that,
+as we will discover, comprises the more or less funny internet pictures
+as a special case.
 
 The field of cultural evolution emerged in the 1980's [e.g., @Boyd1985; @Cavalli-Sforza1981_CulturalTransmissionEvolution], 
 and has, in parallel with the advancement of computational facilities,

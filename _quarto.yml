@@ -13,6 +13,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - style.qmd
     - python_primer.qmd
     # - summary.qmd
     - part: Cultural inheritence mechanisms
