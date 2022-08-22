@@ -101,6 +101,15 @@ As mentioned above, the goal of modeling is often to approximate rather than to 
 
 Questions concerning model comparison---chosing the 'best' model for a problem at hand---or dealing with the trade-off between model complexity and interpretability are central issues in many areas of empirical science, such as machine learning, computational sociology, or cognitive psychology, and many textbooks dedicate some discussion to the topic [e.g. @Bishop2012_ModelbasedMachineLearning; @Farrell2018_ComputationalModelingCognition; @McElreath2020_StatisticalRethinkingBayesian]. For excellent discussions and examples of modeling in music research, see @Honing2006_ComputationalModelingMusica and @Finkensiepforthcoming_MusicTheoryModeldriven.
 
+## Schema theory 
+
+What are the units (the basic memes) in music? 
+Schema theory proposes a set of more or less fixed patterns, 'schemata',
+that underly a large body of music in the Baroque and Classical period [@Gjerdingen2007_MusicGalantStyle].
+
+Are schemata really memes? I would think not because they can not mutate freely without losing their meaning. I rather think schemata 'fall out' of several combinatorial possibilities to traverse the diatonic scale, and compositional mechanisms to elaborate and vary them. But this kind of variation is very different than the one we talk about in this book. Composed variation is very regular, not random, and relying both on the melodic and metric structures in which it unfolds. Those, however, could very well be understood as environments with very strong constraints (being 'out-of-scale' or 'off-beat').
+
+
 ## Basic cultural inheritance mechanisms
 
 Following this introduction, we introduce some minimal requirements to use Python for this course (@sec-python_primer). 
