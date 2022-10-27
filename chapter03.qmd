@@ -1,6 +1,8 @@
 ---
 jupyter: python3
 subtitle: What happens if people just randomly copy?
+filters:
+  - shinylive
 ---
 
 # Unbiased transmission {#sec-unbiased_transmission}
@@ -177,6 +179,68 @@ data_model = unbiased_transmission_1(N=10_000, t_max=200)
 #| fig-cap: Single run of the unbiased transmission model for a population of $N=10,000$ individuals and $t_{max}=200$ generations.
 plot_single_run(data_model)
 ```
+
+Try playing around with different parameter values. Bear in mind, however, that too large population sizes will take for ever to compute.
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 420
+
+from shiny import App, render, ui
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng()
+
+app_ui = ui.page_fluid(
+    ui.layout_sidebar(
+        ui.panel_sidebar(
+            ui.input_slider("N", "population size", 100, 10000, 1000, step=500),
+            ui.input_slider("t_max", "generations", 1, 50, 20, step=1),
+        ),
+        ui.panel_main(
+            ui.output_plot("plot"),
+        ),
+    ),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot(alt="First model")
+    def plot():
+        plt.plot([1,2 * input.t_max() ], [3 + input.N(),4], marker="o")
+        # def unbiased_transmission_1(N, t_max):
+        #     population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True)}, index=[0])
+
+        #     output = pd.DataFrame({"generation": np.arange(t_max, dtype=int), "p": [np.nan] * t_max }, index=[0])
+
+        #     output.loc[0, "p"] = population[ population["trait"] == "A"].shape[0] / N
+
+        #     for t in range(1, t_max):
+        #         # Copy the population tibble to previous_population tibble
+        #         previous_population = population.copy()
+            
+        #         # Randomly copy from previous generation's individuals
+        #         new_population = previous_population["trait"].sample(N, replace=True).to_frame()
+                
+        #         # Get p and put it into the output slot for this generation t
+        #         output.loc[t, "p"] = new_population[ new_population["trait"] == "A"].shape[0] / N
+            
+        #     return output
+        
+        # data_model = unbiased_transmission_1(N=None, t_max=None)
+
+        # def plot_single_run(data_model):
+        #     data_model["p"].plot(ylim=(0,1))
+
+        # plot_single_run(data_model)
+
+app = App(app_ui, server)
+
+```
+
+Now, let's adapt the code somewhat.
 
 ```{python}
 def unbiased_transmission_2(N, t_max, r_max):

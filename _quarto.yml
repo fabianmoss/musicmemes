@@ -53,9 +53,9 @@ appendix-style: default
 
 warning: false # turn off warnings (important for PDF output)
 
-website:
-  cookie-consent: true
-  style: simple
+# website:
+#   cookie-consent: true
+#   style: simple
 
 format:
   html:
