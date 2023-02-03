@@ -7,9 +7,9 @@ book:
   author: 
     - name: "Fabian C. Moss"
       url: https://www.fabian-moss.de
-      affiliation: University of Amsterdam
-      affiliation-url: https://www.uva.nl/profiel/m/o/f.c.moss/f.c.moss.html
-  date: "9 August 2022"
+      affiliation: Julius-Maximilians-Universität Würzburg
+      affiliation-url: https://www.musikwissenschaft.uni-wuerzburg.de/team/moss/
+  date: "3 February 2023"
   chapters:
     - index.qmd
     - part: Prelude
