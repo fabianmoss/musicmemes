@@ -86,6 +86,83 @@ for i in range(1,11):
 
 Voilà!
 
+## Just in case
+
+Often we encounter a situation where we would execute some code **only if** certain 
+conditions are met. In python, this is done with the `if` statement. For example, 
+if we want to only print the even numbers in the range from 1 to 10, we 
+could adapt the code from above as follows:
+
+```{python}
+for i in range(1,11):
+    if i % 2 == 0:
+        print(i, "is even")
+```
+
+You can read this as "if the remainder of dividing i by 2 is zero, then print 'i is even'".
+
+Now, we could also want to print a similar statement in the case that `i` is odd:
+
+```{python}
+for i in range(1,11):
+    if i % 2 == 0:
+        print(i, "is even")
+    else:
+        print(i, "is odd")
+```
+
+And, finally, we could also have more than just one condition. An if-statement
+allows for arbitrary many if-else clauses, with which we can formulate several different 
+conditions by writing `elif` (shorthand for 'or else if'):
+
+```{python}
+for i in range(1,11):
+    if i % 2 == 0:
+        print(i, "is even")
+    elif i % 3 == 0:
+        print(i, "is divisible by 3")
+    else:
+        print(i, "is odd")
+```
+
+We now know when a number is even and when it is divisible by 3.
+But what about numbers that are _both_ even _and_ divisible by 3? 
+We just add another condition to the `elif` statement and enclose each condition in parentheses, so that Python knows how things group together:
+
+```{python}
+for i in range(1,11):
+    if i % 2 == 0:
+        print(i, "is even")
+    elif (i % 2 == 0) and (i % 3 == 0):
+        print(i, "is even and divisible by 3")
+    else:
+        print(i, "is odd")
+```
+
+Why did this not work? The number 6 is even _and_ divisible by 3!
+The reason is that the three statements (`if`, `elif`, and `else`)
+are being executed in the order that we wrote them down. 
+That means, that Python will first check for each number whether 
+it is even (and nothing more), and if it is, it will follow the instruction to print 
+it and go on to the next number. So, once we arrived at 6, the programm 
+will only check if the number is even. That is not the desired result and we have to 
+make a little change to it. We will switch the conditions in the `if` and `elif` 
+statements:
+
+```{python}
+for i in range(1,11):
+    if (i % 2 == 0) and (i % 3 == 0):
+        print(i, "is even and divisible by 3")
+    elif i % 2 == 0:
+        print(i, "is even")
+    else:
+        print(i, "is odd")
+```
+
+Now it works! Note that new never specified any conditions for the `else`
+statement. This is because whatever follows it will be executed in case 
+none of the conditions in `if` or `elif` are met.
+
 ## Functions
 
 With more and more experience in programming, 
