@@ -12,9 +12,12 @@ book:
   date: "9 August 2022"
   chapters:
     - index.qmd
-    - intro.qmd
-    - style.qmd
-    - python_primer.qmd
+    - part: Prelude
+      chapters: 
+      - intro.qmd
+      - style.qmd
+      - python_primer.qmd
+      - randomness.qmd
     # - summary.qmd
     - part: Cultural inheritence mechanisms
       chapters:

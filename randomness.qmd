@@ -1,0 +1,90 @@
+# Randomness {#sec-randomness}
+
+This course is about music and evolution,
+specifically about using computational models
+to better understand the mechanisms underlying certain evolutionary
+processes. In order to do so, we will often run simulations 
+to observe and interpret the resulting scenarios against the backdrop
+of our modeling assumptions and our domain knowledge.
+
+Simulations are useful because for many situations we 
+are not able to provide deterministic mathematical formulae to obtain 
+outcomes from inputs. Rather, we incorporate our knowledge about the world
+in a computational model and use randomness to include the inherent uncertainty
+about the exact outcomes of the simulations.
+
+But randomness is a difficult concept to capture. 
+For the purpose of this book, we will simulate a speficic kind of randomness
+by sampling from a certain set of items.
+Less technically, we can imagine a bag with a certain number of balls in it,
+each having a certain color (multiple balls can have the same color). 
+A _random uniform sample with replacement_ then corresponds to picking a 
+ball from the bag without looking in it and putting it back in the bag.
+
+Let's try this in Python. We will use the `random` modul of the _NumPy_ library:
+
+```{python}
+import numpy as np
+
+bag = range(4)
+ball = np.random.choice(bag)
+
+print(ball)
+```
+
+If this draw were really random, we would expect that each number is equally likely.
+We can test this by repeating this procedure again and again, tallying the result each time.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+samples = []
+
+for i in range(1000):
+    ball = np.random.choice(bag)
+    samples.append(ball)
+
+s = pd.Series(samples)
+
+print(s.head(10))
+print(s.value_counts().sort_index())
+```
+
+The number are not exactly the same but pretty close. If we would continue sampling
+from our bag, they would get more and more similar to one another.
+It is easier to understand this by visualizing it.
+
+```{python}
+
+s.value_counts().sort_index().plot(kind="bar")
+plt.show()
+
+```
+
+Now, what if the numbers in the bag were not just numbered,
+but had different colors? Let's assume we have another bag, `bag2`,
+with 4 balls, three brown, one blue:
+
+```{python}
+bag2 = ["brown", "brown", "brown", "blue"]
+
+samples2 = []
+
+for i in range(1000):
+    ball = np.random.choice(bag2)
+    samples2.append(ball)
+
+s2 = pd.Series(samples2)
+
+print(s2.head(10))
+print(s2.value_counts().sort_index())
+
+s2.value_counts().sort_index().plot(kind="bar")
+plt.show()
+
+```
+
+This is remarkable: by randomly (uniformly) drawing from the 
+second bag, the frequencies of all samples approach the ratio of brown to blue
+balls (3:1)!
