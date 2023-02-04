@@ -183,6 +183,13 @@ my_chorale = chorale(n=12)
 my_chorale
 ```
 
+It will look a bit closer to musical notation if 
+we transpose the data frame by using the `.T` attribute:
+
+```{python}
+my_chorale.T
+```
+
 ## Accessing data
 
 Having the variable `my_chorale` store our data frame, 

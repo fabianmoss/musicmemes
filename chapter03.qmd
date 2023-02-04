@@ -63,7 +63,19 @@ A and B are just placeholder names for any of two mutually exclusive cultural tr
 It will help to pause for a moment and to think of other examples that "A" and "B" could stand for. Can you come up with a music-related one?
 :::
 
-We can count the number of A's and B's as follows:
+For instance, we could say that the mutually exclusive
+traits "A" and "B" correspond to "Individual likes opera" and "Individual doesn't like opera". 
+People are often opinionated about opera, so we 
+will stick to this example for the remainder of 
+this part of the book. But be encouraged to try 
+to transfer the following to different hypothetical 
+scenarios. 
+
+![Scene from ["What's opera, doc?"](https://en.wikipedia.org/wiki/What%27s_Opera,_Doc) (1957).](img/opera.jpeg)
+
+Back to our artificial population.
+We can count the number of A's and B's amongst
+the individuals as follows:
 
 ```{python}
 population["trait"].value_counts()

@@ -20,7 +20,7 @@ book:
       - randomness.qmd
       - models.qmd
     # - summary.qmd
-    - part: Cultural inheritence mechanisms
+    - part: Basic cultural inheritence mechanisms
       chapters:
         - chapter03.qmd
         - chapter04.qmd
