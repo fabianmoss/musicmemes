@@ -11,6 +11,8 @@ This chapter is based on "Chapter 5: Biased transmission: demonstrator-based ind
 
 Instead of calling them demonstrators, we will call them influencers.
 
+![An influencer on a popular video platform.](img/influencer.png)
+
 ```{python}
 import numpy as np 
 rng = np.random.default_rng()
