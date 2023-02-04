@@ -1,4 +1,4 @@
-# Randomness {#sec-randomness}
+# Randomness and order {#sec-randomness}
 
 This course is about music and evolution,
 specifically about using computational models
@@ -20,6 +20,8 @@ Less technically, we can imagine a bag with a certain number of balls in it,
 each having a certain color (multiple balls can have the same color). 
 A _random uniform sample with replacement_ then corresponds to picking a 
 ball from the bag without looking in it and putting it back in the bag.
+
+## Random draws from a bag
 
 Let's try this in Python. We will use the `random` modul of the _NumPy_ library:
 
@@ -88,3 +90,133 @@ plt.show()
 This is remarkable: by randomly (uniformly) drawing from the 
 second bag, the frequencies of all samples approach the ratio of brown to blue
 balls (3:1)!
+
+## Composing random melodies
+
+Since this book is about music, let's see how we can use randomness 
+to create (a resemblance of) music. For instance, we can 'compose'
+a random melody by using only the white keys on a piano within some octave:
+
+```{python}
+notes = list("CDEFGAB")
+melody = np.random.choice(notes, size=10)
+print(melody, end=" ")
+```
+
+We composed a little melody by randomly drawing a note from the list of notes.
+This is also called _sampling_. Note that some notes repeat, showing that we 
+sample with replacement: after each draw, the note is put back in the bag,
+so to speak. Of course, there are many things that we would have to generate, too, to make this a real melody. For instance, we do not know the duration of 
+any of these notes, we don't know the meter nor the key, we don't know the
+tempo or volume, and so on. But our goal here is not to create a beautiful piece 
+of music, but rather to show how we can use randomness to generate something.
+
+As you might remember from the previous chapter, we can also write a function 
+to do this, so that we can perform this operation (composition of a random 
+melody) more easily, while at the same time having more control over it 
+through its parameters. The following function does exactly this, having 
+only one parameter that controlls the length of the melody (the number of
+notes to be sampled).
+
+```{python}
+def melody(n):
+    notes = list("CDEFGAB")
+    return np.random.choice(notes, size=n)
+```
+
+We can now use this function to easily create random melodies of 
+different lengths:
+
+```{python}
+print(melody(7))
+```
+
+```{python}
+print(melody(12))
+```
+
+## Random Bach 
+
+Four-part writing is a core part of Western composition history.
+Here, we will build a mock version of a four-part chorale by randomly 
+generating each voice and putting them together in a table. 
+Doing so will show you how you can create tables, which we will need later on.
+The most popular way to work with tables in Python is by using the `pandas` library. In `pandas`, tables are called 'data frames', and there is a `DataFrame`
+object to represent tables. Let's see how we could create a four-part homophonic 
+chorale with eight 'chords':
+
+```{python}
+import pandas as pd
+
+chorale = pd.DataFrame({
+    "S" : melody(n=8),
+    "A" : melody(n=8),
+    "T" : melody(n=8),
+    "B" : melody(n=8)
+})
+```
+
+The variable `chorale` now stores our little composition and we can inspect it:
+
+```{python}
+chorale
+```
+
+Here we have generated each voice using the `melody` function. 
+We can use it to create a new function that will directly give us a new 
+chorale of a certain length:
+
+```{python}
+def chorale(n):
+    df = pd.DataFrame({
+        "S" : melody(n=n),
+        "A" : melody(n=n),
+        "T" : melody(n=n),
+        "B" : melody(n=n)
+    })
+
+    return df
+```
+
+```{python}
+my_chorale = chorale(n=12)
+my_chorale
+```
+
+## Accessing data
+
+Having the variable `my_chorale` store our data frame, 
+this is how we can access individual voices:
+
+```{python}
+my_chorale["T"]
+```
+
+You can verify that it is the same 'melody' as above in the chorale. 
+If we want a specific note from this voice, say the fifth one, 
+we can access is this way:
+
+```{python}
+my_chorale["T"][4]
+```
+
+We first select the "T" column, and then select the fifth element 
+(remember that we start counting at 0, so we need to insert 4 to get the 
+fifth). We can also get entire ranges of a voice:
+
+```{python}
+my_chorale["A"][4:8]
+```
+
+This gives us the fifths to ninth note in the Alto voice. 
+If we want to apply the same logic also to column ranges, 
+we have to write it a bit differently using the `.loc()`
+method for localising data:
+
+```{python}
+my_chorale.loc[1:3, "S":"A"]
+```
+
+`.loc()` takes two arguments: the rows (or row range),
+and the columns (or column range). We can use it to 'slice'
+our data frame in order to get specific portions of it.
