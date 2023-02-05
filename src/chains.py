@@ -64,7 +64,9 @@ axes[0].set_aspect('equal') # should be "datalim"
 axes[0].set_ylabel("individuals")
 axes[0].set_xticks([])
 
-axes[1].plot(range(0, t_max), ps, c="salmon", lw=3)
+axes[1].plot(range(t_max), ps, c="salmon", lw=3, marker=".", markersize=5)
+# axes[1].fill_between(np.arange(t_max),ps, color="salmon")
+# axes[1].fill_between(np.arange(t_max),ps,1, color="grey")
 axes[1].set_ylim(0,1)
 axes[1].set_ylabel("proportion of 'A'")
 axes[1].set_xlabel("generations")
