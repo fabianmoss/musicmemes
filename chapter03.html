@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.247">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Evolution and Music - 4&nbsp; Unbiased transmission</title>
+<title>Cultural Evolution and Music - 6&nbsp; Unbiased transmission</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -108,7 +113,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./chapter04.html" rel="next">
-<link href="./python_primer.html" rel="prev">
+<link href="./models.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -118,6 +123,11 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.0.11/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.0.11/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.0.11/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -151,7 +161,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,24 +189,9 @@ div.csl-indent {
   <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./style.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Style</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./python_primer.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A Python primer</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Cultural inheritence mechanisms</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Prelude</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -204,44 +199,34 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></a>
+  <a href="./style.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Style</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Biased transmission: direct bias</span></a>
+  <a href="./python_primer.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A Python primer</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Biased transmission: frequency-dependent indirect bias</span></a>
+  <a href="./randomness.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Randomness and order</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter07.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Biased transmission: demonstrator-based indirect bias</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter08.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vertical and horizontal transmission</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter09.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The multiple traits model</span></a>
+  <a href="./models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Advanced topics</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Basic cultural inheritence mechanisms</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -249,14 +234,59 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced topics</span></a>
+  <a href="./chapter03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Biased transmission: direct bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Biased transmission: frequency-dependent indirect bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter07.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Biased transmission: influencer-based indirect bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter08.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vertical and horizontal transmission</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter09.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The multiple traits model</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Advanced topics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Advanced topics</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -269,13 +299,13 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#simulating-a-population" id="toc-simulating-a-population" class="nav-link active" data-scroll-target="#simulating-a-population"> <span class="header-section-number">4.1</span> Simulating a population</a></li>
-  <li><a href="#tracing-cultural-change" id="toc-tracing-cultural-change" class="nav-link" data-scroll-target="#tracing-cultural-change"> <span class="header-section-number">4.2</span> Tracing cultural change</a></li>
-  <li><a href="#iterating-over-generations" id="toc-iterating-over-generations" class="nav-link" data-scroll-target="#iterating-over-generations"> <span class="header-section-number">4.3</span> Iterating over generations</a></li>
+  <li><a href="#simulating-a-population" id="toc-simulating-a-population" class="nav-link active" data-scroll-target="#simulating-a-population"><span class="toc-section-number">6.1</span>  Simulating a population</a></li>
+  <li><a href="#tracing-cultural-change" id="toc-tracing-cultural-change" class="nav-link" data-scroll-target="#tracing-cultural-change"><span class="toc-section-number">6.2</span>  Tracing cultural change</a></li>
+  <li><a href="#iterating-over-generations" id="toc-iterating-over-generations" class="nav-link" data-scroll-target="#iterating-over-generations"><span class="toc-section-number">6.3</span>  Iterating over generations</a></li>
   </ul>
 </nav>
     </div>
@@ -284,7 +314,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-unbiased_transmission" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></span></h1>
+<h1 class="title"><span id="sec-unbiased_transmission" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></span></h1>
 <p class="subtitle lead">What happens if people just randomly copy?</p>
 </div>
 
@@ -293,6 +323,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -323,8 +354,8 @@ Note
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we define some basic variables that we take into account for our first model. We consider a population of <span class="math inline">\(N=100\)</span> individuals as well as a time-frame of <span class="math inline">\(t_{max}=100\)</span> generations.</p>
-<section id="simulating-a-population" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="simulating-a-population"><span class="header-section-number">4.1</span> Simulating a population</h2>
+<section id="simulating-a-population" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="simulating-a-population"><span class="header-section-number">6.1</span> Simulating a population</h2>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -365,11 +396,11 @@ Note
   <tbody>
     <tr>
       <th>0</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>2</th>
@@ -377,7 +408,7 @@ Note
     </tr>
     <tr>
       <th>3</th>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>4</th>
@@ -403,12 +434,19 @@ Note
 <p>It will help to pause for a moment and to think of other examples that “A” and “B” could stand for. Can you come up with a music-related one?</p>
 </div>
 </div>
-<p>We can count the number of A’s and B’s as follows:</p>
+<p>For instance, we could say that the mutually exclusive traits “A” and “B” correspond to “Individual likes opera” and “Individual doesn’t like opera”. People are often opinionated about opera, so we will stick to this example for the remainder of this part of the book. But be encouraged to try to transfer the following to different hypothetical scenarios.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/opera.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Scene from <a href="https://en.wikipedia.org/wiki/What%27s_Opera,_Doc">“What’s opera, doc?”</a> (1957).</figcaption><p></p>
+</figure>
+</div>
+<p>Back to our artificial population. We can count the number of A’s and B’s amongst the individuals as follows:</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>B    51
-A    49
+<pre><code>A    53
+B    47
 Name: trait, dtype: int64</code></pre>
 </div>
 </div>
@@ -416,14 +454,14 @@ Name: trait, dtype: int64</code></pre>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>B    0.51
-A    0.49
+<pre><code>A    0.53
+B    0.47
 Name: trait, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="tracing-cultural-change" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="tracing-cultural-change"><span class="header-section-number">4.2</span> Tracing cultural change</h2>
+<section id="tracing-cultural-change" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tracing-cultural-change"><span class="header-section-number">6.2</span> Tracing cultural change</h2>
 <p>We now create a second data frame <code>output</code> in which we will store the output of our model. This data frame has two columns: <code>generation</code>, which is the number of the simulated generation, and <code>p</code> which stands for “the probability of an individual of having trait A”.</p>
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> pd.DataFrame(</span>
@@ -485,7 +523,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"trait"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>0.49</code></pre>
+<pre><code>0.53</code></pre>
 </div>
 </div>
 <p>You already know this code from above, we just added the <code>["A"]</code> part at the end to select only the relative frequencies of trait A. We want to set this as the value of <code>p</code> of the first generation. This can be achieved with the <code>.loc</code> (location) method:</p>
@@ -494,8 +532,8 @@ Name: trait, dtype: float64</code></pre>
 </div>
 <p>In words, this reads: “Set location 0 (first row) in the <code>p</code> column of the <code>output</code> data frame to the relative frequency of the trait ‘A’ in the population.”</p>
 </section>
-<section id="iterating-over-generations" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="iterating-over-generations"><span class="header-section-number">4.3</span> Iterating over generations</h2>
+<section id="iterating-over-generations" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="iterating-over-generations"><span class="header-section-number">6.3</span> Iterating over generations</h2>
 <p>Recall that we are trying to observe cultural change over the course of <code>t_max = 100</code> generations. We thus simply repeat what we just did for the first generation: based on the relative frequencies of A’s and B’s in the previous generation, we sample the traits of 100 new individuals for the next generation.</p>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, t_max):</span>
@@ -527,17 +565,17 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.49</td>
+      <td>0.53</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.47</td>
+      <td>0.54</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.48</td>
+      <td>0.55</td>
     </tr>
     <tr>
       <th>3</th>
@@ -547,7 +585,7 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.56</td>
+      <td>0.62</td>
     </tr>
   </tbody>
 </table>
@@ -587,7 +625,7 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter03_files/figure-html/cell-18-output-1.png" width="571" height="409" class="figure-img"></p>
+<p><img src="chapter03_files/figure-html/cell-18-output-1.png" width="571" height="416" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
@@ -601,42 +639,99 @@ Name: trait, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter03_files/figure-html/cell-20-output-1.png" width="571" height="409" class="figure-img"></p>
+<p><img src="chapter03_files/figure-html/cell-20-output-1.png" width="571" height="416" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Single run of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals and <span class="math inline">\(t_{max}=200\)</span> generations.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Try playing around with different parameter values. Bear in mind, however, that too large population sizes will take for ever to compute.</p>
+<pre class="shinylive-python"><code>#| standalone: true
+#| viewerHeight: 420
+
+from shiny import App, render, ui
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng()
+
+app_ui = ui.page_fluid(
+    ui.layout_sidebar(
+        ui.panel_sidebar(
+            ui.input_slider("N", "population size", 100, 10000, 1000, step=500),
+            ui.input_slider("t_max", "generations", 1, 50, 20, step=1),
+        ),
+        ui.panel_main(
+            ui.output_plot("plot"),
+        ),
+    ),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot(alt="First model")
+    def plot():
+        plt.plot([1,2 * input.t_max() ], [3 + input.N(),4], marker="o")
+        # def unbiased_transmission_1(N, t_max):
+        #     population = pd.DataFrame({"trait": rng.choice(["A", "B"], size=N, replace=True)}, index=[0])
+
+        #     output = pd.DataFrame({"generation": np.arange(t_max, dtype=int), "p": [np.nan] * t_max }, index=[0])
+
+        #     output.loc[0, "p"] = population[ population["trait"] == "A"].shape[0] / N
+
+        #     for t in range(1, t_max):
+        #         # Copy the population tibble to previous_population tibble
+        #         previous_population = population.copy()
+            
+        #         # Randomly copy from previous generation's individuals
+        #         new_population = previous_population["trait"].sample(N, replace=True).to_frame()
+                
+        #         # Get p and put it into the output slot for this generation t
+        #         output.loc[t, "p"] = new_population[ new_population["trait"] == "A"].shape[0] / N
+            
+        #     return output
+        
+        # data_model = unbiased_transmission_1(N=None, t_max=None)
+
+        # def plot_single_run(data_model):
+        #     data_model["p"].plot(ylim=(0,1))
+
+        # plot_single_run(data_model)
+
+app = App(app_ui, server)
+</code></pre>
+<p>Now, let’s adapt the code somewhat.</p>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_2(N, t_max, r_max):</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population.copy()</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_2(N, t_max, r_max):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>)})</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population.copy()</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>unbiased_transmission_2(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 
 <div>
@@ -654,31 +749,31 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.52</td>
+      <td>0.43</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.54</td>
+      <td>0.41</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.56</td>
+      <td>0.41</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.60</td>
+      <td>0.40</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.62</td>
+      <td>0.38</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -700,75 +795,75 @@ Tip
 </div>
 </div>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">100</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_multiple_runs(data_model):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    groups <span class="op">=</span> data_model.groupby(<span class="st">"run"</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, g <span class="kw">in</span> groups:</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        g.index <span class="op">=</span> g[<span class="st">"generation"</span>]</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        g[<span class="st">"p"</span>].plot(lw<span class="op">=</span><span class="fl">.5</span>, ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    data_model.groupby(<span class="st">"generation"</span>)[<span class="st">"p"</span>].mean().plot(c<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_multiple_runs(data_model):</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    groups <span class="op">=</span> data_model.groupby(<span class="st">"run"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, g <span class="kw">in</span> groups:</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        g.index <span class="op">=</span> g[<span class="st">"generation"</span>]</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        g[<span class="st">"p"</span>].plot(lw<span class="op">=</span><span class="fl">.5</span>, ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    data_model.groupby(<span class="st">"generation"</span>)[<span class="st">"p"</span>].mean().plot(c<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter03_files/figure-html/cell-25-output-1.png" width="571" height="427" class="figure-img"></p>
+<p><img src="chapter03_files/figure-html/cell-25-output-1.png" width="571" height="434" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=100\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">10_000</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_2(N<span class="op">=</span><span class="dv">10_000</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter03_files/figure-html/cell-27-output-1.png" width="571" height="427" class="figure-img"></p>
+<p><img src="chapter03_files/figure-html/cell-27-output-1.png" width="571" height="434" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Multiple runs of the unbiased transmission model for a population of <span class="math inline">\(N=10,000\)</span> individuals, with average (black line).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_3(N, p_0, t_max, r_max):</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>, p<span class="op">=</span>[p_0, <span class="dv">1</span> <span class="op">-</span> p_0])})</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unbiased_transmission_3(N, p_0, t_max, r_max):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"generation"</span> : np.tile(np.arange(t_max), r_max),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"p"</span> : [ np.nan ] <span class="op">*</span> t_max <span class="op">*</span> r_max,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"run"</span> : np.repeat(np.arange(r_max), t_max)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(r_max):</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create first generation</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> pd.DataFrame({<span class="st">"trait"</span>: rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>, p<span class="op">=</span>[p_0, <span class="dv">1</span> <span class="op">-</span> p_0])})</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add first generation's p for run r</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>        output.loc[ r <span class="op">*</span> t_max, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For each generation </span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,t_max):</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Copy individuals to previous_population DataFrame</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Randomly compy from previous generation </span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>            population <span class="op">=</span> population[<span class="st">"trait"</span>].sample(N, replace<span class="op">=</span><span class="va">True</span>).to_frame()</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_3(<span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">.2</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> unbiased_transmission_3(<span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">.2</span>, t_max<span class="op">=</span><span class="dv">200</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter03_files/figure-html/cell-29-output-1.png" width="571" height="427"></p>
+<p><img src="chapter03_files/figure-html/cell-29-output-1.png" width="571" height="434"></p>
 </div>
 </div>
 
@@ -822,7 +917,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -850,43 +962,62 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./python_primer.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A Python primer</span></span>
+      <a href="./models.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./chapter04.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

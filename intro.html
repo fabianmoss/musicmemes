@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.247">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -115,24 +120,9 @@ div.csl-indent {
   <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./style.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Style</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./python_primer.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A Python primer</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Cultural inheritence mechanisms</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Prelude</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -140,44 +130,34 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></a>
+  <a href="./style.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Style</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Biased transmission: direct bias</span></a>
+  <a href="./python_primer.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A Python primer</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Biased transmission: frequency-dependent indirect bias</span></a>
+  <a href="./randomness.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Randomness and order</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter07.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Biased transmission: demonstrator-based indirect bias</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter08.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vertical and horizontal transmission</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter09.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The multiple traits model</span></a>
+  <a href="./models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Advanced topics</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Basic cultural inheritence mechanisms</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -185,14 +165,59 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced topics</span></a>
+  <a href="./chapter03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unbiased transmission</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Unbiased and biased mutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Biased transmission: direct bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Biased transmission: frequency-dependent indirect bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter07.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Biased transmission: influencer-based indirect bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter08.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vertical and horizontal transmission</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter09.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The multiple traits model</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Advanced topics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Advanced topics</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -205,16 +230,16 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#musical-memes" id="toc-musical-memes" class="nav-link active" data-scroll-target="#musical-memes"> <span class="header-section-number">1.1</span> Musical Memes</a></li>
-  <li><a href="#conditions-for-an-evolutionary-system" id="toc-conditions-for-an-evolutionary-system" class="nav-link" data-scroll-target="#conditions-for-an-evolutionary-system"> <span class="header-section-number">1.2</span> Conditions for an evolutionary system</a></li>
-  <li><a href="#music-in-human-evolution" id="toc-music-in-human-evolution" class="nav-link" data-scroll-target="#music-in-human-evolution"> <span class="header-section-number">1.3</span> Music in human evolution</a></li>
-  <li><a href="#history-and-cultural-evolution" id="toc-history-and-cultural-evolution" class="nav-link" data-scroll-target="#history-and-cultural-evolution"> <span class="header-section-number">1.4</span> History and cultural evolution</a></li>
-  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models"> <span class="header-section-number">1.5</span> Models</a></li>
-  <li><a href="#basic-cultural-inheritance-mechanisms" id="toc-basic-cultural-inheritance-mechanisms" class="nav-link" data-scroll-target="#basic-cultural-inheritance-mechanisms"> <span class="header-section-number">1.6</span> Basic cultural inheritance mechanisms</a></li>
+  <li><a href="#musical-memes" id="toc-musical-memes" class="nav-link active" data-scroll-target="#musical-memes"><span class="toc-section-number">1.1</span>  Musical Memes</a></li>
+  <li><a href="#conditions-for-an-evolutionary-system" id="toc-conditions-for-an-evolutionary-system" class="nav-link" data-scroll-target="#conditions-for-an-evolutionary-system"><span class="toc-section-number">1.2</span>  Conditions for an evolutionary system</a></li>
+  <li><a href="#music-in-human-evolution" id="toc-music-in-human-evolution" class="nav-link" data-scroll-target="#music-in-human-evolution"><span class="toc-section-number">1.3</span>  Music in human evolution</a></li>
+  <li><a href="#history-and-cultural-evolution" id="toc-history-and-cultural-evolution" class="nav-link" data-scroll-target="#history-and-cultural-evolution"><span class="toc-section-number">1.4</span>  History and cultural evolution</a></li>
+  <li><a href="#schema-theory" id="toc-schema-theory" class="nav-link" data-scroll-target="#schema-theory"><span class="toc-section-number">1.5</span>  Schema theory</a></li>
+  <li><a href="#basic-cultural-inheritance-mechanisms" id="toc-basic-cultural-inheritance-mechanisms" class="nav-link" data-scroll-target="#basic-cultural-inheritance-mechanisms"><span class="toc-section-number">1.6</span>  Basic cultural inheritance mechanisms</a></li>
   </ul>
 </nav>
     </div>
@@ -231,6 +256,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -283,22 +309,20 @@ div.csl-indent {
 <p>Documenting, describing, and interpreting changes in human culture is what historians do. Accordingly, changes in music belong to the field of music history, or historical musicology. However, most historians would probably be hesitant to employ models, or worse: formal models, in order to describe historical processes. The dictum “history doesn’t repeat itself” seems to raise a fundamental argument against such endeavors that aim at explaining cultural or historical changes by means of underlying latent ‘forces’. Modeling, in that view, seems to erroneously assume that history is teleological – directed towards a predetermined goal.</p>
 <p>On the other hand, it is undeniable that there are many aspects of culture exhibit regularities and ‘progresses’ that are hard to explain if there are no guiding processes. Defining “culture” is, of course, yet another difficult enterprise. Here, I follow more or less the definition of <span class="citation" data-cites="Boyd1985">Boyd &amp; Richerson (<a href="references.html#ref-Boyd1985" role="doc-biblioref">1985, p. 33</a>)</span>: “Culture is information capable of affecting individuals’ phenotypes which they acquire from other conspecifics <em>by teaching or imitation</em> [emphasis mine]”.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The part important to us here is “by teaching or imitation”, which is meant to imply: <em>not</em> by genetic inheritance. If humans can transmit information by other means than genetic inheritance, and if these transmission processes continue over many generations, then they are worth studying. Rest assured, the assumption of a hidden goal towards which all cultural processes are directed is not needed at all! I hope that you will share this conviction after working through this material.</p>
 </section>
-<section id="models" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="models"><span class="header-section-number">1.5</span> Models</h2>
-<p>Throughout this book we will use on quantitative models to describe evolutionary processes. A model is a simplyfied description that captures what we know about a phenomenon of interest in terms of variables and their relations to one another. While models in this sense are always reductions of the real-world process being modeled, they have the benefit that all of their parts can be understood. Moreover, formal models usually incorporate one or several <em>parameters</em>, that is, variables the value of which is mutable. Changing parameter values thus renders different instances of a model that, in turn, allow one to ask the question “What if?” and to abserve the behavior of simulated processes in the long run. Answering this question under different conditions (different parameter settings) then will allow us to draw inferences from the modeling outcomes to interpret our phenomenon of interest.</p>
-<p>It is precisely the ability of formal models to be adapted at will why they form the core part of this book. Starting with simple models with only very few variables, we will gradually make them more complex by including additional variables. However, it will remain our attempt to keep our models as simple as possible. While it is theoretically possible to include any number of variables in modeling, more complex models become harder to understand, and the interactions between the numerous variables more difficult to interpret.</p>
-<p>As mentioned above, the goal of modeling is often to approximate rather than to recreate a process in the world. Sometimes, the goal is rather to show that a real process does <em>not</em> conform to the outcomes of certain modeling assumptions, from which can be deduced that other factors—possibly yet unknown ones—must be taken into account. One of the most common baseline comparison models is the so-called ’neutral model <span class="citation" data-cites="Bentley2004_RandomDriftCulture">(see, e.g., <a href="references.html#ref-Bentley2004_RandomDriftCulture" role="doc-biblioref">Bentley et al., 2004</a>)</span>, where cultural traits are randomly copied from previous generations. We will see in <a href="chapter03.html"><span>Chapter&nbsp;4</span></a> what the consequences of this assumption are.</p>
-<p>Questions concerning model comparison—chosing the ‘best’ model for a problem at hand—or dealing with the trade-off between model complexity and interpretability are central issues in many areas of empirical science, such as machine learning, computational sociology, or cognitive psychology, and many textbooks dedicate some discussion to the topic <span class="citation" data-cites="Bishop2012_ModelbasedMachineLearning Farrell2018_ComputationalModelingCognition McElreath2020_StatisticalRethinkingBayesian">(e.g. <a href="references.html#ref-Bishop2012_ModelbasedMachineLearning" role="doc-biblioref">Bishop, 2012</a>; <a href="references.html#ref-Farrell2018_ComputationalModelingCognition" role="doc-biblioref">Farrell &amp; Lewandowsky, 2018</a>; <a href="references.html#ref-McElreath2020_StatisticalRethinkingBayesian" role="doc-biblioref">McElreath, 2020</a>)</span>. For excellent discussions and examples of modeling in music research, see <span class="citation" data-cites="Honing2006_ComputationalModelingMusica">Honing (<a href="references.html#ref-Honing2006_ComputationalModelingMusica" role="doc-biblioref">2006</a>)</span> and <span class="citation" data-cites="Finkensiepforthcoming_MusicTheoryModeldriven">Finkensiep et al. (<a href="references.html#ref-Finkensiepforthcoming_MusicTheoryModeldriven" role="doc-biblioref">forthcoming</a>)</span>.</p>
+<section id="schema-theory" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="schema-theory"><span class="header-section-number">1.5</span> Schema theory</h2>
+<p>What are the units (the basic memes) in music? Schema theory proposes a set of more or less fixed patterns, ‘schemata’, that underly a large body of music in the Baroque and Classical period <span class="citation" data-cites="Gjerdingen2007_MusicGalantStyle">(<a href="references.html#ref-Gjerdingen2007_MusicGalantStyle" role="doc-biblioref">Gjerdingen, 2007</a>)</span>.</p>
+<p>Are schemata really memes? I would think not because they can not mutate freely without losing their meaning. I rather think schemata ‘fall out’ of several combinatorial possibilities to traverse the diatonic scale, and compositional mechanisms to elaborate and vary them. But this kind of variation is very different than the one we talk about in this book. Composed variation is very regular, not random, and relying both on the melodic and metric structures in which it unfolds. Those, however, could very well be understood as environments with very strong constraints (being ‘out-of-scale’ or ‘off-beat’).</p>
 </section>
 <section id="basic-cultural-inheritance-mechanisms" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="basic-cultural-inheritance-mechanisms"><span class="header-section-number">1.6</span> Basic cultural inheritance mechanisms</h2>
 <p>Following this introduction, we introduce some minimal requirements to use Python for this course (<a href="python_primer.html"><span>Chapter&nbsp;3</span></a>).</p>
-<p>Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (<a href="chapter03.html"><span>Chapter&nbsp;4</span></a>), unbiased and biased mutation (<a href="chapter04.html"><span>Chapter&nbsp;5</span></a>), directly biased transmission (<a href="chapter05.html"><span>Chapter&nbsp;6</span></a>), frequency-dependent indirectly biased transmission (<a href="chapter06.html"><span>Chapter&nbsp;7</span></a>), and demonstrator-based indirectly biased transmission (<a href="chapter07.html"><span>Chapter&nbsp;8</span></a>). We follow up with a chapter on vertical and horizontal transmission (<a href="chapter08.html#sec-vertical"><span>Section&nbsp;9.1</span></a>), and finally introduce the multiple traits model (<a href="chapter09.html"><span>Chapter&nbsp;10</span></a>). The following diagram gives an overview of these processes:</p>
+<p>Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (<a href="chapter03.html"><span>Chapter&nbsp;6</span></a>), unbiased and biased mutation (<a href="chapter04.html"><span>Chapter&nbsp;7</span></a>), directly biased transmission (<a href="chapter05.html"><span>Chapter&nbsp;8</span></a>), frequency-dependent indirectly biased transmission (<a href="chapter06.html"><span>Chapter&nbsp;9</span></a>), and demonstrator-based indirectly biased transmission (<a href="chapter07.html"><span>Chapter&nbsp;10</span></a>). We follow up with a chapter on vertical and horizontal transmission (<a href="chapter08.html#sec-vertical"><span>Section&nbsp;11.1</span></a>), and finally introduce the multiple traits model (<a href="chapter09.html"><span>Chapter&nbsp;12</span></a>). The following diagram gives an overview of these processes:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart TD
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TD
   C[Cultural inheritance \n mechanisms] --&gt; T(Transmission)
   C --&gt; M(Mutation)
   T --&gt; BT(Biased)
@@ -317,18 +341,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>After having a firm grasp on how these processes can be modeled in Python and how modeling results can be interpreted, we move to more advanced topics (<a href="advanced.html"><span>Chapter&nbsp;11</span></a>), and more specifically into a number of recent exciting results about cultural evolution and music. We conclude our journey (<a href="conclusion.html"><span>Chapter&nbsp;12</span></a>) with a more general discussion of the implications of cultural evolution for how we think about music, on the relevance of modeling in music research and the humanities more generally, as well as on the great potential of this approach for future research.</p>
+<p>After having a firm grasp on how these processes can be modeled in Python and how modeling results can be interpreted, we move to more advanced topics (<a href="advanced.html"><span>Chapter&nbsp;13</span></a>), and more specifically into a number of recent exciting results about cultural evolution and music. We conclude our journey (<a href="conclusion.html"><span>Chapter&nbsp;14</span></a>) with a more general discussion of the implications of cultural evolution for how we think about music, on the relevance of modeling in music research and the humanities more generally, as well as on the great potential of this approach for future research.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
 <div id="ref-Aunger2001_DarwinizingCultureStatus" class="csl-entry" role="doc-biblioentry">
 Aunger, R. (2001). <em>Darwinizing <span>Culture</span>: <span>The Status</span> of <span>Memetics</span> as a <span>Science</span></em>. <span>Oxford University Press, USA</span>. <a href="http://gen.lib.rus.ec/book/index.php?md5=7329e2aa9adcddfed967088219426193">http://gen.lib.rus.ec/book/index.php?md5=7329e2aa9adcddfed967088219426193</a>
-</div>
-<div id="ref-Bentley2004_RandomDriftCulture" class="csl-entry" role="doc-biblioentry">
-Bentley, R. A., Hahn, M. W., &amp; Shennan, S. J. (2004). Random drift and culture change. <em>Proceedings of the Royal Society of London. Series B: Biological Sciences</em>, <em>271</em>(1547), 1443–1450. <a href="https://doi.org/10.1098/rspb.2004.2746">https://doi.org/10.1098/rspb.2004.2746</a>
-</div>
-<div id="ref-Bishop2012_ModelbasedMachineLearning" class="csl-entry" role="doc-biblioentry">
-Bishop, C. M. (2012). Model-based machine learning. <em>Philosophical Transactions of The Royal Society A</em>, <em>0222</em>(371). <a href="https://doi.org/10.1098/rsta.2012.0222">https://doi.org/10.1098/rsta.2012.0222</a>
 </div>
 <div id="ref-Blackmore2000_MemeMachine" class="csl-entry" role="doc-biblioentry">
 Blackmore, S. (2000). <em>The <span>Meme Machine</span></em>. <span>Oxford University Press</span>.
@@ -345,23 +363,14 @@ Cross, I. (2016). The nature of music and its evolution. In S. Hallam, I. Cross,
 <div id="ref-Dawkins1976_SelfishGenea" class="csl-entry" role="doc-biblioentry">
 Dawkins, R. (1976). <em>The <span>Selfish Gene</span></em>. <span>Oxford University Press</span>.
 </div>
-<div id="ref-Farrell2018_ComputationalModelingCognition" class="csl-entry" role="doc-biblioentry">
-Farrell, S., &amp; Lewandowsky, S. (2018). <em>Computational <span>Modeling</span> of <span>Cognition</span> and <span>Behavior</span></em>. <span>Cambridge University Press</span>. <a href="https://doi.org/10.1017/CBO9781316272503">https://doi.org/10.1017/CBO9781316272503</a>
-</div>
-<div id="ref-Finkensiepforthcoming_MusicTheoryModeldriven" class="csl-entry" role="doc-biblioentry">
-Finkensiep, C., Neuwirth, M., &amp; Rohrmeier, M. (forthcoming). Music <span>Theory</span> and <span class="nocase">Model-driven Corpus Research</span>. In D. Shanahan, J. A. Burgoyne, &amp; I. Quinn (Eds.), <em>Oxford <span>Handbook</span> of <span>Music</span> and <span>Corpus Studies</span></em>. <span>Oxford University Press</span>.
-</div>
-<div id="ref-Honing2006_ComputationalModelingMusica" class="csl-entry" role="doc-biblioentry">
-Honing, H. (2006). Computational <span>Modeling</span> of <span>Music Cognition</span>: <span>A Case Study</span> on <span>Model Selection</span>. <em>Music Perception</em>, <em>23</em>(5), 365–376. <a href="https://doi.org/10.1525/mp.2006.23.5.365">https://doi.org/10.1525/mp.2006.23.5.365</a>
+<div id="ref-Gjerdingen2007_MusicGalantStyle" class="csl-entry" role="doc-biblioentry">
+Gjerdingen, R. O. (2007). <em>Music in the <span>Galant Style</span></em>. <span>Oxford University Press</span>.
 </div>
 <div id="ref-Honing2018_BiologicalBasisMusicality" class="csl-entry" role="doc-biblioentry">
 Honing, H. (2018). On the biological basis of musicality. <em>Annals of the New York Academy of Sciences</em>. <a href="https://doi.org/10.1111/nyas.13638">https://doi.org/10.1111/nyas.13638</a>
 </div>
 <div id="ref-Jan2016" class="csl-entry" role="doc-biblioentry">
 Jan, S. (2016). <em><span class="nocase">The Memetics of Music: A Neo-Darwinian View of Musical Structure and Culture</span></em>. Routledge.
-</div>
-<div id="ref-McElreath2020_StatisticalRethinkingBayesian" class="csl-entry" role="doc-biblioentry">
-McElreath, R. (2020). <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em> (Second). <span>Chapman and Hall/CRC</span>.
 </div>
 <div id="ref-Morley2013_PrehistoryMusicHuman" class="csl-entry" role="doc-biblioentry">
 Morley, I. (2013). <em>The <span>Prehistory</span> of <span>Music</span>. <span>Human Evolution</span>, <span>Archaeology</span>, and the <span>Origins</span> of <span>Musicality</span></em>. <span>Oxford University Press</span>.
@@ -383,11 +392,11 @@ Youngblood, M., Ozaki, Y., &amp; Savage, P. E. (forthcoming). Cultural evolution
 </div>
 </div>
 </section>
-<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Mimesis" class="uri">https://en.wikipedia.org/wiki/Mimesis</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>I encourage you to read Chapter 3 of their seminal book in order to fully capture the meaning of this quote.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Mimesis" class="uri">https://en.wikipedia.org/wiki/Mimesis</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>I encourage you to read Chapter 3 of their seminal book in order to fully capture the meaning of this quote.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -433,7 +442,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -461,31 +487,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
