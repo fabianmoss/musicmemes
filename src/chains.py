@@ -34,7 +34,7 @@ for idx, indv in population.items():
 # transmission
 for t in range(1, t_max):
     # draw individuals
-    new_population = population.sample(N,replace=True, random_state=rng)
+    new_population = population.sample(N,replace=True)
     for n, (idx, indv) in enumerate(new_population.items()):
         circ = plt.Circle(xy=(t,n), 
                 facecolor=colors[indv], **circle_kws)

@@ -46,10 +46,39 @@ This visualization captures all assumptions we make for our first model:
 ![A conceptual depiction of unbiased transmission.](img/chains.png)
 
 The lower plot shows, at each time, point the percentage of individuals 
-having a preference for opera.
+having a preference for opera. A logical consequence of this process is that each transmission chain (each sequence of directly connected arrows) will pass through one and only one trait (color).
 
-A logical consequence of this process is that each transmission chain (each 
-sequence of directly connected arrows) will pass through one and only one trait (color).
+We can make further observations from this initial example.
+In the first generation, there are two individuals who do like opera 
+and three who don't. In subsequent generations, the proporation of these 
+two traits changes. It is not _monotonic_ (it goes both up and down), as the 
+red line shows. But in the sixth generation, everything changes.
+Individuals in the sixth generation _could_ inherit their trait 
+from the one individual in generation 5 that likes opera. But because 
+they randomly pick their ancestors, that individual is not among the ancestors.
+Consequently, no individual in generation 6 likes opera. 
+This also means that, from now on, now one will ever like opera again. 
+Opera fans have become extinct.
+
+We can see that transmission of information is still going on:
+there are arrows between generations, so individuals still receive 
+information from the previous generation. But nothing changes. 
+That means that we _do have_ transmission of information, but we would not 
+anymore speak of it as _cultural evolution_, since the first fundamental criterion (see Chapter X), variation, is not fulfilled.
+
+Note also, that some 'traditions' are likewise not continued.
+For example, following the transmission chain of individual 0 
+in the first generation to individual 2 in the second generation
+to individual 3 in the third generation, we see that this latter 
+individual is not picked as an ancestor by anyone from the next generation.
+This individual (and all of its ancestors) have no more impact on 
+future generations. Importantly, however, we are not interested 
+in individual fates, but rather in population-level statistics.
+That is why the lower plot only traces the proportion of individuals 
+having a preference for opera. 
+
+
+
 
 ## Simulating a population
 
