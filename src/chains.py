@@ -14,8 +14,8 @@ population = pd.Series(
 ps = pd.Series([np.nan] * t_max, name="p")
 ps[0] = population.value_counts(normalize=True,dropna=False).sort_index()[0]
 
-colors = {"A" : "darkgrey", 
-          "B" : "salmon"}
+colors = {"A" : "lightgrey", # colors from Quarto template
+          "B" : "#eb6864"} 
 
 _, axes = plt.subplots(2,1, sharex=False, figsize=(t_max,N * 1.5), height_ratios=[3,1])
 
@@ -34,7 +34,7 @@ for idx, indv in population.items():
 # transmission
 for t in range(1, t_max):
     # draw individuals
-    new_population = population.sample(N,replace=True)
+    new_population = population.sample(N,replace=True, random_state=rng)
     for n, (idx, indv) in enumerate(new_population.items()):
         circ = plt.Circle(xy=(t,n), 
                 facecolor=colors[indv], **circle_kws)
@@ -64,7 +64,7 @@ axes[0].set_aspect('equal') # should be "datalim"
 axes[0].set_ylabel("individuals")
 axes[0].set_xticks([])
 
-axes[1].plot(range(t_max), ps, c="salmon", lw=3, marker=".", markersize=5)
+axes[1].plot(range(t_max), ps, c=colors["B"], lw=3, marker=".", markersize=5)
 # axes[1].fill_between(np.arange(t_max),ps, color="salmon")
 # axes[1].fill_between(np.arange(t_max),ps,1, color="grey")
 axes[1].set_ylim(0,1)

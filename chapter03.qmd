@@ -24,7 +24,7 @@ Because we will model evolutionary processes that are not strictly deterministic
 For this, we can use the _default random number generator_ from the NumPy library and store it in the variable `rng`. 
 
 ```{python}
-rng = np.random.default_rng()
+rng = np.random.default_rng(seed=42)
 ```
 
 Next, we define some basic variables that we take into account for our first model. We consider a population of $N=100$ individuals as well as a time-frame of $t_{max}=100$ generations. 
@@ -35,11 +35,6 @@ It is a useful exercise to imagine first what we want to implement.
 This way we can check whether we have a good conceptual understanding, which 
 will help us to write the code more clearly and make fewer mistakes.
 The following figure shows in the upper panel a scenario, in which there is a population of X individuals present in each generation. Those individuals are uniquely characterized by one of two traits: whether they like opera (salmon color) or not (grey).
-
-![A conceptual depiction of unbiased transmission.](img/chains.png)
-
-The lower plot shows, at each time, point the percentage of individuals 
-having a preference for opera.
 This visualization captures all assumptions we make for our first model:
 
 1. The number of individuals per generation does not change. 
@@ -47,6 +42,11 @@ This visualization captures all assumptions we make for our first model:
 3. In the first generation, opera preference is randomly assigned to individuals.
 4. In each subsequent generation, each individual randomly picks an 'ancestor' 
    from the previous generation and blindly copies that individual's preference for opera.
+
+![A conceptual depiction of unbiased transmission.](img/chains.png)
+
+The lower plot shows, at each time, point the percentage of individuals 
+having a preference for opera.
 
 A logical consequence of this process is that each transmission chain (each 
 sequence of directly connected arrows) will pass through one and only one trait (color).
@@ -222,7 +222,8 @@ data_model = unbiased_transmission_1(N=10_000, t_max=200)
 plot_single_run(data_model)
 ```
 
-Try playing around with different parameter values. Bear in mind, however, that too large population sizes will take for ever to compute.
+<!-- TODO: Implement interactive code as shiny app -->
+<!-- Try playing around with different parameter values. Bear in mind, however, that too large population sizes will take for ever to compute.
 
 ```{shinylive-python}
 #| standalone: true
@@ -280,7 +281,7 @@ def server(input, output, session):
 
 app = App(app_ui, server)
 
-```
+``` -->
 
 Now, let's adapt the code somewhat.
 
