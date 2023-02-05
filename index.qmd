@@ -12,10 +12,9 @@ If you want to refer to this resource, please cite it as appropriately, e.g.: Mo
 :::
 
 :::{.callout-important}
-The material on this page has been adapted and designed for a research seminar in musicology at [Würzburg University](https://uni-wuerzburg.de/), Germany.
+The material on this page has been adapted and designed for my musicology research seminar "Music Memes: quantitative approaches and theories of cultural transmission of music" at [Würzburg University](https://uni-wuerzburg.de/), Germany.
 
-Note that the materials here are still under development. 
-Please inform me if you notice any errors or other issues.
+Note that the materials here are still under development. Please inform me if you notice any errors or other issues.
 :::
 
 ##### Acknowledgements {.appendix}
