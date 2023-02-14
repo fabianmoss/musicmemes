@@ -33,6 +33,7 @@ book:
         # - document_traditions.qmd
         - advanced.qmd
     - conclusion.qmd
+    # - appendix.qmd
     - references.qmd
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@ascales?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alan Scales</a> on <a href="https://unsplash.com/s/photos/a4-texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   page-footer: 

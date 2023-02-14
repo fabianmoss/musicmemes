@@ -1,0 +1,7 @@
+---
+title: Appendix
+---
+
+<!-- ## Appendix {.appendix}
+
+{{< include python_primer.qmd >}} -->
