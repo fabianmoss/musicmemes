@@ -2,14 +2,14 @@ project:
   type: book
 
 book:
-  title: "Cultural Evolution and Music"
-  subtitle: "Models and Applications in Python"
+  title: "Music Memes" 
+  subtitle: "Understanding processes of music transmission through cultural evolution modeling"
   author: 
     - name: "Fabian C. Moss"
-      url: https://www.fabian-moss.de
+      url: https://www.fabian-moss.de/
       affiliation: Julius-Maximilians-Universität Würzburg
       affiliation-url: https://www.musikwissenschaft.uni-wuerzburg.de/team/moss/
-  date: "3 February 2023"
+  date: "14 February 2023"
   chapters:
     - index.qmd
     - part: Prelude
@@ -36,7 +36,7 @@ book:
     - references.qmd
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@ascales?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alan Scales</a> on <a href="https://unsplash.com/s/photos/a4-texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   page-footer: 
-    left: "Copyright 2022, Fabian C. Moss" 
+    left: "Copyright 2023, Fabian C. Moss" 
     right: 
       - icon: github
         href: https://github.com/fabianmoss
