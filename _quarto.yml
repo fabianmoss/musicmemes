@@ -30,7 +30,7 @@ book:
         - chapter09.qmd
     - part: Advanced topics
       chapters:
-        - document_traditions.qmd
+        # - document_traditions.qmd
         - advanced.qmd
     - conclusion.qmd
     - references.qmd
