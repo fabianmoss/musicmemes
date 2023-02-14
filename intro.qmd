@@ -29,7 +29,7 @@ as a special case.
 The field of cultural evolution emerged in the 1980's [e.g., @Boyd1985; @Cavalli-Sforza1981_CulturalTransmissionEvolution], 
 and has, in parallel with the advancement of computational facilities,
 gained momentum. Theories on cultural evolution share many facets with approaches on memetics
-[@Aunger2001_DarwinizingCultureStatus;@Dawkins1976_SelfishGenea;@Blackmore2000_MemeMachine],
+[@Aunger2001_DarwinizingCultureStatus;@Dawkins1976_SelfishGenea;@Blackmore2000_MemeMachine;@Howe2011_PhylomemeticsEvolutionaryAnalysis],
 a field that has also been applied to the case of music [@Jan2016].
 
 In recent years, several approaches have attempted to 

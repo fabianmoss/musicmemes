@@ -1,0 +1,27 @@
+# Modeling document traditions
+
+Here, we show how one can use cultural evolution 
+methods to model the histories of manuscripts.
+This is based on a phylogenetic analysis of a Prelude 
+by Orlando Gibbons [@Windram2014_PhylogeneticAnalysisOrlando].
+
+## Context
+
+## Data and coding
+
+## Mutations create new traditions 
+
+## Sequence alignment 
+
+[@Savage2022_SequenceAlignmentFolk]
+
+## Constructing a possible lineage
+
+## Being confident
+
+bootstrapping procedures
+
+## Conclusion
+
+Briefly discuss NeighborNet graph and point to similar approach in 
+[@Windram2022_PhylogeneticAnalysisTwo].
