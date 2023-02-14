@@ -1,7 +1,24 @@
 ---
 title: Biased mutation
+jupyter: python3
 ---
 
+```{python}
+import numpy as np
+rng = np.random.default_rng()
+
+import pandas as pd
+```
+
+```{python}
+def plot_multiple_runs(data_model):
+    groups = data_model.groupby("run")
+    for _, g in groups:
+        g.index = g["generation"]
+        g["p"].plot(lw=.5, ylim=(0,1))
+
+    data_model.groupby("generation")["p"].mean().plot(c="k", lw="1")
+```
 
 ```{python}
 def biased_mutation(N, mu_b, p_0, t_max, r_max):

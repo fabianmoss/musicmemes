@@ -111,5 +111,4 @@ We follow up with a chapter on vertical and horizontal transmission (@sec-vertic
 <!-- The above content doesn't render since the latest update of quarto :-/ -->
 
 After having a firm grasp on how these processes can be modeled in Python
-and how modeling results can be interpreted, we move to more advanced topics
-(@sec-advanced), and more specifically into a number of recent exciting results about cultural evolution and music. We conclude our journey (@sec-conclusion) with a more general discussion of the implications of cultural evolution for how we think about music, on the relevance of modeling in music research and the humanities more generally, as well as on the great potential of this approach for future research.
+and how modeling results can be interpreted, we move to more advanced topics, and more specifically into a number of recent exciting results about cultural evolution and music. We conclude our journey (@sec-conclusion) with a more general discussion of the implications of cultural evolution for how we think about music, on the relevance of modeling in music research and the humanities more generally, as well as on the great potential of this approach for future research.
