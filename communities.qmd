@@ -1,0 +1,6 @@
+---
+title: Music communities
+subtitle: studying the cultural evolution of electronic music
+--- 
+
+"Phylogenetic reconstruction of the cultural evolution of electronic music via dynamic community detection (1975–1999)" [@Youngblood2021_PhylogeneticReconstructionCultural]

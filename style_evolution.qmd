@@ -1,0 +1,11 @@
+---
+title: Style evolution
+---
+
+<!-- The question of historical change is intricably related to musical styles.
+Here, we adopt the framework for style analysis layed out by @Meyer1989_StyleMusicTheory.
+In particular, the adaptation of @Jan2016 and its schematic representation is already almost 
+a description of a statistical graphical model. -->
+
+- "Statistical Evolutionary Laws in Music Styles" [@Nakamura2019]
+- "Investigating style evolution of Western classical music: A computational approach" [@Weiss2019_InvestigatingStyleEvolution]

@@ -19,10 +19,13 @@ book:
       - python_primer.qmd
       - randomness.qmd
       - models.qmd
-    - part: Basic cultural inheritence mechanisms
+    - part: Foundations
       chapters:
         - chapter03.qmd
         - chapter04.qmd
+        - biased_mutation.qmd
+    - part: Modeling biases
+      chapters:
         - chapter05.qmd
         - chapter06.qmd
         - chapter07.qmd
@@ -30,8 +33,11 @@ book:
         - chapter09.qmd
     - part: Advanced topics
       chapters:
-        # - document_traditions.qmd
-        - advanced.qmd
+        - document_traditions.qmd
+        - pitches.qmd
+        - folk_tunes.qmd
+        - communities.qmd
+        - style_evolution.qmd
     - conclusion.qmd
     # - appendix.qmd
     - references.qmd

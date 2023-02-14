@@ -1,0 +1,6 @@
+---
+title: The usage of pitches and intervals
+---
+
+- "Cross-cultural data shows musical scales evolved to maximise imperfect fifths" @McBride2020_CrossculturalDataShows
+- "The line of fifths and the co-evolution of tonal pitch-classes" [@Moss2022]
