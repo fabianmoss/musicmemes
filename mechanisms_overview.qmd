@@ -1,0 +1,13 @@
+```{mermaid}
+flowchart TD
+  C[Cultural inheritance \n mechanisms] --> T(Transmission)
+  C --> M(Mutation)
+  T --> BT(Biased)
+  T --> UT(Unbiased)
+  M --> BM(Biased)
+  M --> UM(Unbiased)
+  BT --> D(Direct)
+  BT --> I(Indirect)
+  I --> FD(Frequency-Dependent)
+  I --> DB(Demonstrator-Based)
+```

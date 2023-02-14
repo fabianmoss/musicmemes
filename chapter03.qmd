@@ -77,9 +77,6 @@ in individual fates, but rather in population-level statistics.
 That is why the lower plot only traces the proportion of individuals 
 having a preference for opera. 
 
-
-
-
 ## Simulating a population
 
 With this conceptual understanding in mind,

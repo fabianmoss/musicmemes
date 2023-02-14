@@ -86,4 +86,8 @@ instead of having only one parameter, `a`,
 we now have two, `a` and `b`. 
 Our model has instantly become twice as complex!
 
-
+Modeling is at the core of social science and there are many 
+good text about this topic
+[@Smaldino2017_ModelsAreStupid;@Smaldino2023_ModelingSocialBehavior;@McElreath2020_StatisticalRethinkingBayesian]. 
+In the humanities, there are fewer approaches taking modeling seriously,
+but they are growing in number [@Finkensiepforthcoming_MusicTheoryModeldriven;@Piotrowski2019_HistoricalModelsSerial].

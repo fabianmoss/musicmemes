@@ -19,7 +19,6 @@ book:
       - python_primer.qmd
       - randomness.qmd
       - models.qmd
-    # - summary.qmd
     - part: Basic cultural inheritence mechanisms
       chapters:
         - chapter03.qmd

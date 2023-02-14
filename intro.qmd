@@ -107,19 +107,8 @@ Following this introduction, we introduce some minimal requirements to use Pytho
 Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (@sec-unbiased_transmission), unbiased and biased mutation (@sec-unbiased_biased_mutation), directly biased transmission (@sec-direct-biased-transmission), frequency-dependent indirectly biased transmission (@sec-frequency-biased-transmission), and demonstrator-based indirectly biased transmission (@sec-demonstrator-biased-transmission). 
 We follow up with a chapter on vertical and horizontal transmission (@sec-vertical), and finally introduce the multiple traits model (@sec-multiple-traits). The following diagram gives an overview of these processes:
 
-```{mermaid}
-flowchart TD
-  C[Cultural inheritance \n mechanisms] --> T(Transmission)
-  C --> M(Mutation)
-  T --> BT(Biased)
-  T --> UT(Unbiased)
-  M --> BM(Biased)
-  M --> UM(Unbiased)
-  BT --> D(Direct)
-  BT --> I(Indirect)
-  I --> FD(Frequency-Dependent)
-  I --> DB(Demonstrator-Based)
-```
+<!-- {{ include mechanisms_overview.qmd }} -->
+<!-- The above content doesn't render since the latest update of quarto :-/ -->
 
 After having a firm grasp on how these processes can be modeled in Python
 and how modeling results can be interpreted, we move to more advanced topics
