@@ -141,24 +141,25 @@ def vertical_horizontal_transmission(N, p_0, b, n, g, t_max, r_max):
             # Get p and put it into output slot for this generation t and run r
             output.loc[r * t_max + t, "p"] = population[ population["trait"] == "A" ].shape[0] / N
 
-            # ### Horizontal transmission =========================================================
+            ## Horizontal transmission =========================================================
 
-            # previous_population = population.copy()
-            # # # N_B = number of Bs
-            # N_B = previous_population[previous_population["trait"] == "B"].shape[0]
+            previous_population = population.copy()
+            # # N_B = number of Bs
+            N_B = previous_population[previous_population["trait"] == "B"].shape[0]
 
-            # # if there are B individuals to switch, and n is not zero:
-            # if (N_B > 0) & (n > 0):
-            #     # for each B individual:
-            #     for i in range(N_B):
-            #         # Pick n demonstrators
-            #         demonstrator = previous_population["trait"].sample(n, replace=True)
-            #         # Get probability g 
-            #         copy_ = rng.choice([True, False], n, p=[g, 1 - g], replace=True)
-            #         # if any demonstrators with A are to be copied:
-            #         if sum((demonstrator == "A") & (copy_)) > 0:
-            #           # The B individual switches to A 
-            #           population[previous_population["trait"] == "B"].loc[i, "trait"] = "A"
+            # if there are B individuals to switch, and n is not zero:
+            if (N_B > 0) & (n > 0):
+                # for each B individual:
+                for i in range(N_B):
+                    # Pick n demonstrators
+                    demonstrator = previous_population["trait"].sample(n, replace=True)
+                    # Get probability g 
+                    copy_ = rng.choice([True, False], n, p=[g, 1 - g], replace=True)
+                    # if any demonstrators with A are to be copied:
+                    if sum((demonstrator == "A") & (copy_)) > 0:
+                      # The B individual switches to A 
+                      # TODO: Here's the bug!
+                      population[previous_population["trait"] == "B"].at[i, "trait"] = "A"
 
             next_population = population.copy()
             # # N_B = number of Bs
@@ -175,7 +176,7 @@ def vertical_horizontal_transmission(N, p_0, b, n, g, t_max, r_max):
                     # if any demonstrators with A are to be copied:
                     if sum((demonstrator == "A") & (copy_)) > 0:
                       # The B individual switches to A 
-                      next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"
+                      next_population[next_population["trait"] == "B"].at[i, "trait"] = "A"
 
             # Get p and put it into output slot for this generation t and run r
             output.loc[r * t_max + t, "p"] = next_population[ next_population["trait"] == "A" ].shape[0] / N
@@ -188,7 +189,7 @@ vertical_horizontal_transmission(N=1000, p_0=0.01, b=0.5, n=5, g=0.1, t_max=10, 
 ```
 
 ```{python}
-data_model = vertical_horizontal_transmission(N=5_000, p_0=0.01, b=0.5, n=5, g=0.1, t_max=50, r_max=2)
-plot_multiple_runs(data_model)
+# data_model = vertical_horizontal_transmission(N=5_000, p_0=0.01, b=0.5, n=5, g=0.1, t_max=50, r_max=2)
+# plot_multiple_runs(data_model)
 ```
 
