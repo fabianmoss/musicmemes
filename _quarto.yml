@@ -79,7 +79,9 @@ format:
     ### see here for template customization possibilities: https://github.com/Wandmalfarbe/pandoc-latex-template
     # documentclass: scrreprt
     papersize: a4paper
-    highlight-style: github
-    include-before-body: empty.tex
+    # highlight-style: light
+    # include-before-body: empty.tex
+    code-line-numbers: false
+    code-block-bg: f5f5f5
 
 license: "CC BY-NC"
