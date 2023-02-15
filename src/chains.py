@@ -17,6 +17,10 @@ ps[0] = population.value_counts(normalize=True,dropna=False).sort_index()[0]
 colors = {"A" : "lightgrey", # colors from Quarto template
           "B" : "#eb6864"} 
 
+def shorten(x,y,dx,dy):
+    # TODO
+    return x,y,dx,dy
+
 _, axes = plt.subplots(2,1, sharex=False, figsize=(t_max,N * 1.5), height_ratios=[3,1])
 
 circle_kws = dict(
@@ -46,6 +50,8 @@ for t in range(1, t_max):
         y = src
         dx = t - x
         dy = tgt - src
+
+        x,y,dx,dy = shorten(x,y,dx,dy)
         axes[0].arrow(x,y,dx,dy, color="k", 
             head_width=0.1, head_length=0.1, overhang=.3,
             length_includes_head=True,
