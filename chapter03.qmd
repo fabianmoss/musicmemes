@@ -34,7 +34,9 @@ Next, we define some basic variables that we take into account for our first mod
 It is a useful exercise to imagine first what we want to implement. 
 This way we can check whether we have a good conceptual understanding, which 
 will help us to write the code more clearly and make fewer mistakes.
-The following figure shows in the upper panel a scenario, in which there is a population of X individuals present in each generation. Those individuals are uniquely characterized by one of two traits: whether they like opera (salmon color) or not (grey).
+The following figure shows in the upper panel a scenario, in which there is a population of `N`
+individuals present in each generation. Those individuals are uniquely characterized by one of two traits: 
+whether they like opera (salmon color) or not (grey).
 This visualization captures all assumptions we make for our first model:
 
 1. The number of individuals per generation does not change. 
@@ -42,6 +44,14 @@ This visualization captures all assumptions we make for our first model:
 3. In the first generation, opera preference is randomly assigned to individuals.
 4. In each subsequent generation, each individual randomly picks an 'ancestor' 
    from the previous generation and blindly copies that individual's preference for opera.
+
+The models throughout this book assume that invidivuals in one generation
+learn from individuals of (only) the previous generation by "picking"
+an older individual and adopting its traits according to some probabilistic rules built into 
+the model. This means an arrow from individual `n` in generation `t`
+to an individual `m` in generation `t + 1` should be interpreted as:
+"Individual `m` learns from individual `m`" and not the other way around
+(because information is flowing from generation `t` to `t+1`).
 
 ![A conceptual depiction of unbiased transmission.](img/chains.png)
 
