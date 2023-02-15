@@ -440,14 +440,14 @@ Note
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter08_files/figure-html/cell-5-output-1.png" width="571" height="427"></p>
+<p><img src="chapter08_files/figure-html/cell-5-output-1.png" width="571" height="434"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> vertical_transmission(N<span class="op">=</span><span class="dv">10_000</span>, p_0<span class="op">=</span><span class="fl">0.1</span>, b<span class="op">=</span><span class="fl">0.5</span>,t_max<span class="op">=</span><span class="dv">50</span>, r_max<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="chapter08_files/figure-html/cell-6-output-1.png" width="571" height="427"></p>
+<p><img src="chapter08_files/figure-html/cell-6-output-1.png" width="571" height="434"></p>
 </div>
 </div>
 </section>
@@ -513,102 +513,50 @@ Warning
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
 <span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> population[ population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
 <span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>            <span class="co"># </span><span class="al">###</span><span class="co"> Horizontal transmission =========================================================</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>            <span class="co">## Horizontal transmission =========================================================</span></span>
 <span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>            <span class="co"># previous_population = population.copy()</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>            <span class="co"># # # N_B = number of Bs</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>            <span class="co"># N_B = previous_population[previous_population["trait"] == "B"].shape[0]</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>            previous_population <span class="op">=</span> population.copy()</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>            <span class="co"># # N_B = number of Bs</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>            N_B <span class="op">=</span> previous_population[previous_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"B"</span>].shape[<span class="dv">0</span>]</span>
 <span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>            <span class="co"># # if there are B individuals to switch, and n is not zero:</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if (N_B &gt; 0) &amp; (n &gt; 0):</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>            <span class="co">#     # for each B individual:</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>            <span class="co">#     for i in range(N_B):</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>            <span class="co">#         # Pick n demonstrators</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>            <span class="co">#         demonstrator = previous_population["trait"].sample(n, replace=True)</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>            <span class="co">#         # Get probability g </span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>            <span class="co">#         copy_ = rng.choice([True, False], n, p=[g, 1 - g], replace=True)</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>            <span class="co">#         # if any demonstrators with A are to be copied:</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>            <span class="co">#         if sum((demonstrator == "A") &amp; (copy_)) &gt; 0:</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#           # The B individual switches to A </span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>            <span class="co">#           population[previous_population["trait"] == "B"].loc[i, "trait"] = "A"</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>            next_population <span class="op">=</span> population.copy()</span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>            <span class="co"># # N_B = number of Bs</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>            N_B <span class="op">=</span> next_population[next_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"B"</span>].shape[<span class="dv">0</span>]</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if there are B individuals to switch, and n is not zero:</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (N_B <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (n <span class="op">&gt;</span> <span class="dv">0</span>):</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>                <span class="co"># for each B individual:</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N_B):</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Pick n demonstrators</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>                    demonstrator <span class="op">=</span> population[<span class="st">"trait"</span>].sample(n, replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Get probability g </span></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>                    copy_ <span class="op">=</span> rng.choice([<span class="va">True</span>, <span class="va">False</span>], n, p<span class="op">=</span>[g, <span class="dv">1</span> <span class="op">-</span> g], replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># if any demonstrators with A are to be copied:</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="bu">sum</span>((demonstrator <span class="op">==</span> <span class="st">"A"</span>) <span class="op">&amp;</span> (copy_)) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># The B individual switches to A </span></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>                      next_population[next_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"B"</span>].loc[i, <span class="st">"trait"</span>] <span class="op">=</span> <span class="st">"A"</span></span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> next_population[ next_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if there are B individuals to switch, and n is not zero:</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (N_B <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (n <span class="op">&gt;</span> <span class="dv">0</span>):</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>                <span class="co"># for each B individual:</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N_B):</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Pick n demonstrators</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>                    demonstrator <span class="op">=</span> previous_population[<span class="st">"trait"</span>].sample(n, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Get probability g </span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>                    copy_ <span class="op">=</span> rng.choice([<span class="va">True</span>, <span class="va">False</span>], n, p<span class="op">=</span>[g, <span class="dv">1</span> <span class="op">-</span> g], replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># if any demonstrators with A are to be copied:</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="bu">sum</span>((demonstrator <span class="op">==</span> <span class="st">"A"</span>) <span class="op">&amp;</span> (copy_)) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># The B individual switches to A </span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># </span><span class="al">TODO</span><span class="co">: Here's the bug!</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>                      population[previous_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"B"</span>].at[i, <span class="st">"trait"</span>] <span class="op">=</span> <span class="st">"A"</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>            next_population <span class="op">=</span> population.copy()</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>            <span class="co"># # N_B = number of Bs</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>            N_B <span class="op">=</span> next_population[next_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"B"</span>].shape[<span class="dv">0</span>]</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if there are B individuals to switch, and n is not zero:</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (N_B <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (n <span class="op">&gt;</span> <span class="dv">0</span>):</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>                <span class="co"># for each B individual:</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N_B):</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Pick n demonstrators</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>                    demonstrator <span class="op">=</span> population[<span class="st">"trait"</span>].sample(n, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Get probability g </span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>                    copy_ <span class="op">=</span> rng.choice([<span class="va">True</span>, <span class="va">False</span>], n, p<span class="op">=</span>[g, <span class="dv">1</span> <span class="op">-</span> g], replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># if any demonstrators with A are to be copied:</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="bu">sum</span>((demonstrator <span class="op">==</span> <span class="st">"A"</span>) <span class="op">&amp;</span> (copy_)) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># The B individual switches to A </span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>                      next_population[next_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"B"</span>].at[i, <span class="st">"trait"</span>] <span class="op">=</span> <span class="st">"A"</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get p and put it into output slot for this generation t and run r</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>            output.loc[r <span class="op">*</span> t_max <span class="op">+</span> t, <span class="st">"p"</span>] <span class="op">=</span> next_population[ next_population[<span class="st">"trait"</span>] <span class="op">==</span> <span class="st">"A"</span> ].shape[<span class="dv">0</span>] <span class="op">/</span> N</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vertical_horizontal_transmission(N<span class="op">=</span><span class="dv">1000</span>, p_0<span class="op">=</span><span class="fl">0.01</span>, b<span class="op">=</span><span class="fl">0.5</span>, n<span class="op">=</span><span class="dv">5</span>, g<span class="op">=</span><span class="fl">0.1</span>, t_max<span class="op">=</span><span class="dv">10</span>, r_max<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 1/10 [00:00&lt;00:04,  2.13it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 20%|██        | 2/10 [00:00&lt;00:02,  2.70it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 30%|███       | 3/10 [00:01&lt;00:02,  2.92it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 40%|████      | 4/10 [00:01&lt;00:01,  3.01it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 50%|█████     | 5/10 [00:01&lt;00:01,  3.20it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 60%|██████    | 6/10 [00:01&lt;00:01,  3.35it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 70%|███████   | 7/10 [00:02&lt;00:00,  3.35it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 80%|████████  | 8/10 [00:02&lt;00:00,  3.44it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 90%|█████████ | 9/10 [00:02&lt;00:00,  3.19it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 10/10 [00:03&lt;00:00,  2.85it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 10/10 [00:03&lt;00:00,  3.02it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 
 <div>
@@ -626,61 +574,61 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.011</td>
+      <td>0.003</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.012</td>
+      <td>0.004</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.009</td>
+      <td>0.006</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.009</td>
+      <td>0.007</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.011</td>
+      <td>0.010</td>
       <td>0</td>
     </tr>
     <tr>
       <th>5</th>
       <td>5</td>
-      <td>0.013</td>
+      <td>0.015</td>
       <td>0</td>
     </tr>
     <tr>
       <th>6</th>
       <td>6</td>
-      <td>0.012</td>
+      <td>0.018</td>
       <td>0</td>
     </tr>
     <tr>
       <th>7</th>
       <td>7</td>
-      <td>0.014</td>
+      <td>0.020</td>
       <td>0</td>
     </tr>
     <tr>
       <th>8</th>
       <td>8</td>
-      <td>0.009</td>
+      <td>0.022</td>
       <td>0</td>
     </tr>
     <tr>
       <th>9</th>
       <td>9</td>
-      <td>0.011</td>
+      <td>0.021</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -689,428 +637,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_model <span class="op">=</span> vertical_horizontal_transmission(N<span class="op">=</span><span class="dv">5_000</span>, p_0<span class="op">=</span><span class="fl">0.01</span>, b<span class="op">=</span><span class="fl">0.5</span>, n<span class="op">=</span><span class="dv">5</span>, g<span class="op">=</span><span class="fl">0.1</span>, t_max<span class="op">=</span><span class="dv">50</span>, r_max<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plot_multiple_runs(data_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/50 [00:00&lt;?, ?it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  2%|▏         | 1/50 [00:01&lt;01:22,  1.68s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  4%|▍         | 2/50 [00:03&lt;01:17,  1.61s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  6%|▌         | 3/50 [00:05&lt;01:24,  1.81s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  8%|▊         | 4/50 [00:07&lt;01:22,  1.79s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 5/50 [00:08&lt;01:17,  1.73s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 12%|█▏        | 6/50 [00:10&lt;01:11,  1.61s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 14%|█▍        | 7/50 [00:11&lt;01:06,  1.54s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 16%|█▌        | 8/50 [00:12&lt;01:02,  1.48s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 18%|█▊        | 9/50 [00:14&lt;00:58,  1.43s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 20%|██        | 10/50 [00:15&lt;00:56,  1.41s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 22%|██▏       | 11/50 [00:16&lt;00:53,  1.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 24%|██▍       | 12/50 [00:18&lt;00:52,  1.37s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 26%|██▌       | 13/50 [00:19&lt;00:50,  1.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 28%|██▊       | 14/50 [00:20&lt;00:49,  1.37s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 30%|███       | 15/50 [00:22&lt;00:47,  1.35s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 32%|███▏      | 16/50 [00:23&lt;00:45,  1.34s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 34%|███▍      | 17/50 [00:24&lt;00:43,  1.31s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 36%|███▌      | 18/50 [00:25&lt;00:41,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 38%|███▊      | 19/50 [00:27&lt;00:40,  1.30s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 40%|████      | 20/50 [00:28&lt;00:38,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 42%|████▏     | 21/50 [00:29&lt;00:38,  1.31s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 44%|████▍     | 22/50 [00:31&lt;00:36,  1.31s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 46%|████▌     | 23/50 [00:32&lt;00:35,  1.30s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 48%|████▊     | 24/50 [00:33&lt;00:33,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 50%|█████     | 25/50 [00:35&lt;00:31,  1.27s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 52%|█████▏    | 26/50 [00:36&lt;00:30,  1.25s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 54%|█████▍    | 27/50 [00:37&lt;00:28,  1.25s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 56%|█████▌    | 28/50 [00:38&lt;00:27,  1.24s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 58%|█████▊    | 29/50 [00:40&lt;00:26,  1.28s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 60%|██████    | 30/50 [00:41&lt;00:25,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 62%|██████▏   | 31/50 [00:42&lt;00:25,  1.34s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 64%|██████▍   | 32/50 [00:44&lt;00:25,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 66%|██████▌   | 33/50 [00:45&lt;00:23,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 68%|██████▊   | 34/50 [00:47&lt;00:23,  1.47s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 70%|███████   | 35/50 [00:49&lt;00:23,  1.54s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 72%|███████▏  | 36/50 [00:50&lt;00:21,  1.57s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 74%|███████▍  | 37/50 [00:52&lt;00:19,  1.50s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 76%|███████▌  | 38/50 [00:53&lt;00:17,  1.49s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 78%|███████▊  | 39/50 [00:54&lt;00:15,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 80%|████████  | 40/50 [00:56&lt;00:13,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 82%|████████▏ | 41/50 [00:57&lt;00:12,  1.33s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 84%|████████▍ | 42/50 [00:58&lt;00:10,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 86%|████████▌ | 43/50 [01:00&lt;00:09,  1.37s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 88%|████████▊ | 44/50 [01:01&lt;00:08,  1.34s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 90%|█████████ | 45/50 [01:02&lt;00:06,  1.30s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 92%|█████████▏| 46/50 [01:03&lt;00:05,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 94%|█████████▍| 47/50 [01:05&lt;00:04,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 96%|█████████▌| 48/50 [01:06&lt;00:02,  1.34s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 98%|█████████▊| 49/50 [01:07&lt;00:01,  1.30s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 50/50 [01:09&lt;00:00,  1.26s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 50/50 [01:09&lt;00:00,  1.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/50 [00:00&lt;?, ?it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  2%|▏         | 1/50 [00:01&lt;01:12,  1.49s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  4%|▍         | 2/50 [00:02&lt;01:08,  1.42s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  6%|▌         | 3/50 [00:04&lt;01:09,  1.48s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  8%|▊         | 4/50 [00:05&lt;01:09,  1.50s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 5/50 [00:07&lt;01:06,  1.47s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 12%|█▏        | 6/50 [00:08&lt;01:03,  1.45s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 14%|█▍        | 7/50 [00:10&lt;01:00,  1.41s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 16%|█▌        | 8/50 [00:11&lt;01:00,  1.44s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"
- 18%|█▊        | 9/50 [00:12&lt;00:58,  1.42s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 20%|██        | 10/50 [00:14&lt;00:56,  1.41s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 22%|██▏       | 11/50 [00:15&lt;00:56,  1.46s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 24%|██▍       | 12/50 [00:17&lt;00:56,  1.49s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 26%|██▌       | 13/50 [00:18&lt;00:53,  1.46s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 28%|██▊       | 14/50 [00:20&lt;00:52,  1.46s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 30%|███       | 15/50 [00:21&lt;00:49,  1.43s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"
- 32%|███▏      | 16/50 [00:23&lt;00:47,  1.41s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 34%|███▍      | 17/50 [00:24&lt;00:45,  1.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 36%|███▌      | 18/50 [00:25&lt;00:45,  1.41s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 38%|███▊      | 19/50 [00:27&lt;00:43,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 40%|████      | 20/50 [00:28&lt;00:42,  1.42s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 42%|████▏     | 21/50 [00:30&lt;00:41,  1.42s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 44%|████▍     | 22/50 [00:31&lt;00:40,  1.45s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 46%|████▌     | 23/50 [00:33&lt;00:42,  1.57s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 48%|████▊     | 24/50 [00:35&lt;00:40,  1.55s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 50%|█████     | 25/50 [00:36&lt;00:37,  1.50s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 52%|█████▏    | 26/50 [00:37&lt;00:36,  1.51s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 54%|█████▍    | 27/50 [00:39&lt;00:34,  1.51s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 56%|█████▌    | 28/50 [00:40&lt;00:31,  1.43s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 58%|█████▊    | 29/50 [00:42&lt;00:29,  1.42s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 60%|██████    | 30/50 [00:43&lt;00:27,  1.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 62%|██████▏   | 31/50 [00:44&lt;00:26,  1.39s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 64%|██████▍   | 32/50 [00:46&lt;00:25,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"
-/tmp/ipykernel_118541/3300034538.py:81: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  next_population[next_population["trait"] == "B"].loc[i, "trait"] = "A"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 66%|██████▌   | 33/50 [00:47&lt;00:23,  1.39s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 68%|██████▊   | 34/50 [00:48&lt;00:22,  1.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 70%|███████   | 35/50 [00:50&lt;00:22,  1.53s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 72%|███████▏  | 36/50 [00:52&lt;00:21,  1.54s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 74%|███████▍  | 37/50 [00:54&lt;00:20,  1.59s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 76%|███████▌  | 38/50 [00:55&lt;00:19,  1.63s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 78%|███████▊  | 39/50 [00:57&lt;00:17,  1.58s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 80%|████████  | 40/50 [00:58&lt;00:15,  1.52s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 82%|████████▏ | 41/50 [01:00&lt;00:13,  1.50s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 84%|████████▍ | 42/50 [01:01&lt;00:11,  1.43s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 86%|████████▌ | 43/50 [01:02&lt;00:09,  1.37s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 88%|████████▊ | 44/50 [01:03&lt;00:07,  1.33s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 90%|█████████ | 45/50 [01:04&lt;00:06,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 92%|█████████▏| 46/50 [01:06&lt;00:05,  1.26s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 94%|█████████▍| 47/50 [01:07&lt;00:03,  1.26s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 96%|█████████▌| 48/50 [01:08&lt;00:02,  1.26s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 98%|█████████▊| 49/50 [01:09&lt;00:01,  1.26s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 50/50 [01:11&lt;00:00,  1.25s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 50/50 [01:11&lt;00:00,  1.42s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="chapter08_files/figure-html/cell-9-output-119.png" width="571" height="427"></p>
-</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data_model = vertical_horizontal_transmission(N=5_000, p_0=0.01, b=0.5, n=5, g=0.1, t_max=50, r_max=2)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_multiple_runs(data_model)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

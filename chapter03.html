@@ -387,13 +387,14 @@ Note
 <p>Next, we define some basic variables that we take into account for our first model. We consider a population of <span class="math inline">\(N=100\)</span> individuals as well as a time-frame of <span class="math inline">\(t_{max}=100\)</span> generations.</p>
 <section id="creating-a-conceptual-understanding" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="creating-a-conceptual-understanding"><span class="header-section-number">6.1</span> Creating a conceptual understanding</h2>
-<p>It is a useful exercise to imagine first what we want to implement. This way we can check whether we have a good conceptual understanding, which will help us to write the code more clearly and make fewer mistakes. The following figure shows in the upper panel a scenario, in which there is a population of X individuals present in each generation. Those individuals are uniquely characterized by one of two traits: whether they like opera (salmon color) or not (grey). This visualization captures all assumptions we make for our first model:</p>
+<p>It is a useful exercise to imagine first what we want to implement. This way we can check whether we have a good conceptual understanding, which will help us to write the code more clearly and make fewer mistakes. The following figure shows in the upper panel a scenario, in which there is a population of <code>N</code> individuals present in each generation. Those individuals are uniquely characterized by one of two traits: whether they like opera (salmon color) or not (grey). This visualization captures all assumptions we make for our first model:</p>
 <ol type="1">
 <li>The number of individuals per generation does not change.</li>
 <li>Generations are disjunct, there is no overlap.</li>
 <li>In the first generation, opera preference is randomly assigned to individuals.</li>
 <li>In each subsequent generation, each individual randomly picks an ‘ancestor’ from the previous generation and blindly copies that individual’s preference for opera.</li>
 </ol>
+<p>The models throughout this book assume that invidivuals in one generation learn from individuals of (only) the previous generation by “picking” an older individual and adopting its traits according to some probabilistic rules built into the model. This means an arrow from individual <code>n</code> in generation <code>t</code> to an individual <code>m</code> in generation <code>t + 1</code> should be interpreted as: “Individual <code>m</code> learns from individual <code>m</code>” and not the other way around (because information is flowing from generation <code>t</code> to <code>t+1</code>).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/chains.png" class="img-fluid figure-img"></p>
@@ -622,22 +623,22 @@ Name: trait, dtype: float64</code></pre>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.50</td>
+      <td>0.52</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.52</td>
+      <td>0.44</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.53</td>
+      <td>0.46</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.49</td>
+      <td>0.55</td>
     </tr>
   </tbody>
 </table>
@@ -811,25 +812,25 @@ app = App(app_ui, server)
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>0.36</td>
+      <td>0.48</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.35</td>
+      <td>0.45</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.33</td>
+      <td>0.48</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.29</td>
+      <td>0.52</td>
       <td>0</td>
     </tr>
   </tbody>
