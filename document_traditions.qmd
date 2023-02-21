@@ -14,6 +14,7 @@ Mutations create new traditions [TODO]
 We use the same data as in [@Windram2014_PhylogeneticAnalysisOrlando]^[I am grateful to Heather Windram for providing
 the data and to Francis Windram for helping me to parse it properly.] 
 
+
 This is a case of a qualitative encoding, because the features
 were manually chosen and encoded according to the expert's opinion.
 
@@ -54,7 +55,7 @@ Let's read in the file using BioPython's built-in parser and print the names of 
 
 ```{python}
 for manuscript in SeqIO.parse(file, format="nexus"):
-    print(manuscript.name)
+    print(manuscript.name) 
 ```
 
 ## Sequence alignment 
@@ -65,7 +66,7 @@ While the alignments here rely purely on visual and philological
 features of the text, this methodology has also been successfully applied to melodic variations  [@Savage2022_SequenceAlignmentFolk].
 
 ```{python}
-alignments = list(AlignIO.parse(file, format="nexus"))[0]
+alignments = next(AlignIO.parse(file, format="nexus"))
 print(alignments[:3])
 ```
 
