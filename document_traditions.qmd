@@ -1,27 +1,107 @@
 # Modeling document traditions
 
-<!-- Here, we show how one can use cultural evolution 
+Here, we show how one can use cultural evolution 
 methods to model the histories of manuscripts.
 This is based on a phylogenetic analysis of a Prelude 
 by Orlando Gibbons [@Windram2014_PhylogeneticAnalysisOrlando].
 
 ## Context
 
+Mutations create new traditions [TODO]
+
 ## Data and coding
 
-## Mutations create new traditions 
+We use the same data as in [@Windram2014_PhylogeneticAnalysisOrlando]^[I am grateful to Heather Windram for providing
+the data and to Francis Windram for helping me to parse it properly.] 
+
+This is a case of a qualitative encoding, because the features
+were manually chosen and encoded according to the expert's opinion.
+
+In the context of this chapter, we will rely on implementations 
+of several algorithms in the _BioPython_ library. 
+We also implot `matplotlib` for visualization.
+
+```{python}
+from Bio import SeqIO, AlignIO, Phylo
+from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
+
+import matplotlib
+import matplotlib.pyplot as plt
+```
+
+The data codings are stored in the file `gibbons_prelude.nex` in the [NEXUS format](https://en.wikipedia.org/wiki/Nexus_file). 
+First, let's have a look at the file's contents:
+
+```{python}
+file = "data/gibbons_prelude.nex"
+with open(file) as f:
+    for line in f.readlines():
+        line = line.rstrip("\n") # remove trailing line breaks
+        print(line[:65])
+```
+
+The file's structure is very clear. In the header,
+it declares its format (`#NEXUS`) along with some metadata,
+and then lists the 16 'taxa' (the original _Parthenia_ 
+and its different copies).
+It further describes the encoding scheme, namely
+which `SYMBOLS` can be used (integers from 0-9 
+as well as lowercase roman letters), and that the `?` symbol
+will be used for missing data. We also can see that the dimensionality is `nchar=610`, meaning that the encoding 
+emcompasses 610 different features.
+
+Let's read in the file using BioPython's built-in parser and print the names of all manuscripts:
+
+```{python}
+for manuscript in SeqIO.parse(file, format="nexus"):
+    print(manuscript.name)
+```
 
 ## Sequence alignment 
 
-[@Savage2022_SequenceAlignmentFolk]
+Each manuscript containing Gibbon's Prelude is encoded as a string of characters (see above). In order to find deviations, 
+mutations, and errors in the sequences, we will find best alignments of the manuscript encodings using BioPython.
+While the alignments here rely purely on visual and philological 
+features of the text, this methodology has also been successfully applied to melodic variations  [@Savage2022_SequenceAlignmentFolk].
+
+```{python}
+alignments = list(AlignIO.parse(file, format="nexus"))[0]
+print(alignments[:3])
+```
 
 ## Constructing a possible lineage
 
+We are now in the position to create a possible hereditance
+system out of these alignments because we can use these closest
+alignments to determine pairwise distances between the 
+sequences. 
+
+```{python}
+calculator = DistanceCalculator(model="identity")
+distance_matrix = calculator.get_distance(alignments)
+constructor = DistanceTreeConstructor(calculator)
+```
+
+From this constructor, we can now build a tree:
+
+```{python}
+tree = constructor.build_tree(alignments)
+print(tree)
+```
+
+The Phylo library provides a convenient function to plot this tree:
+
+```{python}
+for clade in tree.get_nonterminals():
+    clade.name = ""
+fig = Phylo.draw(tree)
+```
+
 ## Being confident
 
-bootstrapping procedures
+Use bootstrapping.
 
 ## Conclusion
 
 Briefly discuss NeighborNet graph and point to similar approach in 
-[@Windram2022_PhylogeneticAnalysisTwo]. -->
+[@Windram2022_PhylogeneticAnalysisTwo]. 

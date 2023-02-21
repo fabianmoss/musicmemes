@@ -10,7 +10,7 @@ Subsequently, we follow the excellent learning path for computational models in 
 :::{.callout}
 If you want to refer to this resource, please cite it as appropriately, e.g.: 
 
-Moss, F. C. (2023). _Music memes: Understanding processes of music transmission through cultural evolution modeling_. <https://fabianmoss.github.io/musicmemes>
+Moss, F. C. (2023). _Music memes: Understanding music transmission processes through cultural evolution modeling_. <https://fabianmoss.github.io/musicmemes>
 :::
 
 :::{.callout-important}

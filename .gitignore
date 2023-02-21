@@ -1,6 +1,7 @@
 .quarto/
 _book/
 /.quarto/
+data/
 
 /.luarc.json
 

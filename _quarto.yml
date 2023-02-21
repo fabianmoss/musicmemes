@@ -3,11 +3,11 @@ project:
 
 book:
   title: "Music Memes" 
-  subtitle: "Understanding processes of music transmission through cultural evolution modeling"
+  subtitle: "Understanding music transmission processes through cultural evolution modeling"
   author: 
     - name: "Fabian C. Moss"
       url: https://www.fabian-moss.de/
-      affiliation: Julius-Maximilians-Universität Würzburg
+      affiliation: Julius-Maximilians-Universität Würzburg, Germany
       affiliation-url: https://www.musikwissenschaft.uni-wuerzburg.de/team/moss/
   date: "14 February 2023"
   chapters:
