@@ -105,7 +105,7 @@ Are schemata really memes? I would think not because they can not mutate freely 
 Following this introduction, we introduce some minimal requirements to use Python for this course (@sec-python_primer). 
 
 Subsequently, we introduce with six central mechanisms for cultural inheritance: unbiased transmission (@sec-unbiased_transmission), unbiased and biased mutation (@sec-unbiased_biased_mutation), directly biased transmission (@sec-direct-biased-transmission), frequency-dependent indirectly biased transmission (@sec-frequency-biased-transmission), and demonstrator-based indirectly biased transmission (@sec-demonstrator-biased-transmission). 
-We follow up with a chapter on vertical and horizontal transmission (@sec-vertical), and finally introduce the multiple traits model (@sec-multiple-traits). The following diagram gives an overview of these processes:
+We follow up with a chapter on vertical and horizontal transmission (@sec-vertical-horizontal), and finally introduce the multiple traits model (@sec-multiple-traits). The following diagram gives an overview of these processes:
 
 <!-- {{ include mechanisms_overview.qmd }} -->
 <!-- The above content doesn't render since the latest update of quarto :-/ -->

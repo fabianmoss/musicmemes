@@ -1,15 +1,16 @@
 ---
-title: "Vertical and horizontal transmission"
+# title: "Vertical and horizontal transmission"
+number-sections: true
 jupyter: python3
 execute:
   freeze: auto  # re-render only when source changes
 ---
 
-:::{.callout-note}
+<!-- :::{.callout-note}
 This chapter is based on "Chapter 6: Vertical and horizontal transmission" in @Acerbi2022.
-:::
+::: -->
 
-## Vertical cultural transmission {#sec-vertical}
+# Vertical and horizontal cultural transmission {#sec-vertical-horizontal}
 
 ```{python}
 import numpy as np 
@@ -87,8 +88,6 @@ plot_multiple_runs(data_model)
 data_model = vertical_transmission(N=10_000, p_0=0.1, b=0.5,t_max=50, r_max=5)
 plot_multiple_runs(data_model)
 ```
-
-## Horizontal cultural transmission
 
 ::: {.callout-warning}
 The code below is not yet correct and runs very slowly.
