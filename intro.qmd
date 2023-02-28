@@ -112,3 +112,19 @@ We follow up with a chapter on vertical and horizontal transmission (@sec-vertic
 
 After having a firm grasp on how these processes can be modeled in Python
 and how modeling results can be interpreted, we move to more advanced topics, and more specifically into a number of recent exciting results about cultural evolution and music. We conclude our journey (@sec-conclusion) with a more general discussion of the implications of cultural evolution for how we think about music, on the relevance of modeling in music research and the humanities more generally, as well as on the great potential of this approach for future research.
+
+## Progress?
+
+Finally, at the end of this introduction, I want to circle back to an important issue that 
+has been central to many concerns surrounding the application of evolutionary models to music, and to culture more generally.
+I am speaking about notions of progress and teleology in the sense that (cultural) evolution would be, in some sense,
+continuously improving. And not only that, it would be guided towards a certain goal, an optimal state of superiority.
+These concerns shouldn't be disregarded too lightly, especially in view of the misunderstandings and harmful consequences 
+they have caused. On the other hand, we also need a differentiated perspective on evolutionary theory, its assumptions, 
+and the extent to which one might apply it to cultural phenomena. I believe that the generally critical attitude in the humanities
+can be, in fact, a great catalyst to weed out inappropriate notions and interpretations. However, what is needed in addition
+is also a certain openness to engage in discussions with scientific approaches to culture and not an unreflected (and thus
+uncritical) dismissal _per se_. This book wants to contribute to a fruitful discussion, provide entry points for humanists 
+to better understand computational evolutionary models, and to show in which areas they have been and could be applied.
+After all, all of academia, the humanities and the sciences alike, are also subject of constant changes and adaptations 
+to new environmental conditions. Music research is no exception.
