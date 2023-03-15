@@ -127,6 +127,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -315,8 +316,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#random-draws-from-a-bag" id="toc-random-draws-from-a-bag" class="nav-link active" data-scroll-target="#random-draws-from-a-bag"><span class="toc-section-number">4.1</span>  Random draws from a bag</a></li>
   <li><a href="#composing-random-melodies" id="toc-composing-random-melodies" class="nav-link" data-scroll-target="#composing-random-melodies"><span class="toc-section-number">4.2</span>  Composing random melodies</a></li>
-  <li><a href="#random-bach" id="toc-random-bach" class="nav-link" data-scroll-target="#random-bach"><span class="toc-section-number">4.3</span>  Random Bach</a></li>
-  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data"><span class="toc-section-number">4.4</span>  Accessing data</a></li>
+  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="toc-section-number">4.3</span>  Regular expressions</a></li>
+  <li><a href="#random-bach" id="toc-random-bach" class="nav-link" data-scroll-target="#random-bach"><span class="toc-section-number">4.4</span>  Random Bach</a></li>
+  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data"><span class="toc-section-number">4.5</span>  Accessing data</a></li>
   </ul>
 </nav>
     </div>
@@ -348,13 +350,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s try this in Python. We will use the <code>random</code> modul of the <em>NumPy</em> library:</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>bag <span class="op">=</span> <span class="bu">range</span>(<span class="dv">4</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ball <span class="op">=</span> np.random.choice(bag)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng() <span class="co"># initialize a default random generator</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bag <span class="op">=</span> <span class="bu">range</span>(<span class="dv">4</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ball <span class="op">=</span> rng.choice(bag)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>0</code></pre>
 </div>
 </div>
 <p>If this draw were really random, we would expect that each number is equally likely. We can test this by repeating this procedure again and again, tallying the result each time.</p>
@@ -365,7 +368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> []</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ball <span class="op">=</span> np.random.choice(bag)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ball <span class="op">=</span> rng.choice(bag)</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    samples.append(ball)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series(samples)</span>
@@ -373,21 +376,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.head(<span class="dv">10</span>))</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.value_counts().sort_index())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0    2
-1    3
-2    2
-3    2
+<pre><code>0    3
+1    1
+2    3
+3    3
 4    1
 5    3
 6    3
 7    2
-8    2
-9    2
+8    0
+9    0
 dtype: int64
-0    253
-1    244
-2    249
-3    254
+0    229
+1    265
+2    246
+3    260
 dtype: int64</code></pre>
 </div>
 </div>
@@ -401,7 +404,7 @@ dtype: int64</code></pre>
 </div>
 <p>Now, what if the numbers in the bag were not just numbered, but had different colors? Let’s assume we have another bag, <code>bag2</code>, with 4 balls, three brown, one blue:</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bag2 <span class="op">=</span> [<span class="st">"brown"</span>, <span class="st">"brown"</span>, <span class="st">"brown"</span>, <span class="st">"blue"</span>]</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bag2 <span class="op">=</span> [ <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"brown"</span> ]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>samples2 <span class="op">=</span> []</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -417,19 +420,19 @@ dtype: int64</code></pre>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>s2.value_counts().sort_index().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0    brown
-1    brown
-2     blue
-3    brown
+<pre><code>0     blue
+1     blue
+2    brown
+3     blue
 4     blue
-5    brown
+5     blue
 6     blue
 7    brown
 8    brown
-9    brown
+9     blue
 dtype: object
-blue     247
-brown    753
+blue     780
+brown    220
 dtype: int64</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -443,10 +446,10 @@ dtype: int64</code></pre>
 <p>Since this book is about music, let’s see how we can use randomness to create (a resemblance of) music. For instance, we can ‘compose’ a random melody by using only the white keys on a piano within some octave:</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>notes <span class="op">=</span> <span class="bu">list</span>(<span class="st">"CDEFGAB"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>melody <span class="op">=</span> np.random.choice(notes, size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>melody <span class="op">=</span> rng.choice(notes, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(melody, end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['E' 'C' 'G' 'A' 'A' 'A' 'B' 'A' 'B' 'A'] </code></pre>
+<pre><code>['D' 'E' 'F' 'E' 'G' 'D' 'C' 'B' 'F' 'A'] </code></pre>
 </div>
 </div>
 <p>We composed a little melody by randomly drawing a note from the list of notes. This is also called <em>sampling</em>. Note that some notes repeat, showing that we sample with replacement: after each draw, the note is put back in the bag, so to speak. Of course, there are many things that we would have to generate, too, to make this a real melody. For instance, we do not know the duration of any of these notes, we don’t know the meter nor the key, we don’t know the tempo or volume, and so on. But our goal here is not to create a beautiful piece of music, but rather to show how we can use randomness to generate something.</p>
@@ -454,39 +457,130 @@ dtype: int64</code></pre>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> melody(n):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    notes <span class="op">=</span> <span class="bu">list</span>(<span class="st">"CDEFGAB"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.choice(notes, size<span class="op">=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rng.choice(notes, size<span class="op">=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now use this function to easily create random melodies of different lengths:</p>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(melody(<span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['F' 'A' 'B' 'G' 'C' 'D' 'G']</code></pre>
+<pre><code>['D' 'B' 'F' 'C' 'E' 'D' 'E']</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(melody(<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['E' 'C' 'E' 'E' 'A' 'C' 'B' 'D' 'E' 'C' 'E' 'D']</code></pre>
+<pre><code>['G' 'G' 'E' 'D' 'A' 'B' 'E' 'E' 'C' 'D' 'A' 'E']</code></pre>
 </div>
 </div>
 </section>
-<section id="random-bach" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="random-bach"><span class="header-section-number">4.3</span> Random Bach</h2>
-<p>Four-part writing is a core part of Western composition history. Here, we will build a mock version of a four-part chorale by randomly generating each voice and putting them together in a table. Doing so will show you how you can create tables, which we will need later on. The most popular way to work with tables in Python is by using the <code>pandas</code> library. In <code>pandas</code>, tables are called ‘data frames’, and there is a <code>DataFrame</code> object to represent tables. Let’s see how we could create a four-part homophonic chorale with eight ‘chords’:</p>
+<section id="regular-expressions" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="regular-expressions"><span class="header-section-number">4.3</span> Regular expressions</h2>
+<p>The functionalities introduced above allow us to synthesize an artificial corpus of melodies, here simplified as lists of pitch classes and containing varying numbers of notes.</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>chorale <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"S"</span> : melody(n<span class="op">=</span><span class="dv">8</span>),</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span> : melody(n<span class="op">=</span><span class="dv">8</span>),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"T"</span> : melody(n<span class="op">=</span><span class="dv">8</span>),</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span> : melody(n<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">4</span> <span class="co"># number of pieces in the corpus</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [ melody(<span class="dv">12</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first three melodies of our corpus are:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mel <span class="kw">in</span> corpus:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['G' 'F' 'B' 'A' 'A' 'F' 'F' 'B' 'G' 'C' 'C' 'B']
+['B' 'F' 'A' 'D' 'D' 'B' 'D' 'A' 'B' 'D' 'G' 'A']
+['B' 'E' 'G' 'F' 'C' 'B' 'A' 'G' 'D' 'B' 'E' 'G']
+['G' 'B' 'F' 'G' 'F' 'F' 'F' 'C' 'F' 'G' 'C' 'D']</code></pre>
+</div>
+</div>
+<p>Of course, melodies are not always of the same length. We could vary the lenght of the melodies by creating a hand-crafted list specifying the number of notes for each melody in the corpus.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [ melody(n) <span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">13</span>] ]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mel <span class="kw">in</span> corpus:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['B' 'F' 'B' 'D' 'C' 'C' 'A' 'A' 'F' 'D']
+['F' 'G' 'A' 'C' 'A']
+['G' 'F' 'A' 'E' 'E' 'E' 'B']
+['A' 'E' 'C' 'F' 'D' 'B' 'A' 'G' 'G' 'B' 'B' 'E' 'F']</code></pre>
+</div>
+</div>
+<p>However, specifying the lenghts of the melodies for a large corpus would be a very time-consuming task. In order to model the variability in length of melodies in a musical corpus, we will <em>randomly sample</em> them from a specified probability distribution. A good candidate for such a distribution is the <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson distribution</a>, that we can access from our random number generator <code>rng</code>.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="dv">25</span> <span class="co"># average number of notes in melody</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span> <span class="co"># number of pieces in the corpus </span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [ melody(rng.poisson(lam<span class="op">=</span>lam)) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(N) ]</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> pd.Series([ <span class="bu">len</span>(m) <span class="cf">for</span> m <span class="kw">in</span> corpus ]).value_counts()</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">max</span>(lengths))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> lengths.sort_index().reindex(idx).fillna(<span class="dv">0</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>plt.bar(idx, lengths)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.axvline(lam, c<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-piece-lengths" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="randomness_files/figure-html/fig-piece-lengths-output-1.png" width="566" height="411" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Distribution of melody lengths in the corpus.”</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now the variable <code>corpus</code> contains lists of pitch classes (<em>aka</em> melodies) of different lengths, most of them around the preset average value <code>lam</code>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> also indicated by the vertical red line. It is moreover evident that the corpus contains rather few very short or long melodies.</p>
+<p>We can, of course, not only observe the distribution of melody lengths, but also look at the overall distribution of note occurrence in the corpus:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> []</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> corpus:</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> pd.Series(m)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    counts.append(c)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>pd.concat(counts).value_counts().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-note-freqs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="randomness_files/figure-html/fig-note-freqs-output-1.png" width="583" height="408" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: Overall note frequencies in the artificial corpus.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>At this point, we should stop and celebrate. We have just written our first <em>probabilistic model</em> to generate melodies. Admittedly, it is not a very good model for actual melodies, for example because notes are drawn <em>uniformly at random</em> from the set of diatonic pitch classes using the <code>.choice()</code> method, which leads to the somewhat unrealistic picture in <a href="#fig-note-freqs">Figure&nbsp;<span>4.2</span></a>. One would expect that in real melodies some notes occur more often than others and that the occurrence of a note does, for instance, also depend on the notes that come before and after it. But, in principle, these other constraints could be added to our model to make it more realistic. The point here was mainly to illustrate how artificial corpora can be generated probabilistically. This will prove useful later on because it allows us to compare real-world corpora of music against synthetic ones generated by our models.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Expand our melody model so that it also includes octave information for each pitch class in order to make it a bit more musical.</p>
+</div>
+</div>
+</section>
+<section id="random-bach" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="random-bach"><span class="header-section-number">4.4</span> Random Bach</h2>
+<p>Four-part writing is a core part of Western composition history. Here, we will build a mock version of a four-part chorale by randomly generating each voice and putting them together in a table. Doing so will show you how you can create tables, which we will need later on. The most popular way to work with tables in Python is by using the <code>pandas</code> library. In <code>pandas</code>, tables are called ‘data frames’, and there is a <code>DataFrame</code> object to represent tables. Let’s see how we could create a four-part homophonic chorale with eight ‘chords’:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>chorale <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"S"</span> : melody(n),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span> : melody(n),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"T"</span> : melody(n),</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span> : melody(n)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The variable <code>chorale</code> now stores our little composition and we can inspect it:</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>chorale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>chorale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
 
 <div>
 
@@ -503,59 +597,59 @@ dtype: int64</code></pre>
   <tbody>
     <tr>
       <th>0</th>
-      <td>A</td>
-      <td>G</td>
-      <td>D</td>
-      <td>D</td>
+      <td>B</td>
+      <td>F</td>
+      <td>C</td>
+      <td>C</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>G</td>
+      <td>A</td>
+      <td>F</td>
       <td>G</td>
       <td>B</td>
-      <td>D</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>E</td>
       <td>A</td>
       <td>G</td>
-      <td>E</td>
-      <td>E</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>A</td>
       <td>C</td>
-      <td>E</td>
+      <td>A</td>
       <td>F</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>G</td>
+      <td>A</td>
+      <td>E</td>
       <td>B</td>
-      <td>A</td>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>5</th>
+      <td>D</td>
       <td>B</td>
       <td>A</td>
-      <td>F</td>
-      <td>A</td>
+      <td>D</td>
     </tr>
     <tr>
       <th>6</th>
+      <td>E</td>
       <td>A</td>
-      <td>F</td>
-      <td>D</td>
-      <td>F</td>
+      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>C</td>
       <td>E</td>
-      <td>E</td>
+      <td>B</td>
       <td>C</td>
+      <td>D</td>
     </tr>
   </tbody>
 </table>
@@ -563,21 +657,21 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>Here we have generated each voice using the <code>melody</code> function. We can use it to create a new function that will directly give us a new chorale of a certain length:</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chorale(n):</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"S"</span> : melody(n<span class="op">=</span>n),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"A"</span> : melody(n<span class="op">=</span>n),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"T"</span> : melody(n<span class="op">=</span>n),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B"</span> : melody(n<span class="op">=</span>n)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chorale(n):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"S"</span> : melody(n<span class="op">=</span>n),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"A"</span> : melody(n<span class="op">=</span>n),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"T"</span> : melody(n<span class="op">=</span>n),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B"</span> : melody(n<span class="op">=</span>n)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>my_chorale <span class="op">=</span> chorale(n<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>my_chorale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_chorale <span class="op">=</span> chorale(n<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>my_chorale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 
 <div>
 
@@ -594,87 +688,87 @@ dtype: int64</code></pre>
   <tbody>
     <tr>
       <th>0</th>
-      <td>G</td>
-      <td>C</td>
+      <td>D</td>
       <td>B</td>
+      <td>E</td>
       <td>A</td>
     </tr>
     <tr>
       <th>1</th>
       <td>G</td>
+      <td>C</td>
+      <td>D</td>
       <td>G</td>
-      <td>E</td>
-      <td>F</td>
     </tr>
     <tr>
       <th>2</th>
       <td>D</td>
-      <td>F</td>
       <td>G</td>
-      <td>E</td>
+      <td>B</td>
+      <td>C</td>
     </tr>
     <tr>
       <th>3</th>
       <td>A</td>
-      <td>B</td>
+      <td>E</td>
       <td>C</td>
       <td>A</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>A</td>
-      <td>G</td>
-      <td>B</td>
       <td>C</td>
+      <td>E</td>
+      <td>D</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>D</td>
-      <td>D</td>
-      <td>F</td>
       <td>A</td>
+      <td>A</td>
+      <td>G</td>
+      <td>F</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>D</td>
-      <td>D</td>
-      <td>G</td>
-      <td>E</td>
+      <td>B</td>
+      <td>C</td>
+      <td>B</td>
+      <td>F</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>F</td>
-      <td>D</td>
+      <td>E</td>
       <td>F</td>
       <td>A</td>
+      <td>D</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>B</td>
-      <td>E</td>
-      <td>A</td>
-      <td>E</td>
+      <td>F</td>
+      <td>C</td>
+      <td>D</td>
+      <td>C</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>C</td>
-      <td>F</td>
-      <td>F</td>
+      <td>G</td>
+      <td>G</td>
+      <td>A</td>
       <td>F</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>B</td>
-      <td>C</td>
+      <td>D</td>
       <td>A</td>
-      <td>G</td>
+      <td>E</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>11</th>
+      <td>F</td>
       <td>B</td>
       <td>G</td>
-      <td>B</td>
-      <td>G</td>
+      <td>E</td>
     </tr>
   </tbody>
 </table>
@@ -682,9 +776,9 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>It will look a bit closer to musical notation if we transpose the data frame by using the <code>.T</code> attribute:</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_chorale.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_chorale.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
 
 <div>
 
@@ -709,63 +803,63 @@ dtype: int64</code></pre>
   <tbody>
     <tr>
       <th>S</th>
-      <td>G</td>
+      <td>D</td>
       <td>G</td>
       <td>D</td>
       <td>A</td>
+      <td>C</td>
       <td>A</td>
-      <td>D</td>
+      <td>B</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
       <td>D</td>
       <td>F</td>
-      <td>B</td>
-      <td>C</td>
-      <td>B</td>
-      <td>B</td>
     </tr>
     <tr>
       <th>A</th>
-      <td>C</td>
-      <td>G</td>
-      <td>F</td>
       <td>B</td>
+      <td>C</td>
       <td>G</td>
-      <td>D</td>
-      <td>D</td>
-      <td>D</td>
       <td>E</td>
+      <td>E</td>
+      <td>A</td>
+      <td>C</td>
       <td>F</td>
       <td>C</td>
       <td>G</td>
+      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>T</th>
+      <td>E</td>
+      <td>D</td>
       <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>G</td>
+      <td>B</td>
+      <td>A</td>
+      <td>D</td>
+      <td>A</td>
       <td>E</td>
       <td>G</td>
-      <td>C</td>
-      <td>B</td>
-      <td>F</td>
-      <td>G</td>
-      <td>F</td>
-      <td>A</td>
-      <td>F</td>
-      <td>A</td>
-      <td>B</td>
     </tr>
     <tr>
       <th>B</th>
       <td>A</td>
-      <td>F</td>
-      <td>E</td>
-      <td>A</td>
+      <td>G</td>
       <td>C</td>
       <td>A</td>
-      <td>E</td>
+      <td>B</td>
+      <td>F</td>
+      <td>F</td>
+      <td>D</td>
+      <td>C</td>
+      <td>F</td>
       <td>A</td>
       <td>E</td>
-      <td>F</td>
-      <td>G</td>
-      <td>G</td>
     </tr>
   </tbody>
 </table>
@@ -773,49 +867,49 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="accessing-data" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="accessing-data"><span class="header-section-number">4.4</span> Accessing data</h2>
+<section id="accessing-data" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="accessing-data"><span class="header-section-number">4.5</span> Accessing data</h2>
 <p>Having the variable <code>my_chorale</code> store our data frame, this is how we can access individual voices:</p>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"T"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>0     B
-1     E
-2     G
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"T"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>0     E
+1     D
+2     B
 3     C
-4     B
-5     F
-6     G
-7     F
-8     A
-9     F
-10    A
-11    B
+4     D
+5     G
+6     B
+7     A
+8     D
+9     A
+10    E
+11    G
 Name: T, dtype: object</code></pre>
 </div>
 </div>
 <p>You can verify that it is the same ‘melody’ as above in the chorale. If we want a specific note from this voice, say the fifth one, we can access is this way:</p>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"T"</span>][<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>'B'</code></pre>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"T"</span>][<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>'D'</code></pre>
 </div>
 </div>
 <p>We first select the “T” column, and then select the fifth element (remember that we start counting at 0, so we need to insert 4 to get the fifth). We can also get entire ranges of a voice:</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"A"</span>][<span class="dv">4</span>:<span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>4    G
-5    D
-6    D
-7    D
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"A"</span>][<span class="dv">4</span>:<span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>4    E
+5    A
+6    C
+7    F
 Name: A, dtype: object</code></pre>
 </div>
 </div>
 <p>This gives us the fifths to ninth note in the Alto voice. If we want to apply the same logic also to column ranges, we have to write it a bit differently using the <code>.loc()</code> method for localising data:</p>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_chorale.loc[<span class="dv">1</span>:<span class="dv">3</span>, <span class="st">"S"</span>:<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_chorale.loc[<span class="dv">1</span>:<span class="dv">3</span>, <span class="st">"S"</span>:<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
 
 <div>
 
@@ -831,17 +925,17 @@ Name: A, dtype: object</code></pre>
     <tr>
       <th>1</th>
       <td>G</td>
-      <td>G</td>
+      <td>C</td>
     </tr>
     <tr>
       <th>2</th>
       <td>D</td>
-      <td>F</td>
+      <td>G</td>
     </tr>
     <tr>
       <th>3</th>
       <td>A</td>
-      <td>B</td>
+      <td>E</td>
     </tr>
   </tbody>
 </table>
@@ -851,6 +945,12 @@ Name: A, dtype: object</code></pre>
 <p><code>.loc()</code> takes two arguments: the rows (or row range), and the columns (or column range). We can use it to ‘slice’ our data frame in order to get specific portions of it.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Short for the Greek letter <span class="math inline">\(\lambda\)</span> (“lambda”).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
