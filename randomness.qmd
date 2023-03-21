@@ -13,6 +13,10 @@ outcomes from inputs. Rather, we incorporate our knowledge about the world
 in a computational model and use randomness to include the inherent uncertainty
 about the exact outcomes of the simulations.
 
+:::{.callout}
+Add section on probability.
+:::
+
 But randomness is a difficult concept to capture. 
 For the purpose of this book, we will simulate a speficic kind of randomness
 by sampling from a certain set of items.

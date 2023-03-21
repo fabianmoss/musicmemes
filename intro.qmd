@@ -16,11 +16,11 @@ Originally, however, the definition of 'meme' was much broader.
 Towards the end of _The Selfish Gene_, Richard Dawkins
 introduced the concept as follows:
 
-> We need [...] a noun that conveys
+> "We need [...] a noun that conveys
 > the idea of a unit of cultural transmission, or a unit of _imitation_.
 > 'Mimeme' comes from a suitable Greek root,^[<https://en.wikipedia.org/wiki/Mimesis>] but I want a monosyllable word
 > that sounds a bit like 'gene'. I hope my classicist friends will forgive me
-> if I abbreviate mimeme to _meme_. @Dawkins1976_SelfishGenea [p. 192]
+> if I abbreviate mimeme to _meme_." @Dawkins1976_SelfishGenea [p. 192]
 
 Here, we adopt this original, more extensive concept of memes that,
 as we will discover, comprises the more or less funny internet pictures
@@ -54,6 +54,19 @@ A few selected important contributions are:
 
 See @Blackmore2000_MemeMachine, Chapter 2 "Universal Darwinism" for an excellent introduction.
 
+These factors are, coincidentally, also central in the definition of folk music put forward by 
+the _International Folk Music Council_:
+
+> "Folk music is the product of a musical tradition that has been evolved
+> through the process of oral transmission. The factors that shape the tradition are:
+> (i) continuity which links the present with the past;
+> (ii) variation which springs from the creative impulse of the individual or the group; and
+> (iii) selection by the community, which determines the form or forms in which the music survives."
+> [@InternationalFolkMusicCouncil1955_Resolutions p.23;see also @Karpeles1955_DefinitionFolkMusic]
+
+It is interesting that many contempory definitions of music, for example the 
+aphoristic "humanly structured sound" one, do not refer explicitly to modes 
+or conditions of transmission.
 
 ## Music in human evolution
 
