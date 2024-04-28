@@ -349,10 +349,10 @@ my_chorale
 ```
 
 It will look a bit closer to musical notation if 
-we transpose the data frame by using the `.T` attribute:
+we transpose the data frame by using the `.transpose()` method:
 
 ```{python}
-my_chorale.T
+my_chorale.transpose()
 ```
 
 ## Accessing data

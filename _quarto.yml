@@ -33,7 +33,7 @@ book:
         - chapter09.qmd
     - part: Advanced topics
       chapters:
-        - document_traditions.qmd
+        # - document_traditions.qmd
         - pitches.qmd
         - folk_tunes.qmd
         - communities.qmd
@@ -43,7 +43,7 @@ book:
     - references.qmd
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@ascales?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alan Scales</a> on <a href="https://unsplash.com/s/photos/a4-texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   page-footer: 
-    left: "Copyright 2023, Fabian C. Moss" 
+    left: "Copyright 2024, Fabian C. Moss" 
     right: 
       - icon: github
         href: https://github.com/fabianmoss
@@ -56,7 +56,7 @@ execute:
   freeze: auto  # re-render only when source changes
 
 citation:
-  url: https://fabianmoss.github.io/cultevopy
+  url: https://fabianmoss.github.io/musicmemes
 bibliography: references.bib
 csl: apa.csl
 
@@ -81,7 +81,9 @@ format:
     papersize: a4paper
     # highlight-style: light
     # include-before-body: empty.tex
-    code-line-numbers: false
+    code-line-numbers: true
+    highlight-style: dracula
     code-block-bg: f5f5f5
+    cite-method: biblatex
 
 license: "CC BY-NC"
