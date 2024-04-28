@@ -39,7 +39,7 @@ book:
         - communities.qmd
         - style_evolution.qmd
     - conclusion.qmd
-    # - appendix.qmd
+    - appendix.qmd
     - references.qmd
   cover-image: texture.jpg # Photo by <a href="https://unsplash.com/@ascales?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alan Scales</a> on <a href="https://unsplash.com/s/photos/a4-texture?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   page-footer: 
@@ -81,9 +81,10 @@ format:
     papersize: a4paper
     # highlight-style: light
     # include-before-body: empty.tex
-    code-line-numbers: true
-    highlight-style: dracula
+    code-line-numbers: false 
+    highlight-style: arrow
     code-block-bg: f5f5f5
     cite-method: biblatex
+    biblio-style: apa
 
 license: "CC BY-NC"
