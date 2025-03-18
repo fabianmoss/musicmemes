@@ -106,7 +106,9 @@ t_max = 100
 In general, we use the variable `t` to designate generation counts. 
 :::
 
-Now we create a variable `population` that will store the data about our simulated population. This population has either of two traits `"A"` and `"B"`, with a certain probability. We store all of this in a so-called 'data frame', which is a somewhat fancy, Pandas-specific term for a table. 
+Now we create a variable `population` that will store the data about our simulated population. 
+This population has either of two traits `"A"` and `"B"`, with a certain probability. 
+We store all of this in a so-called 'data frame', which is a somewhat fancy, Pandas-specific term for a table. 
 
 ```{python}
 population = pd.DataFrame(
@@ -115,10 +117,17 @@ population = pd.DataFrame(
 ```
 
 Let's take this code apart to understand it better.
-From the Pandas library, which we imported as the alias `pd`, we create a `DataFrame` object. The data contained in this the data frame `population` is specified via a dictionary that has `"trait"` as its key and a fairly complex expression starting with the random number generator `rng` as its value. What this value says is, from the list `["A", "B"]` choose randomly `N` instances with replacement (if `replace` were set to `False`, we could at most sample 2 values from the list). So, the data frame `population` should contain 100 randomly sampled values of A's and B's. Let's confirm this:
+From the Pandas library, which we imported as the alias `pd`, we create a `DataFrame` object. 
+The data contained in this the data frame `population` is specified via a dictionary 
+that has `"trait"` as its key and a fairly complex expression starting with the 
+random number generator `rng` as its value. What this value says is, from the list `["A", "B"]` 
+choose randomly `N` instances with replacement (if `replace` were set to `False`, 
+we could at most sample 2 values from the list). So, the data frame `population` 
+should contain 100 randomly sampled values of A's and B's. Let's confirm this by looking
+at the first 10 individuals of the population:
 
 ```{python}
-population.head()
+population.head(10)
 ```
 
 As you can see, `population` stores a table (many of the 100 rows are omitted here for display reasons) and a single column called 'trait'. The `.head()` method appended to the `population` data frame shows restricts the output to only the first 5 rows (0 through 4). Each row in the 'trait' column contains either the value A or B. To the left of the data frame you can see the numbers of rows explicitly spelled out. This is called the data frame's _index_. 
@@ -419,3 +428,6 @@ def unbiased_transmission_3(N, p_0, t_max, r_max):
 data_model = unbiased_transmission_3(10_000, p_0=.2, t_max=200, r_max=5)
 plot_multiple_runs(data_model)
 ```
+
+The lesson here is that, if the population is large enough and individuals randomly copy from 
+the previous generation, the average frequency of traits in the population will not significantly change.
