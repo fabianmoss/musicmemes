@@ -297,7 +297,7 @@ In the context of regular expressions, this character signifies
 Introduce regexes more flexibly and write a general pattern matcher.
 :::
 
-## Random Bach 
+## Horrible Homophony
 
 Four-part writing is a core part of Western composition history.
 Here, we will build a mock version of a four-part chorale by randomly 
