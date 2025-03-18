@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,17 +96,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -110,12 +144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Prelude</a></li><li class="breadcrumb-item"><a href="./randomness.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Randomness and order</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Prelude</a></li><li class="breadcrumb-item"><a href="./randomness.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Randomness and order</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -125,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Music Memes</a> 
@@ -266,32 +300,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./document_traditions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Modeling document traditions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./pitches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The usage of pitches and intervals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The usage of pitches and intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./folk_tunes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Folk tune complexity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Folk tune complexity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communities.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Music communities</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Music communities</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./style_evolution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Style evolution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Style evolution</span></span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +327,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -311,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -327,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#finals" id="toc-finals" class="nav-link" data-scroll-target="#finals"><span class="header-section-number">4.4.2</span> Finals</a></li>
   <li><a href="#patterns-more-generally" id="toc-patterns-more-generally" class="nav-link" data-scroll-target="#patterns-more-generally"><span class="header-section-number">4.4.3</span> Patterns more generally</a></li>
   </ul></li>
-  <li><a href="#random-bach" id="toc-random-bach" class="nav-link" data-scroll-target="#random-bach"><span class="header-section-number">4.5</span> Random Bach</a></li>
+  <li><a href="#horrible-homophony" id="toc-horrible-homophony" class="nav-link" data-scroll-target="#horrible-homophony"><span class="header-section-number">4.5</span> Horrible Homophony</a></li>
   <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data"><span class="header-section-number">4.6</span> Accessing data</a></li>
   </ul>
 </nav>
@@ -335,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Prelude</a></li><li class="breadcrumb-item"><a href="./randomness.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Randomness and order</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-randomness" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Randomness and order</span></span></h1>
 </div>
@@ -350,7 +384,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>This course is about music and evolution, specifically about using computational models to better understand the mechanisms underlying certain evolutionary processes. In order to do so, we will often run simulations to observe and interpret the resulting scenarios against the backdrop of our modeling assumptions and our domain knowledge.</p>
 <p>Simulations are useful because for many situations we are not able to provide deterministic mathematical formulae to obtain outcomes from inputs. Rather, we incorporate our knowledge about the world in a computational model and use randomness to include the inherent uncertainty about the exact outcomes of the simulations.</p>
@@ -368,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="random-draws-from-a-bag" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="random-draws-from-a-bag"><span class="header-section-number">4.1</span> Random draws from a bag</h2>
 <p>Let’s try this in Python. We will use the <code>random</code> modul of the <em>NumPy</em> library:</p>
-<div class="cell" data-execution_count="1">
+<div id="cecf51d6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng() <span class="co"># initialize a default random generator</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -377,11 +413,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>1</code></pre>
 </div>
 </div>
 <p>If this draw were really random, we would expect that each number is equally likely. We can test this by repeating this procedure again and again, tallying the result each time.</p>
-<div class="cell" data-execution_count="2">
+<div id="b9410f1b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -396,34 +432,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.head(<span class="dv">10</span>))</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.value_counts().sort_index())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0    0
-1    1
-2    0
+<pre><code>0    1
+1    3
+2    2
 3    1
 4    2
-5    1
-6    0
+5    3
+6    2
 7    2
-8    3
+8    0
 9    3
 dtype: int64
-0    258
-1    240
-2    251
-3    251
-dtype: int64</code></pre>
+0    234
+1    261
+2    237
+3    268
+Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>The number are not exactly the same but pretty close. If we would continue sampling from our bag, they would get more and more similar to one another. It is easier to understand this by visualizing it.</p>
-<div class="cell" data-execution_count="3">
+<div id="15e08596" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s.value_counts().sort_index().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="randomness_files/figure-html/cell-4-output-1.png" width="575" height="407"></p>
+<div>
+<figure class="figure">
+<p><img src="randomness_files/figure-html/cell-4-output-1.png" width="575" height="407" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now, what if the numbers in the bag were not just numbered, but had different colors? Let’s assume we have another bag, <code>bag2</code>, with 4 balls, three brown, one blue:</p>
-<div class="cell" data-execution_count="4">
+<div id="3eedfd5c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bag2 <span class="op">=</span> [ <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"brown"</span> ]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>samples2 <span class="op">=</span> []</span>
@@ -440,23 +480,27 @@ dtype: int64</code></pre>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>s2.value_counts().sort_index().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0    brown
-1     blue
-2     blue
-3     blue
-4    brown
-5    brown
-6    brown
-7     blue
-8     blue
-9     blue
+<pre><code>0    blue
+1    blue
+2    blue
+3    blue
+4    blue
+5    blue
+6    blue
+7    blue
+8    blue
+9    blue
 dtype: object
-blue     763
-brown    237
-dtype: int64</code></pre>
+blue     742
+brown    258
+Name: count, dtype: int64</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="randomness_files/figure-html/cell-5-output-2.png" width="575" height="444"></p>
+<div>
+<figure class="figure">
+<p><img src="randomness_files/figure-html/cell-5-output-2.png" width="575" height="439" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is remarkable: by randomly (uniformly) drawing from the second bag, the frequencies of all samples approach the ratio of brown to blue balls (3:1)!</p>
@@ -464,68 +508,68 @@ dtype: int64</code></pre>
 <section id="composing-random-melodies" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="composing-random-melodies"><span class="header-section-number">4.2</span> Composing random melodies</h2>
 <p>Since this book is about music, let’s see how we can use randomness to create (a resemblance of) music. For instance, we can ‘compose’ a random melody by using only the white keys on a piano within some octave:</p>
-<div class="cell" data-execution_count="5">
+<div id="c623e903" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>notes <span class="op">=</span> <span class="bu">list</span>(<span class="st">"CDEFGAB"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>melody <span class="op">=</span> rng.choice(notes, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(melody, end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['C' 'G' 'F' 'D' 'G' 'A' 'C' 'C' 'F' 'E'] </code></pre>
+<pre><code>['F' 'D' 'D' 'G' 'B' 'C' 'C' 'C' 'A' 'E'] </code></pre>
 </div>
 </div>
 <p>We composed a little melody by randomly drawing a note from the list of notes. This is also called <em>sampling</em>. Note that some notes repeat, showing that we sample with replacement: after each draw, the note is put back in the bag, so to speak. Of course, there are many things that we would have to generate, too, to make this a real melody. For instance, we do not know the duration of any of these notes, we don’t know the meter nor the key, we don’t know the tempo or volume, and so on. But our goal here is not to create a beautiful piece of music, but rather to show how we can use randomness to generate something.</p>
 <p>As you might remember from the previous chapter, we can also write a function to do this, so that we can perform this operation (composition of a random melody) more easily, while at the same time having more control over it through its parameters. The following function does exactly this, having only one parameter that controlls the length of the melody (the number of notes to be sampled).</p>
-<div class="cell" data-execution_count="6">
+<div id="a10a3a12" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> melody(n):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    notes <span class="op">=</span> <span class="bu">list</span>(<span class="st">"CDEFGAB"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rng.choice(notes, size<span class="op">=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now use this function to easily create random melodies of different lengths:</p>
-<div class="cell" data-execution_count="7">
+<div id="fe04634a" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(melody(<span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['E' 'B' 'G' 'F' 'A' 'C' 'B']</code></pre>
+<pre><code>['B' 'E' 'G' 'A' 'G' 'A' 'B']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="bccc0bb8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(melody(<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['A' 'G' 'E' 'B' 'E' 'D' 'G' 'B' 'C' 'D' 'F' 'A']</code></pre>
+<pre><code>['C' 'G' 'B' 'G' 'G' 'C' 'C' 'B' 'G' 'F' 'A' 'G']</code></pre>
 </div>
 </div>
 </section>
 <section id="synthesizing-a-corpus" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="synthesizing-a-corpus"><span class="header-section-number">4.3</span> Synthesizing a corpus</h2>
 <p>The functionalities introduced above allow us to synthesize an artificial corpus of melodies, here simplified as lists of pitch classes and containing varying numbers of notes.</p>
-<div class="cell" data-execution_count="9">
+<div id="570affab" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">4</span> <span class="co"># number of pieces in the corpus</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [ melody(<span class="dv">12</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first three melodies of our corpus are:</p>
-<div class="cell" data-execution_count="10">
+<div id="38eb3ee6" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mel <span class="kw">in</span> corpus:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['B' 'G' 'D' 'F' 'D' 'E' 'E' 'D' 'B' 'B' 'A' 'F']
-['C' 'C' 'A' 'E' 'A' 'C' 'F' 'B' 'G' 'E' 'B' 'F']
-['G' 'G' 'G' 'F' 'A' 'G' 'G' 'G' 'D' 'E' 'F' 'G']
-['D' 'A' 'F' 'F' 'B' 'F' 'G' 'G' 'G' 'D' 'E' 'A']</code></pre>
+<pre><code>['F' 'B' 'E' 'F' 'C' 'G' 'G' 'C' 'C' 'F' 'D' 'D']
+['D' 'E' 'A' 'D' 'B' 'F' 'F' 'E' 'D' 'C' 'C' 'D']
+['E' 'A' 'B' 'D' 'C' 'G' 'E' 'B' 'E' 'G' 'F' 'G']
+['B' 'A' 'B' 'G' 'D' 'B' 'F' 'D' 'F' 'A' 'C' 'F']</code></pre>
 </div>
 </div>
 <p>Of course, melodies are not always of the same length. We could vary the lenght of the melodies by creating a hand-crafted list specifying the number of notes for each melody in the corpus.</p>
-<div class="cell" data-execution_count="11">
+<div id="8e4238fc" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [ melody(n) <span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">13</span>] ]</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mel <span class="kw">in</span> corpus:</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['B' 'C' 'G' 'B' 'E' 'B' 'C' 'A' 'C' 'B']
-['G' 'C' 'G' 'A' 'C']
-['C' 'B' 'C' 'E' 'E' 'D' 'D']
-['C' 'B' 'B' 'E' 'A' 'C' 'A' 'C' 'D' 'A' 'C' 'C' 'G']</code></pre>
+<pre><code>['B' 'A' 'F' 'E' 'D' 'D' 'B' 'B' 'G' 'A']
+['D' 'A' 'D' 'D' 'G']
+['G' 'B' 'G' 'B' 'C' 'G' 'G']
+['A' 'A' 'G' 'E' 'F' 'G' 'C' 'F' 'D' 'E' 'F' 'C' 'C']</code></pre>
 </div>
 </div>
 <p>However, specifying the lenghts of the melodies for a large corpus would be a very time-consuming task. In order to model the variability in length of melodies in a musical corpus, we will <em>randomly sample</em> them from a specified probability distribution. A good candidate for such a distribution is the <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson distribution</a>, that we can access from our random number generator <code>rng</code>.</p>
-<div class="cell" data-execution_count="12">
+<div id="cell-fig-piece-lengths" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="dv">25</span> <span class="co"># average number of notes in melody</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span> <span class="co"># number of pieces in the corpus </span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -539,17 +583,21 @@ dtype: int64</code></pre>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.axvline(lam, c<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-piece-lengths" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="randomness_files/figure-html/fig-piece-lengths-output-1.png" width="566" height="411" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.1: Distribution of melody lengths in the corpus.”</figcaption>
+<div id="fig-piece-lengths" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piece-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="randomness_files/figure-html/fig-piece-lengths-output-1.png" width="566" height="411" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piece-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Distribution of melody lengths in the corpus.”
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Now the variable <code>corpus</code> contains lists of pitch classes (<em>aka</em> melodies) of different lengths, most of them around the preset average value <code>lam</code>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> also indicated by the vertical red line. It is moreover evident that the corpus contains rather few very short or long melodies.</p>
 <p>We can, of course, not only observe the distribution of melody lengths, but also look at the overall distribution of note occurrence in the corpus:</p>
-<div class="cell" data-execution_count="13">
+<div id="cell-fig-note-freqs" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> []</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> corpus:</span>
@@ -559,15 +607,19 @@ dtype: int64</code></pre>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>pd.concat(counts).value_counts().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-note-freqs" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="randomness_files/figure-html/fig-note-freqs-output-1.png" width="583" height="408" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.2: Overall note frequencies in the artificial corpus.</figcaption>
+<div id="fig-note-freqs" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-note-freqs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="randomness_files/figure-html/fig-note-freqs-output-1.png" width="583" height="408" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-note-freqs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Overall note frequencies in the artificial corpus.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>At this point, we should stop and celebrate. We have just written our first <em>probabilistic model</em> to generate melodies. Admittedly, it is not a very good model for actual melodies, for example because notes are drawn <em>uniformly at random</em> from the set of diatonic pitch classes using the <code>.choice()</code> method, which leads to the somewhat unrealistic picture in <a href="#fig-note-freqs">Figure&nbsp;<span>4.2</span></a>. One would expect that in real melodies some notes occur more often than others and that the occurrence of a note does, for instance, also depend on the notes that come before and after it. But, in principle, these other constraints could be added to our model to make it more realistic. The point here was mainly to illustrate how artificial corpora can be generated probabilistically. This will prove useful later on because it allows us to compare real-world corpora of music against synthetic ones generated by our models.</p>
+<p>At this point, we should stop and celebrate. We have just written our first <em>probabilistic model</em> to generate melodies. Admittedly, it is not a very good model for actual melodies, for example because notes are drawn <em>uniformly at random</em> from the set of diatonic pitch classes using the <code>.choice()</code> method, which leads to the somewhat unrealistic picture in <a href="#fig-note-freqs" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>. One would expect that in real melodies some notes occur more often than others and that the occurrence of a note does, for instance, also depend on the notes that come before and after it. But, in principle, these other constraints could be added to our model to make it more realistic. The point here was mainly to illustrate how artificial corpora can be generated probabilistically. This will prove useful later on because it allows us to compare real-world corpora of music against synthetic ones generated by our models.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -587,7 +639,7 @@ Exercise
 <section id="incipits" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="incipits"><span class="header-section-number">4.4.1</span> Incipits</h3>
 <p>Now that we have a corpus that we understand very well because we specified how it has been created, we can apply some simple analytical questions in order to warm up for later. For instance, we could want to have a function that allows us to search for <em>incipits</em>. Incipits are the beginnings of musical melodies that already to characterize themes and motives because incipits are often characteristic. For example, we would want to look for all melodies that begin with “C”, “D”, “E” and, for simplicity, we might want to pass a string like “CDE” to the function to facilitate the input.</p>
-<div class="cell" data-execution_count="14">
+<div id="8fe766ad" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_incipit(incip<span class="op">=</span><span class="st">""</span>, mel<span class="op">=</span><span class="va">None</span>):</span>
@@ -605,7 +657,7 @@ Exercise
 <section id="finals" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="finals"><span class="header-section-number">4.4.2</span> Finals</h3>
 <p>We can apply a similar logic to find finals, the last notes of a melody. Instead of only allowing to search for a single note as a final, we will allow more generally to allow for a pattern that concludes a melody:</p>
-<div class="cell" data-execution_count="15">
+<div id="1d42433f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_finals(end<span class="op">=</span><span class="st">""</span>, mel<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    melody <span class="op">=</span> <span class="st">""</span>.join(mel)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> re.search(end <span class="op">+</span> <span class="st">"$"</span>, melody):</span>
@@ -615,8 +667,12 @@ Exercise
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> find_finals(end<span class="op">=</span><span class="st">"GC"</span>, mel<span class="op">=</span>m):</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['D' 'D' 'D' 'A' 'G' 'E' 'E' 'D' 'A' 'F' 'C' 'C' 'F' 'G' 'G' 'F' 'F' 'D'
- 'E' 'B' 'F' 'G' 'C' 'F' 'G' 'C']</code></pre>
+<pre><code>['C' 'A' 'D' 'D' 'D' 'A' 'D' 'D' 'F' 'B' 'G' 'E' 'E' 'B' 'C' 'F' 'E' 'F'
+ 'C' 'B' 'B' 'B' 'E' 'F' 'G' 'D' 'A' 'D' 'A' 'D' 'G' 'C']
+['G' 'D' 'D' 'G' 'B' 'F' 'A' 'F' 'A' 'E' 'G' 'D' 'B' 'B' 'D' 'F' 'G' 'E'
+ 'B' 'B' 'G' 'C' 'A' 'A' 'A' 'G' 'G' 'B' 'C' 'A' 'G' 'C']
+['A' 'D' 'A' 'E' 'F' 'F' 'B' 'E' 'B' 'F' 'G' 'E' 'C' 'A' 'G' 'A' 'G' 'D'
+ 'F' 'A' 'F' 'B' 'G' 'C']</code></pre>
 </div>
 </div>
 <p>As you can see, all found melodies end with a falling perfect fifth form “G” to “C”.</p>
@@ -639,10 +695,10 @@ Todo
 </div>
 </section>
 </section>
-<section id="random-bach" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="random-bach"><span class="header-section-number">4.5</span> Random Bach</h2>
+<section id="horrible-homophony" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="horrible-homophony"><span class="header-section-number">4.5</span> Horrible Homophony</h2>
 <p>Four-part writing is a core part of Western composition history. Here, we will build a mock version of a four-part chorale by randomly generating each voice and putting them together in a table. Doing so will show you how you can create tables, which we will need later on. The most popular way to work with tables in Python is by using the <code>pandas</code> library. In <code>pandas</code>, tables are called ‘data frames’, and there is a <code>DataFrame</code> object to represent tables. Let’s see how we could create a four-part homophonic chorale with eight ‘chords’:</p>
-<div class="cell" data-execution_count="16">
+<div id="0e31d181" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">8</span></span>
@@ -655,9 +711,10 @@ Todo
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The variable <code>chorale</code> now stores our little composition and we can inspect it:</p>
-<div class="cell" data-execution_count="17">
+<div id="318dbf79" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>chorale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
+<div>
 <div>
 
 
@@ -674,58 +731,58 @@ Todo
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>D</td>
-<td>B</td>
-<td>A</td>
 <td>E</td>
+<td>G</td>
+<td>F</td>
+<td>C</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>A</td>
-<td>A</td>
+<td>B</td>
 <td>F</td>
-<td>C</td>
+<td>E</td>
+<td>G</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>C</td>
-<td>D</td>
+<td>G</td>
+<td>A</td>
+<td>G</td>
 <td>E</td>
-<td>B</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>C</td>
-<td>E</td>
-<td>E</td>
 <td>A</td>
+<td>D</td>
+<td>C</td>
+<td>F</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
+<td>E</td>
+<td>G</td>
+<td>C</td>
 <td>A</td>
-<td>E</td>
-<td>B</td>
-<td>E</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>F</td>
 <td>A</td>
-<td>C</td>
-<td>D</td>
+<td>E</td>
+<td>G</td>
+<td>F</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>C</td>
-<td>C</td>
-<td>B</td>
 <td>D</td>
+<td>B</td>
+<td>E</td>
+<td>F</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>D</td>
 <td>C</td>
-<td>G</td>
+<td>B</td>
+<td>D</td>
 <td>F</td>
 </tr>
 </tbody>
@@ -734,8 +791,9 @@ Todo
 </div>
 </div>
 </div>
+</div>
 <p>Here we have generated each voice using the <code>melody</code> function. We can use it to create a new function that will directly give us a new chorale of a certain length:</p>
-<div class="cell" data-execution_count="18">
+<div id="80ac6cf4" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chorale(n):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"S"</span> : melody(n<span class="op">=</span>n),</span>
@@ -746,10 +804,11 @@ Todo
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="b7a9df3d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>my_chorale <span class="op">=</span> chorale(n<span class="op">=</span><span class="dv">12</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>my_chorale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
+<div>
 <div>
 
 
@@ -766,87 +825,87 @@ Todo
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>A</td>
-<td>F</td>
+<td>G</td>
+<td>E</td>
 <td>C</td>
-<td>A</td>
+<td>C</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
+<td>A</td>
+<td>G</td>
 <td>E</td>
-<td>D</td>
-<td>G</td>
-<td>G</td>
+<td>E</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>C</td>
-<td>B</td>
-<td>E</td>
+<td>A</td>
+<td>D</td>
+<td>F</td>
 <td>G</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
+<td>G</td>
+<td>D</td>
 <td>A</td>
 <td>G</td>
-<td>F</td>
-<td>C</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>F</td>
-<td>G</td>
-<td>E</td>
-<td>A</td>
+<td>C</td>
+<td>D</td>
+<td>D</td>
+<td>D</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
+<td>F</td>
 <td>A</td>
-<td>D</td>
-<td>E</td>
-<td>G</td>
+<td>A</td>
+<td>C</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>D</td>
-<td>F</td>
-<td>D</td>
+<td>B</td>
 <td>C</td>
+<td>C</td>
+<td>D</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>C</td>
-<td>C</td>
 <td>E</td>
-<td>E</td>
+<td>B</td>
+<td>B</td>
+<td>D</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>B</td>
-<td>G</td>
-<td>G</td>
-<td>B</td>
+<td>E</td>
+<td>D</td>
+<td>F</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>E</td>
-<td>D</td>
-<td>A</td>
-<td>D</td>
+<td>B</td>
+<td>B</td>
+<td>G</td>
+<td>C</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>A</td>
+<td>G</td>
+<td>B</td>
 <td>F</td>
-<td>B</td>
-<td>B</td>
+<td>G</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
 <td>G</td>
-<td>G</td>
-<td>D</td>
-<td>B</td>
+<td>E</td>
+<td>C</td>
+<td>C</td>
 </tr>
 </tbody>
 </table>
@@ -854,10 +913,12 @@ Todo
 </div>
 </div>
 </div>
-<p>It will look a bit closer to musical notation if we transpose the data frame by using the <code>.T</code> attribute:</p>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_chorale.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It will look a bit closer to musical notation if we transpose the data frame by using the <code>.transpose()</code> method:</p>
+<div id="0abdecd7" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_chorale.transpose()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
+<div>
 <div>
 
 
@@ -882,63 +943,63 @@ Todo
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">S</td>
+<td>G</td>
 <td>A</td>
-<td>E</td>
+<td>A</td>
+<td>G</td>
 <td>C</td>
-<td>A</td>
 <td>F</td>
-<td>A</td>
-<td>D</td>
-<td>C</td>
 <td>B</td>
 <td>E</td>
-<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>G</td>
 <td>G</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">A</td>
-<td>F</td>
-<td>D</td>
-<td>B</td>
-<td>G</td>
+<td>E</td>
 <td>G</td>
 <td>D</td>
-<td>F</td>
+<td>D</td>
+<td>D</td>
+<td>A</td>
 <td>C</td>
-<td>G</td>
-<td>D</td>
-<td>F</td>
-<td>G</td>
+<td>B</td>
+<td>E</td>
+<td>B</td>
+<td>B</td>
+<td>E</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">T</td>
 <td>C</td>
-<td>G</td>
 <td>E</td>
 <td>F</td>
-<td>E</td>
-<td>E</td>
-<td>D</td>
-<td>E</td>
-<td>G</td>
 <td>A</td>
+<td>D</td>
+<td>A</td>
+<td>C</td>
 <td>B</td>
 <td>D</td>
+<td>G</td>
+<td>F</td>
+<td>C</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">B</td>
-<td>A</td>
-<td>G</td>
-<td>G</td>
-<td>C</td>
-<td>A</td>
-<td>G</td>
 <td>C</td>
 <td>E</td>
-<td>B</td>
+<td>G</td>
+<td>G</td>
 <td>D</td>
-<td>B</td>
-<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>D</td>
+<td>F</td>
+<td>C</td>
+<td>G</td>
+<td>C</td>
 </tr>
 </tbody>
 </table>
@@ -946,50 +1007,52 @@ Todo
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="accessing-data" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="accessing-data"><span class="header-section-number">4.6</span> Accessing data</h2>
 <p>Having the variable <code>my_chorale</code> store our data frame, this is how we can access individual voices:</p>
-<div class="cell" data-execution_count="21">
+<div id="ae40507a" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"T"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>0     C
-1     G
-2     E
-3     F
-4     E
-5     E
-6     D
-7     E
-8     G
-9     A
-10    B
-11    D
+1     E
+2     F
+3     A
+4     D
+5     A
+6     C
+7     B
+8     D
+9     G
+10    F
+11    C
 Name: T, dtype: object</code></pre>
 </div>
 </div>
 <p>You can verify that it is the same ‘melody’ as above in the chorale. If we want a specific note from this voice, say the fifth one, we can access is this way:</p>
-<div class="cell" data-execution_count="22">
+<div id="239c3f1b" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"T"</span>][<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>'E'</code></pre>
+<pre><code>'D'</code></pre>
 </div>
 </div>
 <p>We first select the “T” column, and then select the fifth element (remember that we start counting at 0, so we need to insert 4 to get the fifth). We can also get entire ranges of a voice:</p>
-<div class="cell" data-execution_count="23">
+<div id="d564bf9c" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>my_chorale[<span class="st">"A"</span>][<span class="dv">4</span>:<span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>4    G
-5    D
-6    F
-7    C
+<pre><code>4    D
+5    A
+6    C
+7    B
 Name: A, dtype: object</code></pre>
 </div>
 </div>
 <p>This gives us the fifths to ninth note in the Alto voice. If we want to apply the same logic also to column ranges, we have to write it a bit differently using the <code>.loc()</code> method for localising data:</p>
-<div class="cell" data-execution_count="24">
+<div id="6ca7fa44" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>my_chorale.loc[<span class="dv">1</span>:<span class="dv">3</span>, <span class="st">"S"</span>:<span class="st">"A"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
+<div>
 <div>
 
 
@@ -1004,22 +1067,23 @@ Name: A, dtype: object</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">1</td>
-<td>E</td>
-<td>D</td>
+<td>A</td>
+<td>G</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2</td>
-<td>C</td>
-<td>B</td>
+<td>A</td>
+<td>D</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">3</td>
-<td>A</td>
 <td>G</td>
+<td>D</td>
 </tr>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -1114,10 +1178,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1127,8 +1208,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1140,7 +1230,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1184,6 +1397,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1209,6 +1423,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1270,12 +1510,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./python_primer.html" class="pagination-link">
+      <a href="./python_primer.html" class="pagination-link" aria-label="A Python primer">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A Python primer</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./models.html" class="pagination-link">
+      <a href="./models.html" class="pagination-link" aria-label="Models">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1283,7 +1523,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Fabian C. Moss</div>   
+    <div class="nav-footer-left">
+<p>Copyright 2024, Fabian C. Moss</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1305,6 +1547,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
